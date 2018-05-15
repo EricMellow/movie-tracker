@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "eslint": "^4.19.1",
-    "node-sass-chokidar": "^1.3.0",
     "npm-run-all": "^4.1.3",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
@@ -15,15 +14,11 @@
     "router": "^1.3.2"
   },
   "scripts": {
-    "start-js": "react-scripts start",
-    "start": "npm-run-all -p watch-css start-js",
-    "build-js": "react-scripts build",
-    "build": "npm-run-all build-css build-js",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "eslint": "./node_modules/eslint/bin/eslint.js ./src/* .js --ignore-pattern *.test.js",
-    "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
+    "eslint": "./node_modules/eslint/bin/eslint.js ./src/* .js --ignore-pattern *.test.js"
   },
   "jest": {
     "collectCoverageFrom": [
