@@ -19,7 +19,7 @@ class App extends Component {
       const moviesData = await response.json();
       const cleanMovies = movieCleaner(moviesData);
     } catch (error) {
-      console.log(error);
+      console.log({needSomeError});
     }
   }
 
