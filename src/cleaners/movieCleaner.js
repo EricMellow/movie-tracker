@@ -1,6 +1,7 @@
 const movieCleaner = (rawData) => {
-  console.log(rawData.results)
-  const cleanData = rawData.results.map(movie => {
+  const movieData = rawData.results;
+  
+  const cleanData = movieData.map(movie => {
     return {
       id: movie.id,
       title: movie.title,
@@ -9,7 +10,7 @@ const movieCleaner = (rawData) => {
       overview: movie.overview
     };
   });
-  
+
   return cleanData;
 };
 
