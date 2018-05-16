@@ -4,6 +4,9 @@ import './App.css';
 import key from '../../key.js';
 import movieCleaner from '../../cleaners/movieCleaner';
 import { Route } from 'react-router-dom';
+import { Header } from '../Header/Header';
+import { FavoriteMovies } from '../FavoriteMovies/FavoriteMovies';
+import { RecentMovies } from '../RecentMovies/RecentMovies';
 
 class App extends Component {
 
@@ -29,9 +32,8 @@ class App extends Component {
       <div className="App">
         <Header />
         <section className="main" >
-          <Route path='/' component={ RecentMovies } />
-          <Route path='/favorites' component={ FavoriteMovies } />
-          <Route path='/login' component={ Login } />
+          <Route exact path='/' component={ RecentMovies } />
+          <Route exact path='/favorites' component={ FavoriteMovies } />
         </section> 
       </div>
     );
