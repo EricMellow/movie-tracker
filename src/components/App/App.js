@@ -4,9 +4,11 @@ import './App.css';
 import key from '../../key.js';
 import movieCleaner from '../../cleaners/movieCleaner';
 import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Header } from '../Header/Header';
 import { FavoriteMovies } from '../FavoriteMovies/FavoriteMovies';
 import { RecentMovies } from '../RecentMovies/RecentMovies';
+import { addRecentMovies } from '../../actions/index';
 
 class App extends Component {
 
@@ -20,8 +22,10 @@ class App extends Component {
       if (response.status !== 200) {
         throw new Error('Could not retreive data');
       }
-      const moviesData = await response.json();
-      const cleanMovies = movieCleaner(moviesData);
+      const rawRecentMovieData = await response.json();
+      const recentMovieData = movieCleaner(rawRecentMovieData);
+
+      this.props.setRecentMovies(recentMovieData);
     } catch (error) {
       console.log({error});
     }
@@ -31,7 +35,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <section className="main" >
+        <section className="mainContainer" >
           <Route exact path='/' component={ RecentMovies } />
           <Route exact path='/favorites' component={ FavoriteMovies } />
         </section> 
@@ -40,4 +44,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+  setRecentMovies: (recentMovieData) => dispatch(addRecentMovies(recentMovieData))
+});
+
+export default connect(null, mapDispatchToProps)(App);
