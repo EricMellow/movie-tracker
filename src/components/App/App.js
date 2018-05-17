@@ -3,17 +3,18 @@ import logo from './logo.svg';
 import './App.css';
 import key from '../../key.js';
 import movieCleaner from '../../cleaners/movieCleaner';
-import { Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header } from '../Header/Header';
 import { FavoriteMovies } from '../FavoriteMovies/FavoriteMovies';
 import RecentMovies from '../RecentMovies/RecentMovies';
 import { addRecentMovies } from '../../actions/index';
 
-class App extends Component {
+export class App extends Component {
 
-  componentDidMount() {
-    this.getMovies();
+  async componentDidMount() {
+    const recentMovieData = await this.getMovies();
+    this.props.setRecentMovies(recentMovieData);
   }
 
   getMovies = async () => {
@@ -25,10 +26,15 @@ class App extends Component {
       }
       const rawRecentMovieData = await response.json();
       const recentMovieData = movieCleaner(rawRecentMovieData);
-
-      this.props.setRecentMovies(recentMovieData);
+      return recentMovieData;
     } catch (error) {
-      console.log({error});
+      this.props.setRecentMovies([{
+        id: 0,
+        title: "Oh No!",
+        poster: "Error",
+        backdrop: "Error",
+        overview: "We encountered an error and couldn't retreive your data"
+      }]);
     }
   }
 
@@ -37,8 +43,10 @@ class App extends Component {
       <div className="App">
         <Header />
         <section className="mainContainer" >
-          <Route exact path='/' component={ RecentMovies } />
-          <Route exact path='/favorites' component={ FavoriteMovies } />
+          <switch>
+            <Route exact path='/' component={ RecentMovies } />
+            <Route exact path='/favorites' component={ FavoriteMovies } />
+          </switch>
         </section> 
       </div>
     );
@@ -46,8 +54,8 @@ class App extends Component {
 }
 
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   setRecentMovies: (recentMovieData) => dispatch(addRecentMovies(recentMovieData))
 });
 
-export default connect(null, mapDispatchToProps, null, {pure: false})(App);
+export default withRouter(connect(null, mapDispatchToProps)(App));
