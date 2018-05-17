@@ -9,6 +9,7 @@ import { Header } from '../Header/Header';
 import { FavoriteMovies } from '../FavoriteMovies/FavoriteMovies';
 import RecentMovies from '../RecentMovies/RecentMovies';
 import { addRecentMovies } from '../../actions/index';
+import { Login } from '../Login/Login';
 
 export class App extends Component {
 
@@ -43,7 +44,9 @@ export class App extends Component {
       <div className="App">
         <Header />
         <section className="mainContainer" >
+
           <switch>
+            <Route exact path='/login' component={ Login } />
             <Route exact path='/' component={ RecentMovies } />
             <Route exact path='/favorites' component={ FavoriteMovies } />
           </switch>
