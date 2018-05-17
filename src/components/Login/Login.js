@@ -6,8 +6,10 @@ export class Login extends Component {
     super(props)
     this.state = {
       name: '',
-      email: '',
-      password: ''
+      signUpEmail: '',
+      signUpPassword: '',
+      loginEmail: '',
+      loginPassword: ''
     }
     
   }
@@ -34,14 +36,14 @@ export class Login extends Component {
             />
             <h3>Email</h3>
             <input
-              name='email'
-              value={this.state.email}
+              name='signUpEmail'
+              value={this.state.signUpEmail}
               onChange={this.onChangeHandler}
             />
             <h3>Password</h3>
             <input
-              name='password'
-              value={this.state.password}
+              name='signUpPassword'
+              value={this.state.signUpPassword}
               onChange={this.onChangeHandler}
             />
           </form>
@@ -49,7 +51,20 @@ export class Login extends Component {
 
         <article>
           <h2>Login</h2>
-          <form className='loginForm'></form>
+          <form className='loginForm'>
+            <h3>Email</h3>
+            <input
+              name='loginEmail'
+              value={this.state.loginEmail}
+              onChange={this.onChangeHandler}
+            />
+            <h3>Password</h3>
+            <input
+              name='loginPassword'
+              value={this.state.loginPassword}
+              onChange={this.onChangeHandler}
+            />
+          </form>
         </article>
 
       </section>
