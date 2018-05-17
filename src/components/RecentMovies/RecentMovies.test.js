@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { RecentMovies } from '../RecentMovies/RecentMovies';
+import { RecentMovies, mapStateToProps } from '../RecentMovies/RecentMovies';
 import { shallow } from 'enzyme';
 import { mockRawData, mockCleanData } from '../../cleaners/mockData';
 
@@ -17,5 +17,17 @@ describe('RecentMovies', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('should map the movies to props', () => {
+    let state = {
+      recentMovies: mockCleanData
+    };
 
+    let expected = {
+      recentMovies: state.recentMovies
+    };
+
+    const mappedProps = mapStateToProps(state);
+
+    expect(mappedProps).toEqual(expected);
+  });
 });

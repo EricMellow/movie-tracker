@@ -26,7 +26,7 @@ export class RecentMovies extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   recentMovies: state.recentMovies
 });
 
