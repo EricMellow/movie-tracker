@@ -7,7 +7,7 @@ import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header } from '../Header/Header';
 import { FavoriteMovies } from '../FavoriteMovies/FavoriteMovies';
-import { RecentMovies } from '../RecentMovies/RecentMovies';
+import RecentMovies from '../RecentMovies/RecentMovies';
 import { addRecentMovies } from '../../actions/index';
 
 class App extends Component {
@@ -17,8 +17,9 @@ class App extends Component {
   }
 
   getMovies = async () => {
+    const endPoint = `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1`;
     try {
-      const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1`);
+      const response = await fetch(endPoint);
       if (response.status !== 200) {
         throw new Error('Could not retreive data');
       }
@@ -44,8 +45,9 @@ class App extends Component {
   }
 }
 
+
 const mapDispatchToProps = (dispatch) => ({
   setRecentMovies: (recentMovieData) => dispatch(addRecentMovies(recentMovieData))
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps, null, {pure: false})(App);
