@@ -57,7 +57,7 @@ export class Login extends Component {
     );
     const rawData = await response.json();
     const userData = rawData.data;
-    
+
     // this.setUserData()
   }
 
