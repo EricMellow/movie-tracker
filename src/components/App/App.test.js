@@ -8,7 +8,7 @@ describe('App', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<App/>, { disableLifecycleMethods: true })
+    wrapper = shallow(<App/>, { disableLifecycleMethods: true });
   });
 
   it('should match the snapshot', () => {
@@ -19,7 +19,7 @@ describe('App', () => {
     let wrapper;
     
     beforeEach(() => {
-      wrapper = shallow(<App />, { disableLifecycleMethods: true })
+      wrapper = shallow(<App />, { disableLifecycleMethods: true });
     });
 
     it('should call fetch on the movie api', () => {

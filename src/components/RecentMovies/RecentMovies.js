@@ -3,7 +3,8 @@ import './RecentMovies.css';
 import { connect } from 'react-redux';
 import {Card} from '../Card/Card';
 
-class RecentMovies extends Component {
+
+export class RecentMovies extends Component {
   render() {
 
     const movieCards = this.props.recentMovies.map(movie => {
@@ -25,5 +26,5 @@ const mapStateToProps = (state) => ({
   recentMovies: state.recentMovies
 });
 
-export default connect(mapStateToProps, null, null, { pure: false })(RecentMovies);
+export default connect(mapStateToProps)(RecentMovies);
 
