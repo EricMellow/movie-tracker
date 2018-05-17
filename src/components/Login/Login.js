@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 export class Login extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       name: '',
       signUpEmail: '',
@@ -55,7 +56,9 @@ export class Login extends Component {
     }
     );
     const rawData = await response.json();
-    const userData = rawData.data
+    const userData = rawData.data;
+    
+    // this.setUserData()
   }
 
   render() {

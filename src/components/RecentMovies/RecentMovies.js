@@ -13,7 +13,9 @@ export class RecentMovies extends Component {
           key={movie.id}
           title={movie.title} 
           backdrop={movie.backdrop} 
-          overview={movie.overview}/>
+          overview={movie.overview}
+          rating={movie.rating}
+        />
       );
     });
 

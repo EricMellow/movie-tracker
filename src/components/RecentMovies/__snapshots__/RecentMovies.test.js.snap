@@ -12,6 +12,7 @@ ShallowWrapper {
               "id": 299536,
               "overview": "Test Overview",
               "poster": "/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
+              "rating": 8.6,
               "title": "Avengers: Infinity War",
             },
             Object {
@@ -19,6 +20,7 @@ ShallowWrapper {
               "id": 427641,
               "overview": "Test Overview",
               "poster": "/30oXQKwibh0uANGMs0Sytw3uN22.jpg",
+              "rating": 5.9,
               "title": "Rampage",
             },
           ]
@@ -42,11 +44,13 @@ ShallowWrapper {
           <Unknown
             backdrop="/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg"
             overview="Test Overview"
+            rating={8.6}
             title="Avengers: Infinity War"
 />,
           <Unknown
             backdrop="/wrqUiMXttHE4UBFMhLHlN601MZh.jpg"
             overview="Test Overview"
+            rating={5.9}
             title="Rampage"
 />,
         ],
@@ -63,6 +67,7 @@ ShallowWrapper {
         "props": Object {
           "backdrop": "/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg",
           "overview": "Test Overview",
+          "rating": 8.6,
           "title": "Avengers: Infinity War",
         },
         "ref": null,
@@ -76,6 +81,7 @@ ShallowWrapper {
         "props": Object {
           "backdrop": "/wrqUiMXttHE4UBFMhLHlN601MZh.jpg",
           "overview": "Test Overview",
+          "rating": 5.9,
           "title": "Rampage",
         },
         "ref": null,
@@ -97,11 +103,13 @@ ShallowWrapper {
             <Unknown
               backdrop="/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg"
               overview="Test Overview"
+              rating={8.6}
               title="Avengers: Infinity War"
 />,
             <Unknown
               backdrop="/wrqUiMXttHE4UBFMhLHlN601MZh.jpg"
               overview="Test Overview"
+              rating={5.9}
               title="Rampage"
 />,
           ],
@@ -118,6 +126,7 @@ ShallowWrapper {
           "props": Object {
             "backdrop": "/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg",
             "overview": "Test Overview",
+            "rating": 8.6,
             "title": "Avengers: Infinity War",
           },
           "ref": null,
@@ -131,6 +140,7 @@ ShallowWrapper {
           "props": Object {
             "backdrop": "/wrqUiMXttHE4UBFMhLHlN601MZh.jpg",
             "overview": "Test Overview",
+            "rating": 5.9,
             "title": "Rampage",
           },
           "ref": null,
