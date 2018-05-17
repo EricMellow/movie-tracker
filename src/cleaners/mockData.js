@@ -50,13 +50,15 @@ export const mockCleanData = [
     "title": "Avengers: Infinity War",
     "poster": "/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
     "backdrop": "/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg",
-    "overview": "Test Overview"
+    "overview": "Test Overview",
+    "rating": 8.6
   },
   {
     "id": 427641,
     "title": "Rampage",
     "poster": "/30oXQKwibh0uANGMs0Sytw3uN22.jpg",
     "backdrop": "/wrqUiMXttHE4UBFMhLHlN601MZh.jpg",
-    "overview": "Test Overview"
+    "overview": "Test Overview",
+    "rating": 5.9
   }
 ];

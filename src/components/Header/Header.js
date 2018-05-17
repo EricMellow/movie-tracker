@@ -6,9 +6,9 @@ export const Header = () => {
   return (
     <div className="header">
       <nav>
+        <NavLink to='/login' className="navLink">Sign Up/Login</NavLink> 
         <NavLink to='/favorites' className="navLink">Favorites</NavLink>
-        <NavLink to='/login' className="navLink">Login</NavLink>
-
+        <NavLink to='/' className="navLink">Recent Movies</NavLink>
       </nav>
     </div>
   );

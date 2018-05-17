@@ -7,7 +7,8 @@ const movieCleaner = (rawData) => {
       title: movie.title,
       poster: movie.poster_path,
       backdrop: movie.backdrop_path,
-      overview: movie.overview
+      overview: movie.overview,
+      rating: movie.vote_average
     };
   });
 

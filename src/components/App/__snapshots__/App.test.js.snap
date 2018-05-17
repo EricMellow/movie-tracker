@@ -26,6 +26,11 @@ ShallowWrapper {
                     <Route
                               component={[Function]}
                               exact={true}
+                              path="/login"
+                    />
+                    <Route
+                              component={[Function]}
+                              exact={true}
                               path="/"
                     />
                     <Route
@@ -58,6 +63,11 @@ ShallowWrapper {
             <Route
                         component={[Function]}
                         exact={true}
+                        path="/login"
+            />
+            <Route
+                        component={[Function]}
+                        exact={true}
                         path="/"
             />
             <Route
@@ -78,6 +88,11 @@ ShallowWrapper {
               <Route
                 component={[Function]}
                 exact={true}
+                path="/login"
+/>,
+              <Route
+                component={[Function]}
+                exact={true}
                 path="/"
 />,
               <Route
@@ -89,6 +104,19 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "component": [Function],
+                "exact": true,
+                "path": "/login",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
             Object {
               "instance": null,
               "key": undefined,
@@ -138,6 +166,11 @@ ShallowWrapper {
                         <Route
                                     component={[Function]}
                                     exact={true}
+                                    path="/login"
+                        />
+                        <Route
+                                    component={[Function]}
+                                    exact={true}
                                     path="/"
                         />
                         <Route
@@ -170,6 +203,11 @@ ShallowWrapper {
               <Route
                             component={[Function]}
                             exact={true}
+                            path="/login"
+              />
+              <Route
+                            component={[Function]}
+                            exact={true}
                             path="/"
               />
               <Route
@@ -190,6 +228,11 @@ ShallowWrapper {
                 <Route
                   component={[Function]}
                   exact={true}
+                  path="/login"
+/>,
+                <Route
+                  component={[Function]}
+                  exact={true}
                   path="/"
 />,
                 <Route
@@ -201,6 +244,19 @@ ShallowWrapper {
             },
             "ref": null,
             "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "component": [Function],
+                  "exact": true,
+                  "path": "/login",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
               Object {
                 "instance": null,
                 "key": undefined,

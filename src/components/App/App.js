@@ -56,7 +56,6 @@ export class App extends Component {
   }
 }
 
-
 export const mapDispatchToProps = (dispatch) => ({
   setRecentMovies: (recentMovieData) => dispatch(addRecentMovies(recentMovieData))
 });
