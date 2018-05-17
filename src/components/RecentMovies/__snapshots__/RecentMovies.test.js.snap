@@ -1,3 +1,153 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RecentMovies should match the snapshot 1`] = `undefined`;
+exports[`RecentMovies should match the snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <RecentMovies
+    recentMovies={
+        Array [
+            Object {
+              "backdrop": "/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg",
+              "id": 299536,
+              "overview": "Test Overview",
+              "poster": "/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
+              "title": "Avengers: Infinity War",
+            },
+            Object {
+              "backdrop": "/wrqUiMXttHE4UBFMhLHlN601MZh.jpg",
+              "id": 427641,
+              "overview": "Test Overview",
+              "poster": "/30oXQKwibh0uANGMs0Sytw3uN22.jpg",
+              "title": "Rampage",
+            },
+          ]
+    }
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        "RECENT MOVIES!",
+        Array [
+          <Unknown
+            backdrop="/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg"
+            overview="Test Overview"
+            title="Avengers: Infinity War"
+/>,
+          <Unknown
+            backdrop="/wrqUiMXttHE4UBFMhLHlN601MZh.jpg"
+            overview="Test Overview"
+            title="Rampage"
+/>,
+        ],
+      ],
+      "className": "recentMovies",
+    },
+    "ref": null,
+    "rendered": Array [
+      "RECENT MOVIES!",
+      Object {
+        "instance": null,
+        "key": "299536",
+        "nodeType": "function",
+        "props": Object {
+          "backdrop": "/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg",
+          "overview": "Test Overview",
+          "title": "Avengers: Infinity War",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": "427641",
+        "nodeType": "function",
+        "props": Object {
+          "backdrop": "/wrqUiMXttHE4UBFMhLHlN601MZh.jpg",
+          "overview": "Test Overview",
+          "title": "Rampage",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          "RECENT MOVIES!",
+          Array [
+            <Unknown
+              backdrop="/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg"
+              overview="Test Overview"
+              title="Avengers: Infinity War"
+/>,
+            <Unknown
+              backdrop="/wrqUiMXttHE4UBFMhLHlN601MZh.jpg"
+              overview="Test Overview"
+              title="Rampage"
+/>,
+          ],
+        ],
+        "className": "recentMovies",
+      },
+      "ref": null,
+      "rendered": Array [
+        "RECENT MOVIES!",
+        Object {
+          "instance": null,
+          "key": "299536",
+          "nodeType": "function",
+          "props": Object {
+            "backdrop": "/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg",
+            "overview": "Test Overview",
+            "title": "Avengers: Infinity War",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "427641",
+          "nodeType": "function",
+          "props": Object {
+            "backdrop": "/wrqUiMXttHE4UBFMhLHlN601MZh.jpg",
+            "overview": "Test Overview",
+            "title": "Rampage",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+    "disableLifecycleMethods": true,
+  },
+}
+`;

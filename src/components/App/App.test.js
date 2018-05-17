@@ -17,9 +17,11 @@ describe('App', () => {
 
   describe('getMovies', () => {
     let wrapper;
+    let mockSetRecentMovies;
     
     beforeEach(() => {
-      wrapper = shallow(<App />, { disableLifecycleMethods: true });
+      mockSetRecentMovies = jest.fn()
+      wrapper = shallow(<App setRecentMovies={mockSetRecentMovies}/>, { disableLifecycleMethods: true });
     });
 
     it('should call fetch on the movie api', () => {
@@ -34,7 +36,7 @@ describe('App', () => {
       expect(window.fetch).toHaveBeenCalled();
     });
 
-    it.skip('should return an error object if the response is a rejection', () => {
+    it('should return an error object if the response is a rejection', async () => {
       
       window.fetch = jest.fn().mockImplementation(() => Promise.reject(new Error('test rejection'))
       )
@@ -46,14 +48,15 @@ describe('App', () => {
         overview: "We encountered an error and couldn't retreive your data"
       }];
      
-      wrapper.instance().props.setRecentMovies = jest.fn()
-      wrapper.instance().getMovies();
+      // const spy = jest.spyOn(wrapper.instance(), 'props.setRecentMovies')
+      const result = wrapper.instance().props.setRecentMovies;
+      await wrapper.instance().getMovies();
 
-      expect(wrapper.instance().props.setRecentMovies).toHaveBeenCalledWith(expected);
+      expect(result).toHaveBeenCalledWith(expected);
 
     });
 
-    it.skip('should return an error object if the response status is not 200', () => {
+    it('should return an error object if the response status is not 200', async () => {
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         status: 408,
         json: () => Promise.resolve(mockRawData)
@@ -68,10 +71,10 @@ describe('App', () => {
         overview: "We encountered an error and couldn't retreive your data"
       }];
 
-      wrapper.instance().props.setRecentMovies = jest.fn();
-      wrapper.instance().getMovies();
+      const result = wrapper.instance().props.setRecentMovies;
+      await wrapper.instance().getMovies();
 
-      expect(wrapper.instance().props.setRecentMovies).toHaveBeenCalledWith(expected);
+      expect(result).toHaveBeenCalledWith(expected);
     });
   });
 

@@ -1,19 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Header from '../Header/Header';
-import { shallow, mount } from 'enzyme';
-import { mockRawData, mockCleanData } from '../../cleaners/mockData';
+import { Header } from '../Header/Header';
+import { shallow } from 'enzyme';
 
-describe('App', () => {
+describe('Header', () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = mount(<Header />, { disableLifecycleMethods: true })
+    wrapper = shallow(<Header />);
   });
 
-  it.skip('should match the snapshot', () => {
+  it('should match the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  
   });
   

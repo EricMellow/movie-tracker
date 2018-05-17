@@ -9,8 +9,12 @@ export class RecentMovies extends Component {
 
     const movieCards = this.props.recentMovies.map(movie => {
       return (
-        <Card title={movie.title} backdrop={movie.backdrop} overview={movie.overview}/>
-      )
+        <Card 
+          key={movie.id}
+          title={movie.title} 
+          backdrop={movie.backdrop} 
+          overview={movie.overview}/>
+      );
     });
 
     return (
@@ -22,7 +26,7 @@ export class RecentMovies extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   recentMovies: state.recentMovies
 });
 
