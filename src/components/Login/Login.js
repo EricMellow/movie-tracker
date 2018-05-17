@@ -26,40 +26,81 @@ export class Login extends Component {
     event.preventDefault();
     const url = 'http://localhost:3000/api/users/new';
 
-    await fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({
-        name: this.state.name,
-        email: this.state.signUpEmail,
-        password: this.state.signUpPassword
-      }),
-      headers: {
-        'Content-Type': 'application/json'
+    const retrievedUserInfo = await this.getUsers();
+
+    if (!retrievedUserInfo.email) {
+      await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({
+          name: this.state.name,
+          email: this.state.signUpEmail,
+          password: this.state.signUpPassword
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
       }
+      )
+    } else {
+      console.log('Password is in use')
     }
-    );
   }
 
   loginSubmitHandler = async (event) => {
     event.preventDefault();
-    const url = 'http://localhost:3000/api/users/';
 
-    const response = await fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({
-        email: this.state.loginEmail,
-        password: this.state.loginPassword
-      }),
-      headers: {
-        'Content-Type': 'application/json'
+    const retrievedUserInfo = await this.getUsers();
+
+    if (retrievedUserInfo.validateUser) {
+      const url = 'http://localhost:3000/api/users/';
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          body: JSON.stringify({
+            email: this.state.loginEmail,
+            password: this.state.loginPassword
+          }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+        );
+        const rawData = await response.json();
+        const userData = rawData.data;
+      } catch(error) {
+        console.log(error)
       }
+    } else {
+      console.log('Email and Password do not match')
     }
-    );
+  }
+
+  getUsers = async () => {
+    const url = 'http://localhost:3000/api/users/';
+    const response = await fetch(url);
+
     const rawData = await response.json();
     const userData = rawData.data;
 
-    // this.setUserData()
+    return this.validateUser(userData);
   }
+
+  validateUser = (userData) => {
+    let email;
+    let validateUser;
+
+    const validateEmail = userData.filter(user => {
+      return user.email === (this.state.signUpEmail || this.state.loginEmail);
+    });
+    
+    if(validateEmail.length) {
+      email = validateEmail[0].email;
+      validateUser = (validateEmail[0].password === (this.state.signUpPassword || this.state.loginPassword)); 
+    }
+
+    return {validateUser, email}
+  }
+  
 
   render() {
     return (
