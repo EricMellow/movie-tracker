@@ -24,7 +24,7 @@ export class Login extends Component {
   signUpSubmitHandler = async (event) => {
     event.preventDefault();
     const url = 'http://localhost:3000/api/users/new';
-     
+
     await fetch(url, {
       method: 'POST',
       body: JSON.stringify({
@@ -39,10 +39,23 @@ export class Login extends Component {
     );
   }
 
-  loginSubmitHandler = (event) => {
+  loginSubmitHandler = async (event) => {
     event.preventDefault();
+    const url = 'http://localhost:3000/api/users/';
 
-    console.log('handling login');
+    const response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        email: this.state.loginEmail,
+        password: this.state.loginPassword
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    );
+    const rawData = await response.json();
+    const userData = rawData.data
   }
 
   render() {
