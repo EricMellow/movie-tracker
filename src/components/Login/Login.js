@@ -28,7 +28,7 @@ export class Login extends Component {
 
     const retrievedUserInfo = await this.getUsers();
 
-    if (!retrievedUserInfo.email) {
+    if (!retrievedUserInfo.emailMatch) {
       await fetch(url, {
         method: 'POST',
         body: JSON.stringify({
@@ -40,9 +40,9 @@ export class Login extends Component {
           'Content-Type': 'application/json'
         }
       }
-      )
+      );
     } else {
-      console.log('Password is in use')
+      console.log('Password is in use');
     }
   }
 
@@ -51,7 +51,7 @@ export class Login extends Component {
 
     const retrievedUserInfo = await this.getUsers();
 
-    if (retrievedUserInfo.validateUser) {
+    if (retrievedUserInfo.passwordEmailMatch) {
       const url = 'http://localhost:3000/api/users/';
       try {
         const response = await fetch(url, {
@@ -68,10 +68,10 @@ export class Login extends Component {
         const rawData = await response.json();
         const userData = rawData.data;
       } catch(error) {
-        console.log(error)
+        console.log(error);
       }
     } else {
-      console.log('Email and Password do not match')
+      console.log('Email and Password do not match');
     }
   }
 
@@ -86,19 +86,19 @@ export class Login extends Component {
   }
 
   validateUser = (userData) => {
-    let email;
-    let validateUser;
+    let emailMatch;
+    let passwordEmailMatch;
 
-    const validateEmail = userData.filter(user => {
+    const validUser = userData.find(user => {
       return user.email === (this.state.signUpEmail || this.state.loginEmail);
     });
     
-    if(validateEmail.length) {
-      email = validateEmail[0].email;
-      validateUser = (validateEmail[0].password === (this.state.signUpPassword || this.state.loginPassword)); 
+    if (validUser) {
+      emailMatch = validUser.email ? true : false;
+      passwordEmailMatch = (validUser.password === (this.state.signUpPassword || this.state.loginPassword)); 
     }
 
-    return {validateUser, email}
+    return {passwordEmailMatch, emailMatch};
   }
   
 
