@@ -29,6 +29,7 @@ export class Login extends Component {
     const retrievedUserInfo = await this.getUsers();
 
     if (!retrievedUserInfo.email) {
+      console.log('hit')
       await fetch(url, {
         method: 'POST',
         body: JSON.stringify({
