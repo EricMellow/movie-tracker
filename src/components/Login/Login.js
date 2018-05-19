@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setUserId } from "../../actions/index.js";
+import { setUserId, addStoredFavorites } from "../../actions/index.js";
 
 
 export class Login extends Component {
@@ -46,11 +46,12 @@ export class Login extends Component {
       }
       );
       const newUserId = await this.getUserId();
-      this.props.history.push('/')
+      this.props.storeUserId(newUserId);
+      this.props.history.push('/');
     } else {
       this.setState({
         emailMatch: false
-      })
+      });
     }
   }
 
@@ -58,7 +59,7 @@ export class Login extends Component {
     const email = this.state.signUpEmail ? this.state.signUpEmail : this.state.loginEmail;
     const password = this.state.signUpPassword ? this.state.signUpPassword : this.state.loginPassword;
     const url = 'http://localhost:3000/api/users/';
-    
+
     const response = await fetch(url, {
       method: 'POST',
       body: JSON.stringify({
@@ -98,16 +99,25 @@ export class Login extends Component {
         const rawData = await response.json();
         const userData = rawData.data;
         const userId = await this.getUserId();
-        this.props.storeUserId(userId)
-        this.props.history.push('/')
-      } catch(error) {
+        this.props.storeUserId(userId);
+        this.getFavorites(userId);
+        this.props.history.push('/');
+      } catch (error) {
         console.log(error);
       }
     } else {
       this.setState({
         emailPasswordMatch: false
-      })
+      });
     }
+  }
+
+  getFavorites = async (userId) => {
+    const url = `http://localhost:3000/api/users/${userId}/favorites`;
+    const response = await fetch(url);
+    const favoritesData = await response.json();
+    const favoriteMovies = favoritesData.data;
+    this.props.addFavorites(favoriteMovies);
   }
 
   getUsers = async () => {
@@ -127,13 +137,13 @@ export class Login extends Component {
     const validUser = userData.find(user => {
       return user.email === (this.state.signUpEmail || this.state.loginEmail);
     });
-    
+
     if (validUser) {
       emailMatch = validUser.email ? true : false;
-      passwordEmailMatch = (validUser.password === (this.state.signUpPassword || this.state.loginPassword)); 
+      passwordEmailMatch = (validUser.password === (this.state.signUpPassword || this.state.loginPassword));
     }
 
-    return {passwordEmailMatch, emailMatch};
+    return { passwordEmailMatch, emailMatch };
   }
 
   render() {
@@ -148,7 +158,7 @@ export class Login extends Component {
             className='signUpForm'
             onSubmit={this.signUpSubmitHandler}
           >
-          <h3>Full Name</h3>
+            <h3>Full Name</h3>
             <input
               name='name'
               value={this.state.name}
@@ -161,7 +171,7 @@ export class Login extends Component {
               onChange={this.onChangeHandler}
             />
             <p>
-              { this.state.emailMatch ? '' : 'Email has already been used' }
+              {this.state.emailMatch ? '' : 'Email has already been used'}
             </p>
             <h3>Password</h3>
             <input
@@ -192,7 +202,7 @@ export class Login extends Component {
               onChange={this.onChangeHandler}
             />
             <p>
-              { this.state.emailPasswordMatch ? '' : 'Email and Password do not match' }
+              {this.state.emailPasswordMatch ? '' : 'Email and Password do not match'}
             </p>
             <button>Login</button>
           </form>
@@ -204,7 +214,8 @@ export class Login extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  storeUserId: (userId) => dispatch(setUserId(userId))
+  storeUserId: (userId) => dispatch(setUserId(userId)),
+  addFavorites: (favoriteMovies) => dispatch(addStoredFavorites(favoriteMovies))
 });
 
 export default connect(null, mapDispatchToProps)(Login);
