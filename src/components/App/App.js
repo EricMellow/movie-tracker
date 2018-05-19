@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import key from '../../key.js';
 import movieCleaner from '../../cleaners/movieCleaner';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Header } from '../Header/Header';
 import { FavoriteMovies } from '../FavoriteMovies/FavoriteMovies';
@@ -45,11 +44,11 @@ export class App extends Component {
         <Header />
         <section className="mainContainer" >
 
-          <switch>
+          <Switch>
             <Route exact path='/login' component={ Login } />
             <Route exact path='/' component={ RecentMovies } />
             <Route exact path='/favorites' component={ FavoriteMovies } />
-          </switch>
+          </Switch>
         </section> 
       </div>
     );

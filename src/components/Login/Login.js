@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { setUserId } from "../../actions/index.js";
 
 export class Login extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       name: '',
@@ -41,9 +42,32 @@ export class Login extends Component {
         }
       }
       );
+      const newUserId = await this.getUserId();
+      
+      this.props.storeUserId(newUserId);
+
     } else {
       console.log('Password is in use');
     }
+  }
+
+  getUserId = async () => {
+    const url = 'http://localhost:3000/api/users/';
+    const response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        email: this.state.signUpEmail,
+        password: this.state.signUpPassword
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const userData = await response.json();
+    const userId = userData.data.id;
+
+    return userId;
   }
 
   loginSubmitHandler = async (event) => {
@@ -162,3 +186,12 @@ export class Login extends Component {
   }
 }
 
+export const mapDispatchToProps = (dispatch) => {
+  return {
+    storeUserId: (userId) => {
+      dispatch(setUserId(userId))
+    }
+  }
+};
+
+export default connect(null, mapDispatchToProps)(Login);
