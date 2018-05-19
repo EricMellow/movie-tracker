@@ -43,7 +43,6 @@ export class App extends Component {
       <div className="App">
         <Header />
         <section className="mainContainer" >
-
           <Switch>
             <Route exact path='/login' component={ Login } />
             <Route exact path='/' component={ RecentMovies } />
