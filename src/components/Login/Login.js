@@ -46,6 +46,7 @@ export class Login extends Component {
       }
       );
       const newUserId = await this.getUserId();
+      this.props.storeUserId(newUserId);
       this.props.history.push('/')
     } else {
       this.setState({

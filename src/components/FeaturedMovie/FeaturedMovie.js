@@ -10,8 +10,27 @@ class FeaturedMovie extends Component {
       return movie.id === this.props.movieId;
     });
     this.props.addFavorite(selectedMovie);
+    this.addFavoriteToDatabase(selectedMovie);
   }
 
+  addFavoriteToDatabase = async (selectedMovie) => {
+    const url = 'http://localhost:3000/api/users/favorites/new';
+    await fetch(url, {
+      method: 'POST',
+      headers: {
+        "Content-Type": 'application/json'
+      },
+      body: JSON.stringify({
+        movie_id: selectedMovie.id,
+        user_id: this.props.userId,
+        title: selectedMovie.title,
+        poster_path: selectedMovie.poster,
+        release_date: selectedMovie.release,
+        vote_average: selectedMovie.rating,
+        overview: selectedMovie.overview
+      })
+    })
+  }
 
   render() {
     const featuredMovie = this.props.recentMovies.find(movie => {
@@ -30,7 +49,7 @@ class FeaturedMovie extends Component {
           <div className="movieOverview">
             <h2>{featuredMovie.title}</h2>
             <p>{overview} ...</p>
-            
+
           </div>
         </div>
       );
@@ -44,7 +63,8 @@ class FeaturedMovie extends Component {
 
 const mapStateToProps = (state) => ({
   recentMovies: state.recentMovies,
-  movieId: state.selectedMovieId
+  movieId: state.selectedMovieId,
+  userId: state.userId
 });
 
 const mapDispatchToProps = (dispatch) => ({
