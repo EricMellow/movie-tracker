@@ -1,6 +1,7 @@
 import React from 'react';
 import { Login, mapDispatchToProps } from './Login';
 import { shallow } from 'enzyme';
+import { createMemoryHistory } from "history";
 
 describe('Login', () => {
   let wrapper;
@@ -19,7 +20,9 @@ describe('Login', () => {
       signUpEmail: '',
       signUpPassword: '',
       loginEmail: '',
-      loginPassword: ''
+      loginPassword: '',
+      emailPasswordMatch: true,
+      emailMatch: true
     };
 
     expect(wrapper.state()).toEqual(expected);
@@ -52,8 +55,12 @@ describe('Login', () => {
 
     beforeEach(() => {
       const mockStoreUserId = jest.fn();
+      const history = createMemoryHistory('/')
 
-      wrapper = shallow(<Login storeUserId={mockStoreUserId} />);
+      wrapper = shallow(<Login
+        storeUserId={mockStoreUserId}
+        history={history}
+        />);
     });
 
     it('should call fetch with correct arguments', async () => {
@@ -68,6 +75,7 @@ describe('Login', () => {
         signUpEmail: 'test@email.com',
         signUpPassword: 'YTho1!'
       };
+      
       const expectedUrl = 'http://localhost:3000/api/users/new';
       const expectedOptionsObject = {
         method: 'POST',

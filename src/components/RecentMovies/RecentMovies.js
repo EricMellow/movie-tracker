@@ -8,7 +8,6 @@ export class RecentMovies extends Component {
   render() {
     return (
       <div className="recentMovies">
-        <h1>Recent Movies</h1>
         <Sidebar />
         <FeaturedMovie />
       </div>

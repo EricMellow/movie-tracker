@@ -1,0 +1,22 @@
+.movieCard {
+  display: flex;
+  align-items: center;
+  height: 90px;
+  margin-bottom: 25px;
+}
+
+.movieCard img {
+  height: 100%;
+  width: auto;
+  margin-right: 20px;
+}
+
+.movieCard p {
+  font-size: 0.8rem;
+  color: #9f9f9f
+}
+
+h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}

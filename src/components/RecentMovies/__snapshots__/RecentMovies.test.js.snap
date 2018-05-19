@@ -39,51 +39,41 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        "RECENT MOVIES!",
-        Array [
-          <Unknown
-            backdrop="/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg"
-            overview="Test Overview"
-            rating={8.6}
-            title="Avengers: Infinity War"
-/>,
-          <Unknown
-            backdrop="/wrqUiMXttHE4UBFMhLHlN601MZh.jpg"
-            overview="Test Overview"
-            rating={5.9}
-            title="Rampage"
-/>,
-        ],
+        <h1>
+          Recent Movies
+</h1>,
+        <Connect(Sidebar) />,
+        <FeaturedMovie />,
       ],
       "className": "recentMovies",
     },
     "ref": null,
     "rendered": Array [
-      "RECENT MOVIES!",
       Object {
         "instance": null,
-        "key": "299536",
-        "nodeType": "function",
+        "key": undefined,
+        "nodeType": "host",
         "props": Object {
-          "backdrop": "/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg",
-          "overview": "Test Overview",
-          "rating": 8.6,
-          "title": "Avengers: Infinity War",
+          "children": "Recent Movies",
         },
+        "ref": null,
+        "rendered": "Recent Movies",
+        "type": "h1",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {},
         "ref": null,
         "rendered": null,
         "type": [Function],
       },
       Object {
         "instance": null,
-        "key": "427641",
-        "nodeType": "function",
-        "props": Object {
-          "backdrop": "/wrqUiMXttHE4UBFMhLHlN601MZh.jpg",
-          "overview": "Test Overview",
-          "rating": 5.9,
-          "title": "Rampage",
-        },
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {},
         "ref": null,
         "rendered": null,
         "type": [Function],
@@ -98,51 +88,41 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          "RECENT MOVIES!",
-          Array [
-            <Unknown
-              backdrop="/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg"
-              overview="Test Overview"
-              rating={8.6}
-              title="Avengers: Infinity War"
-/>,
-            <Unknown
-              backdrop="/wrqUiMXttHE4UBFMhLHlN601MZh.jpg"
-              overview="Test Overview"
-              rating={5.9}
-              title="Rampage"
-/>,
-          ],
+          <h1>
+            Recent Movies
+</h1>,
+          <Connect(Sidebar) />,
+          <FeaturedMovie />,
         ],
         "className": "recentMovies",
       },
       "ref": null,
       "rendered": Array [
-        "RECENT MOVIES!",
         Object {
           "instance": null,
-          "key": "299536",
-          "nodeType": "function",
+          "key": undefined,
+          "nodeType": "host",
           "props": Object {
-            "backdrop": "/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg",
-            "overview": "Test Overview",
-            "rating": 8.6,
-            "title": "Avengers: Infinity War",
+            "children": "Recent Movies",
           },
+          "ref": null,
+          "rendered": "Recent Movies",
+          "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {},
           "ref": null,
           "rendered": null,
           "type": [Function],
         },
         Object {
           "instance": null,
-          "key": "427641",
-          "nodeType": "function",
-          "props": Object {
-            "backdrop": "/wrqUiMXttHE4UBFMhLHlN601MZh.jpg",
-            "overview": "Test Overview",
-            "rating": 5.9,
-            "title": "Rampage",
-          },
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {},
           "ref": null,
           "rendered": null,
           "type": [Function],
