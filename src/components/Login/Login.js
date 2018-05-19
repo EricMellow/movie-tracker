@@ -45,9 +45,7 @@ export class Login extends Component {
       }
       );
       const newUserId = await this.getUserId();
-      
-      this.props.storeUserId(newUserId);
-      this.clearInputFields();
+      this.props.history.push('/')
     } else {
       this.setState({
         emailMatch: false
@@ -100,7 +98,7 @@ export class Login extends Component {
         const userData = rawData.data;
         const userId = await this.getUserId();
         this.props.storeUserId(userId)
-        this.clearInputFields();
+        this.props.history.push('/')
       } catch(error) {
         console.log(error);
       }
