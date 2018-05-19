@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Sidebar.css';
 import { connect } from 'react-redux';
-import { Card } from '../Card/Card';
+import Card from '../Card/Card';
 
 export class Sidebar extends Component {
 
@@ -13,6 +13,7 @@ export class Sidebar extends Component {
           title={movie.title} 
           backdrop={movie.backdrop} 
           rating={movie.rating}
+          id={movie.id}
         />
       );
     });
