@@ -8,7 +8,12 @@ export const setUserId = (userId) => ({
   userId
 });
 
-export const setSelectedMovieId = (movieId)=>({
+export const setSelectedMovieId = (movieId) => ({
   type: 'SET_SELECTED_MOVIE_ID',
   movieId
+});
+
+export const addFavoriteMovie = (selectedMovie) => ({
+  type: 'ADD_FAVORITE',
+  selectedMovie
 });

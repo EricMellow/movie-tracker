@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import './FeaturedMovie.css';
 import { connect } from 'react-redux';
+import { addFavoriteMovie } from '../../actions/index'
 
 class FeaturedMovie extends Component {
 
-  componentDidMount() {
-
+  handleFavoriteClick = () => {
+    const selectedMovie = this.props.recentMovies.find(movie => {
+      return movie.id === this.props.movieId;
+    });
+    this.props.addFavorite(selectedMovie);
   }
 
 
@@ -15,15 +19,17 @@ class FeaturedMovie extends Component {
     });
     if (featuredMovie) {
       const image = `https://image.tmdb.org/t/p/w1280${featuredMovie.backdrop}`;
-      const background = { backgroundImage: `url( ${image} )` }
+      const background = { backgroundImage: `url( ${image} )` };
+      const overview = featuredMovie.overview.substr(0, 300);
+
       return (
         <div className="featuredMovie" style={background} >
-          <div className="favoriteButton">
+          <div className="favoriteButton" onClick={this.handleFavoriteClick}>
             <p>Add to Favorites</p>
           </div>
           <div className="movieOverview">
             <h2>{featuredMovie.title}</h2>
-            <p>{featuredMovie.overview} ...</p>
+            <p>{overview} ...</p>
             
           </div>
         </div>
@@ -41,6 +47,10 @@ const mapStateToProps = (state) => ({
   movieId: state.selectedMovieId
 });
 
-export default connect(mapStateToProps)(FeaturedMovie);
+const mapDispatchToProps = (dispatch) => ({
+  addFavorite: (selectedMovie) => dispatch(addFavoriteMovie(selectedMovie))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(FeaturedMovie);
 
 
