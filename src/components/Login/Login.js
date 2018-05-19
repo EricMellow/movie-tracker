@@ -11,7 +11,9 @@ export class Login extends Component {
       signUpEmail: '',
       signUpPassword: '',
       loginEmail: '',
-      loginPassword: ''
+      loginPassword: '',
+      emailPasswordMatch: true,
+      emailMatch: true
     };
 
   }
@@ -45,9 +47,11 @@ export class Login extends Component {
       const newUserId = await this.getUserId();
       
       this.props.storeUserId(newUserId);
-
+      this.clearInputFields();
     } else {
-      console.log('Password is in use');
+      this.setState({
+        emailMatch: false
+      })
     }
   }
 
@@ -96,11 +100,14 @@ export class Login extends Component {
         const userData = rawData.data;
         const userId = await this.getUserId();
         this.props.storeUserId(userId)
+        this.clearInputFields();
       } catch(error) {
         console.log(error);
       }
     } else {
-      console.log('Email and Password do not match');
+      this.setState({
+        emailPasswordMatch: false
+      })
     }
   }
 
@@ -129,6 +136,18 @@ export class Login extends Component {
 
     return {passwordEmailMatch, emailMatch};
   }
+
+  clearInputFields = () => {
+    this.setState({
+      name: '',
+      signUpEmail: '',
+      signUpPassword: '',
+      loginEmail: '',
+      loginPassword: '',
+      emailPasswordMatch: true,
+      emailMatch: true
+    })
+  }
   
 
   render() {
@@ -155,6 +174,9 @@ export class Login extends Component {
               value={this.state.signUpEmail}
               onChange={this.onChangeHandler}
             />
+            <p>
+              { this.state.emailMatch ? '' : 'Email has already been used' }
+            </p>
             <h3>Password</h3>
             <input
               name='signUpPassword'
@@ -183,6 +205,9 @@ export class Login extends Component {
               value={this.state.loginPassword}
               onChange={this.onChangeHandler}
             />
+            <p>
+              { this.state.emailPasswordMatch ? '' : 'Email and Password do not match' }
+            </p>
             <button>Login</button>
           </form>
         </article>
