@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import './Card.css';
 import { connect } from 'react-redux';
+import { setSelectedMovieId } from '../../actions/index';
 
 export class Card extends Component {
   constructor(props) {
