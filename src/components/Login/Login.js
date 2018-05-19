@@ -135,19 +135,6 @@ export class Login extends Component {
     return {passwordEmailMatch, emailMatch};
   }
 
-  clearInputFields = () => {
-    this.setState({
-      name: '',
-      signUpEmail: '',
-      signUpPassword: '',
-      loginEmail: '',
-      loginPassword: '',
-      emailPasswordMatch: true,
-      emailMatch: true
-    })
-  }
-  
-
   render() {
 
     return (
