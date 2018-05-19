@@ -22,7 +22,7 @@ ShallowWrapper {
         <section
           className="mainContainer"
 >
-          <switch>
+          <Switch>
                     <Route
                               component={[Function]}
                               exact={true}
@@ -38,7 +38,7 @@ ShallowWrapper {
                               exact={true}
                               path="/favorites"
                     />
-          </switch>
+          </Switch>
 </section>,
       ],
       "className": "App",
@@ -59,7 +59,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": <switch>
+          "children": <Switch>
             <Route
                         component={[Function]}
                         exact={true}
@@ -75,14 +75,14 @@ ShallowWrapper {
                         exact={true}
                         path="/favorites"
             />
-</switch>,
+</Switch>,
           "className": "mainContainer",
         },
         "ref": null,
         "rendered": Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "host",
+          "nodeType": "class",
           "props": Object {
             "children": Array [
               <Route
@@ -144,7 +144,7 @@ ShallowWrapper {
               "type": [Function],
             },
           ],
-          "type": "switch",
+          "type": [Function],
         },
         "type": "section",
       },
@@ -162,7 +162,7 @@ ShallowWrapper {
           <section
             className="mainContainer"
 >
-            <switch>
+            <Switch>
                         <Route
                                     component={[Function]}
                                     exact={true}
@@ -178,7 +178,7 @@ ShallowWrapper {
                                     exact={true}
                                     path="/favorites"
                         />
-            </switch>
+            </Switch>
 </section>,
         ],
         "className": "App",
@@ -199,7 +199,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": <switch>
+            "children": <Switch>
               <Route
                             component={[Function]}
                             exact={true}
@@ -215,14 +215,14 @@ ShallowWrapper {
                             exact={true}
                             path="/favorites"
               />
-</switch>,
+</Switch>,
             "className": "mainContainer",
           },
           "ref": null,
           "rendered": Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "host",
+            "nodeType": "class",
             "props": Object {
               "children": Array [
                 <Route
@@ -284,7 +284,7 @@ ShallowWrapper {
                 "type": [Function],
               },
             ],
-            "type": "switch",
+            "type": [Function],
           },
           "type": "section",
         },

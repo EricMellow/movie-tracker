@@ -3,15 +3,17 @@ import { connect } from 'react-redux';
 import { setUserId } from "../../actions/index.js";
 
 export class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       name: '',
       signUpEmail: '',
       signUpPassword: '',
       loginEmail: '',
-      loginPassword: ''
+      loginPassword: '',
+      emailPasswordMatch: true,
+      emailMatch: true
     };
 
   }
@@ -43,21 +45,24 @@ export class Login extends Component {
       }
       );
       const newUserId = await this.getUserId();
-      
-      this.props.storeUserId(newUserId);
-
+      this.props.history.push('/')
     } else {
-      console.log('Password is in use');
+      this.setState({
+        emailMatch: false
+      })
     }
   }
 
   getUserId = async () => {
+    const email = this.state.signUpEmail ? this.state.signUpEmail : this.state.loginEmail;
+    const password = this.state.signUpPassword ? this.state.signUpPassword : this.state.loginPassword;
     const url = 'http://localhost:3000/api/users/';
+    
     const response = await fetch(url, {
       method: 'POST',
       body: JSON.stringify({
-        email: this.state.signUpEmail,
-        password: this.state.signUpPassword
+        email,
+        password
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -91,11 +96,16 @@ export class Login extends Component {
         );
         const rawData = await response.json();
         const userData = rawData.data;
+        const userId = await this.getUserId();
+        this.props.storeUserId(userId)
+        this.props.history.push('/')
       } catch(error) {
         console.log(error);
       }
     } else {
-      console.log('Email and Password do not match');
+      this.setState({
+        emailPasswordMatch: false
+      })
     }
   }
 
@@ -124,9 +134,9 @@ export class Login extends Component {
 
     return {passwordEmailMatch, emailMatch};
   }
-  
 
   render() {
+
     return (
 
       <section className='signUpForms'>
@@ -149,6 +159,9 @@ export class Login extends Component {
               value={this.state.signUpEmail}
               onChange={this.onChangeHandler}
             />
+            <p>
+              { this.state.emailMatch ? '' : 'Email has already been used' }
+            </p>
             <h3>Password</h3>
             <input
               name='signUpPassword'
@@ -177,6 +190,9 @@ export class Login extends Component {
               value={this.state.loginPassword}
               onChange={this.onChangeHandler}
             />
+            <p>
+              { this.state.emailPasswordMatch ? '' : 'Email and Password do not match' }
+            </p>
             <button>Login</button>
           </form>
         </article>
@@ -186,12 +202,8 @@ export class Login extends Component {
   }
 }
 
-export const mapDispatchToProps = (dispatch) => {
-  return {
-    storeUserId: (userId) => {
-      dispatch(setUserId(userId))
-    }
-  }
-};
+export const mapDispatchToProps = (dispatch) => ({
+  storeUserId: (userId) => dispatch(setUserId(userId))
+});
 
 export default connect(null, mapDispatchToProps)(Login);

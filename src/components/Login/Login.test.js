@@ -1,5 +1,5 @@
 import React from 'react';
-import { Login } from './Login';
+import { Login, mapDispatchToProps } from './Login';
 import { shallow } from 'enzyme';
 
 describe('Login', () => {
@@ -51,7 +51,9 @@ describe('Login', () => {
     let wrapper;
 
     beforeEach(() => {
-      wrapper = shallow(<Login />);
+      const mockStoreUserId = jest.fn();
+
+      wrapper = shallow(<Login storeUserId={mockStoreUserId} />);
     });
 
     it('should call fetch with correct arguments', async () => {
@@ -80,7 +82,12 @@ describe('Login', () => {
       };
 
       wrapper.setState(mockState);
-      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({}));
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        json: () => Promise.resolve({data :
+          {id: 5}
+        })
+      }));
+
       await wrapper.instance().signUpSubmitHandler(mockEvent);
 
       expect(window.fetch).toHaveBeenCalledWith(expectedUrl, expectedOptionsObject);
@@ -219,6 +226,22 @@ describe('Login', () => {
 
       expect(result).toEqual(expected);
     });
-
   });
+
+  describe('mapDispatchToProps', ()=> {
+
+    it('should call dispatch with the correct params on storeUserId', () => {
+      const mockDispatch = jest.fn();
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      const mockAction = {
+        type: 'SET_USER_ID',
+        userId: 6
+      };
+      
+      mappedProps.storeUserId(6);
+  
+      expect(mockDispatch).toHaveBeenCalledWith(mockAction);
+    });
+  })
+
 });
