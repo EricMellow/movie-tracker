@@ -88,9 +88,6 @@ describe('App', () => {
     mappedProps.setRecentMovies(mockCleanData);
 
     expect(mockDispatch).toHaveBeenCalledWith(mockAction);
-
   });
-  
-
-
+ 
 });

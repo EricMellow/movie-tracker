@@ -1,28 +1,16 @@
 import React, { Component } from 'react';
 import './RecentMovies.css';
 import { connect } from 'react-redux';
-import {Card} from '../Card/Card';
-
+import Sidebar from '../Sidebar/Sidebar';
+import FeaturedMovie from '../FeaturedMovie/FeaturedMovie';
 
 export class RecentMovies extends Component {
   render() {
-
-    const movieCards = this.props.recentMovies.map(movie => {
-      return (
-        <Card 
-          key={movie.id}
-          title={movie.title} 
-          backdrop={movie.backdrop} 
-          overview={movie.overview}
-          rating={movie.rating}
-        />
-      );
-    });
-
     return (
       <div className="recentMovies">
-        RECENT MOVIES!
-        {movieCards}
+        <h1>Recent Movies</h1>
+        <Sidebar />
+        <FeaturedMovie />
       </div>
     );
   }
