@@ -4,7 +4,7 @@ import './FeaturedMovie.css';
 class FeaturedMovie extends Component {
   render() {
     return (
-      <div>
+      <div className="featuredMovie">
         FEATURED MOVIE
       </div>
     )

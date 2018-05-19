@@ -18,7 +18,7 @@ export class Sidebar extends Component {
     });
 
     return (
-      <div className="recentMovies">
+      <div className="sidebar">
         <h1>Recent Movies</h1>
         { movieCards }
       </div>

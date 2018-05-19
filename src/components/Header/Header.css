@@ -1,5 +1,10 @@
-header {
-  background: cadetblue;
-  height: 300px;
+.header {
+  height: 100px;
   display: block;
+  margin: 0 auto 80px auto;
+  width: 1100px;
+}
+.header a {
+  color: #ffffff;
+
 }

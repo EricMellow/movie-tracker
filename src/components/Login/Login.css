@@ -1,0 +1,42 @@
+* {
+  background-color: black;
+}
+
+.signUpForms {
+  display: flex;
+  flex-wrap: wrap;
+}
+.leftOrTop {
+  flex: auto;
+}
+
+.rightOrBottom {
+  flex: auto;
+}
+
+h2 {
+  color: gray;
+  font-size: 25px;
+      margin-left: 30px;
+      height: 40px;
+      width: 100%;
+      text-align: left;
+
+}
+
+h3 {
+  text-align: left;
+  margin-left: 30px;
+  color: grey;
+
+}
+
+.signUpForm {
+  display: block;
+  float: left;
+}
+
+.loginForm {
+  display: block;
+  float: left;
+}

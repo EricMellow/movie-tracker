@@ -42,6 +42,7 @@ ShallowWrapper {
                               onChange={[Function]}
                               value=""
                     />
+                    <p />
                     <h3>
                               Password
                     </h3>
@@ -79,6 +80,7 @@ ShallowWrapper {
                               onChange={[Function]}
                               value=""
                     />
+                    <p />
                     <button>
                               Login
                     </button>
@@ -118,6 +120,7 @@ ShallowWrapper {
                             onChange={[Function]}
                             value=""
               />
+              <p />
               <h3>
                             Password
               </h3>
@@ -167,6 +170,7 @@ ShallowWrapper {
                   onChange={[Function]}
                   value=""
 />,
+                <p />,
                 <h3>
                   Password
 </h3>,
@@ -231,6 +235,17 @@ ShallowWrapper {
                 "ref": null,
                 "rendered": null,
                 "type": "input",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "",
+                },
+                "ref": null,
+                "rendered": "",
+                "type": "p",
               },
               Object {
                 "instance": null,
@@ -302,6 +317,7 @@ ShallowWrapper {
                             onChange={[Function]}
                             value=""
               />
+              <p />
               <button>
                             Login
               </button>
@@ -343,6 +359,7 @@ ShallowWrapper {
                   onChange={[Function]}
                   value=""
 />,
+                <p />,
                 <button>
                   Login
 </button>,
@@ -405,6 +422,17 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "host",
                 "props": Object {
+                  "children": "",
+                },
+                "ref": null,
+                "rendered": "",
+                "type": "p",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
                   "children": "Login",
                 },
                 "ref": null,
@@ -451,6 +479,7 @@ ShallowWrapper {
                                     onChange={[Function]}
                                     value=""
                         />
+                        <p />
                         <h3>
                                     Password
                         </h3>
@@ -488,6 +517,7 @@ ShallowWrapper {
                                     onChange={[Function]}
                                     value=""
                         />
+                        <p />
                         <button>
                                     Login
                         </button>
@@ -527,6 +557,7 @@ ShallowWrapper {
                                 onChange={[Function]}
                                 value=""
                 />
+                <p />
                 <h3>
                                 Password
                 </h3>
@@ -576,6 +607,7 @@ ShallowWrapper {
                     onChange={[Function]}
                     value=""
 />,
+                  <p />,
                   <h3>
                     Password
 </h3>,
@@ -640,6 +672,17 @@ ShallowWrapper {
                   "ref": null,
                   "rendered": null,
                   "type": "input",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "",
+                  },
+                  "ref": null,
+                  "rendered": "",
+                  "type": "p",
                 },
                 Object {
                   "instance": null,
@@ -711,6 +754,7 @@ ShallowWrapper {
                                 onChange={[Function]}
                                 value=""
                 />
+                <p />
                 <button>
                                 Login
                 </button>
@@ -752,6 +796,7 @@ ShallowWrapper {
                     onChange={[Function]}
                     value=""
 />,
+                  <p />,
                   <button>
                     Login
 </button>,
@@ -808,6 +853,17 @@ ShallowWrapper {
                   "ref": null,
                   "rendered": null,
                   "type": "input",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "",
+                  },
+                  "ref": null,
+                  "rendered": "",
+                  "type": "p",
                 },
                 Object {
                   "instance": null,
