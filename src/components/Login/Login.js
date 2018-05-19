@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { setUserId } from "../../actions/index.js";
 
 export class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       name: '',
@@ -52,12 +52,15 @@ export class Login extends Component {
   }
 
   getUserId = async () => {
+    const email = this.state.signUpEmail ? this.state.signUpEmail : this.state.loginEmail;
+    const password = this.state.signUpPassword ? this.state.signUpPassword : this.state.loginPassword;
     const url = 'http://localhost:3000/api/users/';
+    
     const response = await fetch(url, {
       method: 'POST',
       body: JSON.stringify({
-        email: this.state.signUpEmail,
-        password: this.state.signUpPassword
+        email,
+        password
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -91,6 +94,8 @@ export class Login extends Component {
         );
         const rawData = await response.json();
         const userData = rawData.data;
+        const userId = await this.getUserId();
+        this.props.storeUserId(userId)
       } catch(error) {
         console.log(error);
       }
@@ -127,6 +132,7 @@ export class Login extends Component {
   
 
   render() {
+
     return (
 
       <section className='signUpForms'>
@@ -186,12 +192,8 @@ export class Login extends Component {
   }
 }
 
-export const mapDispatchToProps = (dispatch) => {
-  return {
-    storeUserId: (userId) => {
-      dispatch(setUserId(userId))
-    }
-  }
-};
+export const mapDispatchToProps = (dispatch) => ({
+  storeUserId: (userId) => dispatch(setUserId(userId))
+});
 
 export default connect(null, mapDispatchToProps)(Login);

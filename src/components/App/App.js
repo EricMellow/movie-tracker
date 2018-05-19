@@ -8,7 +8,7 @@ import { Header } from '../Header/Header';
 import { FavoriteMovies } from '../FavoriteMovies/FavoriteMovies';
 import RecentMovies from '../RecentMovies/RecentMovies';
 import { addRecentMovies } from '../../actions/index';
-import { Login } from '../Login/Login';
+import Login from '../Login/Login';
 
 export class App extends Component {
 
