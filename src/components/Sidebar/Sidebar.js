@@ -6,7 +6,9 @@ import Card from '../Card/Card';
 export class Sidebar extends Component {
 
   render() {
-    const movieCards = this.props.recentMovies.map(movie => {
+    const currentPage = this.props.renderRecent ? this.props.recentMovies : this.props.favoriteMovies;
+    const movieCards = currentPage.map(movie => {
+      console.log(movie)
       return (
         <Card 
           key={movie.id}
@@ -28,7 +30,9 @@ export class Sidebar extends Component {
 }
 
 export const mapStateToProps = (state) => ({
-  recentMovies: state.recentMovies
+  recentMovies: state.recentMovies,
+  favoriteMovies: state.favoriteMovies,
+  renderRecent: state.renderRecent
 });
 
 export default connect(mapStateToProps)(Sidebar);

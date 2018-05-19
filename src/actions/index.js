@@ -22,3 +22,8 @@ export const addStoredFavorites = (favoriteMovies) => ({
   type: 'ADD_STORED_FAVORITES',
   favoriteMovies
 });
+
+export const toggleRenderRecent = (bool) => ({
+  type: 'TOGGLE_RENDER_RECENT',
+  toggle: bool
+});

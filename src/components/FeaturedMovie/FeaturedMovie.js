@@ -26,8 +26,9 @@ class FeaturedMovie extends Component {
         title: selectedMovie.title,
         poster_path: selectedMovie.poster,
         release_date: selectedMovie.release,
-        vote_average: selectedMovie.rating,
-        overview: selectedMovie.overview
+        rating: selectedMovie.rating,
+        overview: selectedMovie.overview,
+        backdrop: selectedMovie.backdrop
       })
     })
   }
