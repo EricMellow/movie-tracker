@@ -29,7 +29,7 @@ export class App extends Component {
       return recentMovieData;
     } catch (error) {
       this.props.setRecentMovies([{
-        id: 0,
+        movie_id: 0,
         title: "Oh No!",
         poster: "Error",
         backdrop: "Error",

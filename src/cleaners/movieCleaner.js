@@ -3,12 +3,12 @@ const movieCleaner = (rawData) => {
   
   const cleanData = movieData.map(movie => {
     return {
-      id: movie.id,
+      movie_id: movie.id,
       title: movie.title,
       poster: movie.poster_path,
       backdrop: movie.backdrop_path,
       overview: movie.overview,
-      rating: movie.vote_average,
+      vote_average: movie.vote_average,
       release: movie.release_date
     };
   });

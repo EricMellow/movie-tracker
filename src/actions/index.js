@@ -27,3 +27,7 @@ export const toggleRenderRecent = (bool) => ({
   type: 'TOGGLE_RENDER_RECENT',
   toggle: bool
 });
+
+export const logout = () => ({
+  type: 'LOGOUT'
+});
