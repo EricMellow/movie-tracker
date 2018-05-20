@@ -10,15 +10,21 @@ class FeaturedMovie extends Component {
       return fave.movie_id === id;
     });
   }
-  
+
   handleFavoriteClick = () => {
     const selectedMovie = this.props.recentMovies.find(movie => {
       return movie.movie_id === this.props.movieId;
     });
     const isAFavorite = this.findFavorite(selectedMovie.movie_id);
   
-    isAFavorite ? this.props.deleteFavoriteMovie(selectedMovie) :this.props.addFavorite(selectedMovie);
-    this.addFavoriteToDatabase(selectedMovie);
+    if (isAFavorite) {
+      this.props.deleteFavoriteMovie(selectedMovie);
+      this.deleteFavoriteFromDatabase(selectedMovie);
+    } else {
+      this.props.addFavorite(selectedMovie);
+      this.addFavoriteToDatabase(selectedMovie);
+    }
+     
   }
 
   addFavoriteToDatabase = async (selectedMovie) => { 
@@ -41,6 +47,15 @@ class FeaturedMovie extends Component {
     });
   }
 
+  deleteFavoriteFromDatabase = async (selectedMovie) => {
+    const url = `http://localhost:3000/api/users/${this.props.userId}/favorites/${selectedMovie.movie_id}`;
+
+    await fetch(url, {
+      method: 'DELETE'
+      
+    });
+  }
+
   render() {
     const featuredMovie = this.props.recentMovies.find(movie => {
       return movie.movie_id === this.props.movieId;
@@ -52,7 +67,10 @@ class FeaturedMovie extends Component {
 
       return (
         <div className="featuredMovie" style={background} >
-          <div className="favoriteButton" onClick={this.handleFavoriteClick}>
+          <div 
+            className="favoriteButton"
+            onClick={this.handleFavoriteClick}
+          >
             <p>Add to Favorites</p>
           </div>
           <div className="movieOverview">
