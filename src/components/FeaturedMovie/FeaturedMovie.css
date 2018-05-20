@@ -1,5 +1,5 @@
 .featuredMovie {
-  width: 70%;
+  width: 67%;
   height: 385px;
   background-size: cover;
   position: relative;
@@ -15,6 +15,10 @@
   top: 0;
   right: 30px;
   padding: 15px;
+}
+
+.favoriteButton:hover {
+  cursor: pointer;
 }
 
 .movieOverview h2 {

@@ -25,9 +25,9 @@ export class Card extends Component {
         <img src={img} />
         <div>
           <h3>{this.props.title}</h3>
-
           <p>{this.props.rating}</p>
         </div>
+        <img src={ require('../Card/arrow-inactive.png')} className="arrow" />
 
       </div>
     );

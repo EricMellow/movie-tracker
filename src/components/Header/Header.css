@@ -1,10 +1,24 @@
 .header {
   height: 100px;
-  display: block;
   margin: 0 auto 80px auto;
   width: 1100px;
+  display: flex;
+  justify-content: space-between;
 }
 .header a {
   color: #ffffff;
+  margin-left: 45px;
+  font-size: rem;
+  text-decoration: none;
+}
 
+nav {
+  width: auto;
+  display: inline-block;
+  margin-top: 95px;
+}
+
+.logo {
+  height: 50px;
+  margin-top: 60px;
 }
