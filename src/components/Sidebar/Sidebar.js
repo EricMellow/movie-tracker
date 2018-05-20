@@ -8,14 +8,19 @@ export class Sidebar extends Component {
   render() {
     const currentPage = this.props.renderRecent ? this.props.recentMovies : this.props.favoriteMovies;
     const movieCards = currentPage.map(movie => {
-      console.log(movie)
+      const movieMatch = this.props.recentMovies.find( recentMovie => {
+        console.log({movie})
+        return recentMovie.movie_id === movie.movie_id
+      })
+      const backdrop = movieMatch.backdrop;
+      console.log({movieMatch})
       return (
         <Card 
-          key={movie.id}
+          key={movie.movie_id}
           title={movie.title} 
-          backdrop={movie.backdrop} 
-          rating={movie.rating}
-          id={movie.id}
+          backdrop={backdrop}
+          rating={movie.vote_average}
+          id={movie.movie_id}
         />
       );
     });

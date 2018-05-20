@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import './FeaturedMovie.css';
 import { connect } from 'react-redux';
-import { addFavoriteMovie } from '../../actions/index'
+import { addFavoriteMovie } from '../../actions/index';
 
 class FeaturedMovie extends Component {
 
   handleFavoriteClick = () => {
     const selectedMovie = this.props.recentMovies.find(movie => {
-      return movie.id === this.props.movieId;
+      return movie.movie_id === this.props.movieId;
     });
     this.props.addFavorite(selectedMovie);
+   
+    
     this.addFavoriteToDatabase(selectedMovie);
   }
 
   addFavoriteToDatabase = async (selectedMovie) => {
+    console.log(this.props.userId);
+    
     const url = 'http://localhost:3000/api/users/favorites/new';
     await fetch(url, {
       method: 'POST',
@@ -21,21 +25,20 @@ class FeaturedMovie extends Component {
         "Content-Type": 'application/json'
       },
       body: JSON.stringify({
-        movie_id: selectedMovie.id,
+        movie_id: selectedMovie.movie_id,
         user_id: this.props.userId,
         title: selectedMovie.title,
         poster_path: selectedMovie.poster,
         release_date: selectedMovie.release,
-        rating: selectedMovie.rating,
-        overview: selectedMovie.overview,
-        backdrop: selectedMovie.backdrop
+        vote_average: selectedMovie.vote_average,
+        overview: selectedMovie.overview
       })
-    })
+    });
   }
 
   render() {
     const featuredMovie = this.props.recentMovies.find(movie => {
-      return movie.id === this.props.movieId;
+      return movie.movie_id === this.props.movieId;
     });
     if (featuredMovie) {
       const image = `https://image.tmdb.org/t/p/w1280${featuredMovie.backdrop}`;
