@@ -1,8 +1,17 @@
 .movieCard {
   display: flex;
   align-items: center;
+  width: 100%;
   height: 90px;
   margin-bottom: 25px;
+  padding: 10px;
+  position: relative;
+}
+
+.movieCard:hover {
+  cursor: pointer;
+  background: #1d1d1d;
+  border-radius: 5px;
 }
 
 .movieCard img {
@@ -19,4 +28,11 @@
 h3 {
   font-size: 0.8rem;
   text-transform: uppercase;
+  width: 75%;
+}
+
+img.arrow {
+  height: 21px;
+  right: 0;
+  position: absolute;
 }

@@ -9,6 +9,7 @@ export class Header extends Component {
   render() {
     return (
       <div className="header">
+        <img src={ require('../Header/movie-tracker-logo.png')} className="logo" />
         <nav>
           <NavLink to='/login' className="navLink">Sign Up/Login</NavLink> 
           <NavLink 
