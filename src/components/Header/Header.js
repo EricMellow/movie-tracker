@@ -1,39 +1,45 @@
-import React, { Component }from 'react';
+import React, { Component } from 'react';
 import './Header.css';
 import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
-import { toggleRenderRecent, logout } from "../../actions/index";
+import { toggleRenderRecent, logout, setSelectedMovieId } from "../../actions/index";
 
 export class Header extends Component {
 
-  handleClick = () => {
+  handleLoginClick = () => {
     if (this.props.userId) {
       this.props.logout();
-      console.log(this.props)
       this.props.history.push('/');
     }
   }
 
+  handleFavoritesClick = () => {
+    this.props.toggleRender(false);
+
+    const movieId = this.props.favoriteMovies.length ? this.props.favoriteMovies[0].movie_id : null;
+    this.props.setFeaturedMovie(movieId);
+  }
+
   render() {
     const loginLogoutText = this.props.userId ? 'Sign Out' : 'Sign Up/Login';
-    const path = this.props. userId ? '/' : '/login';
-    
+    const path = this.props.userId ? '/' : '/login';
+
     return (
       <div className="header">
-        <img src={ require('../Header/movie-tracker-logo.png')} className="logo" />
+        <img src={require('../Header/movie-tracker-logo.png')} className="logo" />
         <nav>
-          <NavLink 
-            to={path} 
+          <NavLink
+            to={path}
             className="navLink"
-            onClick={this.handleClick}
-            >{loginLogoutText}</NavLink> 
-          <NavLink 
-            to='/favorites' 
+            onClick={this.handleLoginClick}
+          >{loginLogoutText}</NavLink>
+          <NavLink
+            to='/favorites'
             className="navLink"
-            onClick={() => this.props.toggleRender(false)}
+            onClick={this.handleFavoritesClick}
           >Favorites</NavLink>
-          <NavLink 
-            to='/' 
+          <NavLink
+            to='/'
             className="navLink"
             onClick={() => this.props.toggleRender(true)}
           >Recent Movies</NavLink>
@@ -45,12 +51,14 @@ export class Header extends Component {
 
 const mapDispatchToProps = (dispatch) => ({
   toggleRender: (bool) => dispatch(toggleRenderRecent(bool)),
-  logout: ()=> dispatch(logout())
+  logout: () => dispatch(logout()),
+  setFeaturedMovie: (id) => dispatch(setSelectedMovieId(id))
 });
 
 const mapStateToProps = (state) => ({
-  userId: state.userId
-})
+  userId: state.userId,
+  favoriteMovies: state.favoriteMovies
+});
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
 

@@ -1,24 +1,38 @@
 import React, { Component } from 'react';
 import './FeaturedMovie.css';
 import { connect } from 'react-redux';
-import { addFavoriteMovie } from '../../actions/index';
+import { addFavoriteMovie, deleteFavoriteMovie, setSelectedMovieId } from '../../actions/index';
 
 class FeaturedMovie extends Component {
+  
+  findFavorite = (id)=>{
+    return this.props.favoriteMovies.find((fave)=>{
+      return fave.movie_id === id;
+    });
+  }
 
   handleFavoriteClick = () => {
     const selectedMovie = this.props.recentMovies.find(movie => {
       return movie.movie_id === this.props.movieId;
     });
-    this.props.addFavorite(selectedMovie);
-   
+    const isAFavorite = this.findFavorite(selectedMovie.movie_id);
     
-    this.addFavoriteToDatabase(selectedMovie);
+    if (isAFavorite) {
+      this.props.deleteFavoriteMovie(selectedMovie);
+      this.deleteFavoriteFromDatabase(selectedMovie);
+    } else {
+      this.props.addFavorite(selectedMovie);
+      this.addFavoriteToDatabase(selectedMovie);
+    }
+
+    const movieId = this.props.favoriteMovies.length ? this.props.favoriteMovies[0].movie_id : null;
+    this.props.setFeaturedMovie(movieId);
+     
   }
 
-  addFavoriteToDatabase = async (selectedMovie) => {
-    console.log(this.props.userId);
-    
+  addFavoriteToDatabase = async (selectedMovie) => { 
     const url = 'http://localhost:3000/api/users/favorites/new';
+
     await fetch(url, {
       method: 'POST',
       headers: {
@@ -36,6 +50,14 @@ class FeaturedMovie extends Component {
     });
   }
 
+  deleteFavoriteFromDatabase = async (selectedMovie) => {
+    const url = `http://localhost:3000/api/users/${this.props.userId}/favorites/${selectedMovie.movie_id}`;
+
+    await fetch(url, {
+      method: 'DELETE'
+    });
+  }
+
   render() {
     const featuredMovie = this.props.recentMovies.find(movie => {
       return movie.movie_id === this.props.movieId;
@@ -47,7 +69,10 @@ class FeaturedMovie extends Component {
 
       return (
         <div className="featuredMovie" style={background} >
-          <div className="favoriteButton" onClick={this.handleFavoriteClick}>
+          <div 
+            className="favoriteButton"
+            onClick={this.handleFavoriteClick}
+          >
             <p>Add to Favorites</p>
           </div>
           <div className="movieOverview">
@@ -61,18 +86,20 @@ class FeaturedMovie extends Component {
       return (
         <p>LOADING</p>);
     }
-
   }
 }
 
 const mapStateToProps = (state) => ({
   recentMovies: state.recentMovies,
   movieId: state.selectedMovieId,
-  userId: state.userId
+  userId: state.userId,
+  favoriteMovies: state.favoriteMovies
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addFavorite: (selectedMovie) => dispatch(addFavoriteMovie(selectedMovie))
+  addFavorite: (selectedMovie) => dispatch(addFavoriteMovie(selectedMovie)),
+  deleteFavoriteMovie: (selectedMovie) => dispatch(deleteFavoriteMovie(selectedMovie)),
+  setFeaturedMovie: (id) => dispatch(setSelectedMovieId(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FeaturedMovie);
