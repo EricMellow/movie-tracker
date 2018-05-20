@@ -31,3 +31,8 @@ export const toggleRenderRecent = (bool) => ({
 export const logout = () => ({
   type: 'LOGOUT'
 });
+
+export const deleteFavoriteMovie = (selectedMovie) => ({
+  type: 'DELETE_FAVORITE',
+  selectedMovie
+});

@@ -1,24 +1,29 @@
 import React, { Component } from 'react';
 import './FeaturedMovie.css';
 import { connect } from 'react-redux';
-import { addFavoriteMovie } from '../../actions/index';
+import { addFavoriteMovie, deleteFavoriteMovie } from '../../actions/index';
 
 class FeaturedMovie extends Component {
-
+  
+  findFavorite = (id)=>{
+    return this.props.favoriteMovies.find((fave)=>{
+      return fave.movie_id === id;
+    });
+  }
+  
   handleFavoriteClick = () => {
     const selectedMovie = this.props.recentMovies.find(movie => {
       return movie.movie_id === this.props.movieId;
     });
-    this.props.addFavorite(selectedMovie);
-   
-    
+    const isAFavorite = this.findFavorite(selectedMovie.movie_id);
+  
+    isAFavorite ? this.props.deleteFavoriteMovie(selectedMovie) :this.props.addFavorite(selectedMovie);
     this.addFavoriteToDatabase(selectedMovie);
   }
 
-  addFavoriteToDatabase = async (selectedMovie) => {
-    console.log(this.props.userId);
-    
+  addFavoriteToDatabase = async (selectedMovie) => { 
     const url = 'http://localhost:3000/api/users/favorites/new';
+
     await fetch(url, {
       method: 'POST',
       headers: {
@@ -61,18 +66,19 @@ class FeaturedMovie extends Component {
       return (
         <p>LOADING</p>);
     }
-
   }
 }
 
 const mapStateToProps = (state) => ({
   recentMovies: state.recentMovies,
   movieId: state.selectedMovieId,
-  userId: state.userId
+  userId: state.userId,
+  favoriteMovies: state.favoriteMovies
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addFavorite: (selectedMovie) => dispatch(addFavoriteMovie(selectedMovie))
+  addFavorite: (selectedMovie) => dispatch(addFavoriteMovie(selectedMovie)),
+  deleteFavoriteMovie: (selectedMovie) => dispatch(deleteFavoriteMovie(selectedMovie))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FeaturedMovie);
