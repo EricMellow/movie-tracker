@@ -16,7 +16,7 @@ export class Header extends Component {
   handleFavoritesClick = () => {
     this.props.toggleRender(false);
 
-    const movieId = this.props.favoriteMovies ? this.props.favoriteMovies[0].movie_id : null;
+    const movieId = this.props.favoriteMovies.length ? this.props.favoriteMovies[0].movie_id : null;
     this.props.setFeaturedMovie(movieId);
   }
 

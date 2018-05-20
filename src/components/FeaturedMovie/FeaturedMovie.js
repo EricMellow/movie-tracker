@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './FeaturedMovie.css';
 import { connect } from 'react-redux';
-import { addFavoriteMovie, deleteFavoriteMovie } from '../../actions/index';
+import { addFavoriteMovie, deleteFavoriteMovie, setSelectedMovieId } from '../../actions/index';
 
 class FeaturedMovie extends Component {
   
@@ -16,7 +16,7 @@ class FeaturedMovie extends Component {
       return movie.movie_id === this.props.movieId;
     });
     const isAFavorite = this.findFavorite(selectedMovie.movie_id);
-  
+    
     if (isAFavorite) {
       this.props.deleteFavoriteMovie(selectedMovie);
       this.deleteFavoriteFromDatabase(selectedMovie);
@@ -24,6 +24,9 @@ class FeaturedMovie extends Component {
       this.props.addFavorite(selectedMovie);
       this.addFavoriteToDatabase(selectedMovie);
     }
+
+    const movieId = this.props.favoriteMovies.length ? this.props.favoriteMovies[0].movie_id : null;
+    this.props.setFeaturedMovie(movieId);
      
   }
 
@@ -52,7 +55,6 @@ class FeaturedMovie extends Component {
 
     await fetch(url, {
       method: 'DELETE'
-      
     });
   }
 
@@ -96,7 +98,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   addFavorite: (selectedMovie) => dispatch(addFavoriteMovie(selectedMovie)),
-  deleteFavoriteMovie: (selectedMovie) => dispatch(deleteFavoriteMovie(selectedMovie))
+  deleteFavoriteMovie: (selectedMovie) => dispatch(deleteFavoriteMovie(selectedMovie)),
+  setFeaturedMovie: (id) => dispatch(setSelectedMovieId(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FeaturedMovie);
