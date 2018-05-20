@@ -9,7 +9,6 @@ export class Header extends Component {
   handleClick = () => {
     if (this.props.userId) {
       this.props.logout();
-      console.log(this.props)
       this.props.history.push('/');
     }
   }
