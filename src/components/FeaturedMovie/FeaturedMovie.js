@@ -28,7 +28,12 @@ class FeaturedMovie extends Component {
     const movieId = this.props.favoriteMovies.length ? this.props.favoriteMovies[0].movie_id : null;
     this.props.setFeaturedMovie(movieId);
      
+    // this.toggleIsFavoriteClass(isAFavorite)
   }
+
+  // toggleIsFavoriteClass = (isAFavorite) => {
+  //   this.props.movieId.className = 
+  // }
 
   addFavoriteToDatabase = async (selectedMovie) => { 
     const url = 'http://localhost:3000/api/users/favorites/new';
@@ -66,14 +71,22 @@ class FeaturedMovie extends Component {
       const image = `https://image.tmdb.org/t/p/w1280${featuredMovie.backdrop}`;
       const background = { backgroundImage: `url( ${image} )` };
       const overview = featuredMovie.overview.substr(0, 300);
+      const foundFavorite = this.props.favoriteMovies.find(movie => {
+        return movie.movie_id === this.props.movieId;
+      })
+      const className = foundFavorite ? "featuredMovie favorite" : "featuredMovie";
+      const buttonText = foundFavorite ? "Remove Favorite" : "Add to Favorites";
+
 
       return (
-        <div className="featuredMovie" style={background} >
+        <div
+          className={className}
+          style={background} >
           <div 
             className="favoriteButton"
             onClick={this.handleFavoriteClick}
           >
-            <p>Add to Favorites</p>
+            <p>{buttonText}</p>
           </div>
           <div className="movieOverview">
             <h2>{featuredMovie.title}</h2>
