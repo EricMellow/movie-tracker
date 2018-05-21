@@ -235,11 +235,11 @@ describe('Login', () => {
         signUpPassword: 'password',
         signUpEmail: 'test@test.com'
       });
-      window.fetch = jest.fn().mockImplementation(()=>Promise.resolve({json: ()=>Promise.resolve({data: {id: 2}})}))
+      window.fetch = jest.fn().mockImplementation(()=>Promise.resolve({json: ()=>Promise.resolve({data: {id: 2}})}));
     });
 
     it('should call fetch with the correct arguments', async () => {
-      await wrapper.instance().getUserId()
+      await wrapper.instance().getUserId();
       const expectedOptions = {
         method: 'POST',
         body: JSON.stringify({
@@ -249,17 +249,29 @@ describe('Login', () => {
         headers: {
           'Content-Type': 'application/json'
         }
-      }
+      };
       const expectedURL = 'http://localhost:3000/api/users/';
 
-      expect(window.fetch).toHaveBeenCalledWith(expectedURL, expectedOptions)
+      expect(window.fetch).toHaveBeenCalledWith(expectedURL, expectedOptions);
       
     });
 
-    it.only('should return the correct user id', async () => {
-      const result = await wrapper.instance().getUserId()
+    it('should return the correct user id', async () => {
+      const result = await wrapper.instance().getUserId();
 
-    expect(result).toEqual(2)
+      expect(result).toEqual(2);
+    });
+  });
+
+  describe('storeNewUser', () => {
+    it('should call storeUserId from props with the correct argument', async () => {
+      const mockStoreUserId = jest.fn();
+      const wrapper = shallow(<Login storeUserId={mockStoreUserId}/>);
+      wrapper.instance().getUserId = jest.fn().mockImplementation(()=>3);
+      await wrapper.instance().storeNewUser();
+      const result = wrapper.instance().props.storeUserId
+
+      expect(result).toHaveBeenCalledWith(3)
     });
   });
 
