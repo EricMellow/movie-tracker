@@ -10,7 +10,9 @@
 
 .selected, .movieCard.selected:hover {
   padding: 10px;
-  background: black;
+  background: #111;
+  border-radius: 5px;
+  box-shadow: inset 1px 1px 1px #000;
 }
 
 
