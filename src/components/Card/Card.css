@@ -8,6 +8,13 @@
   position: relative;
 }
 
+.selected, .movieCard.selected:hover {
+  /* border: solid 4px black; */
+  padding: 10px;
+  background: black;
+}
+
+
 .movieCard:hover {
   cursor: pointer;
   background: #1d1d1d;
@@ -36,3 +43,4 @@ img.arrow {
   right: 0;
   position: absolute;
 }
+

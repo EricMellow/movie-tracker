@@ -68,7 +68,9 @@ class FeaturedMovie extends Component {
       const overview = featuredMovie.overview.substr(0, 300);
 
       return (
-        <div className="featuredMovie" style={background} >
+        <div
+          className="featuredMovie"
+          style={background} >
           <div 
             className="favoriteButton"
             onClick={this.handleFavoriteClick}
