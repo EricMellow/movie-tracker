@@ -62,7 +62,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
   userId: state.userId,
-  favoriteMovies: state.favoriteMovies
+  favoriteMovies: state.favoriteMovies,
+  selectedMovieId: state.selectedMovieId
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

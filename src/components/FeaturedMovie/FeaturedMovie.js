@@ -28,7 +28,7 @@ class FeaturedMovie extends Component {
     if (isAFavorite) {
       await this.props.deleteFavoriteMovie(selectedMovie);
       this.deleteFavoriteFromDatabase(selectedMovie);
-    } else if(this.props.userID) {
+    } else if(this.props.userId) {
       this.props.addFavorite(selectedMovie);
       this.addFavoriteToDatabase(selectedMovie);
     }
@@ -38,7 +38,7 @@ class FeaturedMovie extends Component {
       this.props.setFeaturedMovie(movieId);
     }
 
-    if (!this.props.userID) {
+    if (!this.props.userId) {
       this.setState({
         promptLogin: true
       })
@@ -79,10 +79,16 @@ class FeaturedMovie extends Component {
   }
 
   render() {
-    
+
     const featuredMovie = this.props.recentMovies.find(movie => {
+      console.log(movie.movie_id)
+      console.log(this.props.movieId)
       return movie.movie_id === this.props.movieId;
     });
+
+    console.log(this.props.recentMovies)
+    console.log(featuredMovie)
+
     if (featuredMovie) {
       const image = `https://image.tmdb.org/t/p/w1280${featuredMovie.backdrop}`;
       const background = { backgroundImage: `url( ${image} )` };
@@ -98,12 +104,12 @@ class FeaturedMovie extends Component {
           className={className}
           style={background}
         >
-        { this.state.promptLogin ? 
-          <div className="loginRequest">
-            Please Sign Up / Login to add favorites.
-          </div> :
-          null
-        }
+          { this.state.promptLogin ? 
+            <div className="loginRequest">
+              Please Sign Up / Login to add favorites.
+            </div> :
+            null
+          }
           <div 
             className="favoriteButton"
             onClick={this.handleFavoriteClick}
