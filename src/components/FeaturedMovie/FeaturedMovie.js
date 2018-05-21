@@ -5,6 +5,13 @@ import { withRouter } from 'react-router-dom';
 import { addFavoriteMovie, deleteFavoriteMovie, setSelectedMovieId } from '../../actions/index';
 
 class FeaturedMovie extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      promptLogin: false
+    }
+  }
   
   findFavorite = (id)=>{
     return this.props.favoriteMovies.find((fave)=>{
@@ -12,7 +19,7 @@ class FeaturedMovie extends Component {
     });
   }
 
-  handleFavoriteClick = async () => {
+  handleFavoriteClick = async (event) => {
     const selectedMovie = this.props.recentMovies.find(movie => {
       return movie.movie_id === this.props.movieId;
     });
@@ -21,7 +28,7 @@ class FeaturedMovie extends Component {
     if (isAFavorite) {
       await this.props.deleteFavoriteMovie(selectedMovie);
       this.deleteFavoriteFromDatabase(selectedMovie);
-    } else {
+    } else if(this.props.userId) {
       this.props.addFavorite(selectedMovie);
       this.addFavoriteToDatabase(selectedMovie);
     }
@@ -29,6 +36,17 @@ class FeaturedMovie extends Component {
     if (this.props.location.pathname === '/favorites') {
       const movieId = this.props.favoriteMovies.length ? this.props.favoriteMovies[0].movie_id : null;
       this.props.setFeaturedMovie(movieId);
+    }
+
+    if (!this.props.userId) {
+      this.setState({
+        promptLogin: true
+      })
+      setTimeout(() => {
+        this.setState({
+          promptLogin: false
+        })
+      }, 2000);
     }
   }
 
@@ -61,10 +79,16 @@ class FeaturedMovie extends Component {
   }
 
   render() {
-    
+
     const featuredMovie = this.props.recentMovies.find(movie => {
+      console.log(movie.movie_id)
+      console.log(this.props.movieId)
       return movie.movie_id === this.props.movieId;
     });
+
+    console.log(this.props.recentMovies)
+    console.log(featuredMovie)
+
     if (featuredMovie) {
       const image = `https://image.tmdb.org/t/p/w1280${featuredMovie.backdrop}`;
       const background = { backgroundImage: `url( ${image} )` };
@@ -75,11 +99,17 @@ class FeaturedMovie extends Component {
       const className = foundFavorite ? "featuredMovie favorite" : "featuredMovie";
       const buttonText = foundFavorite ? "Remove Favorite" : "Add to Favorites";
 
-
       return (
         <div
           className={className}
-          style={background} >
+          style={background}
+        >
+          { this.state.promptLogin ? 
+            <div className="loginRequest">
+              Please Sign Up / Login to add favorites.
+            </div> :
+            null
+          }
           <div 
             className="favoriteButton"
             onClick={this.handleFavoriteClick}
