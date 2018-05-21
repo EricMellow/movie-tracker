@@ -46,3 +46,15 @@
   display: block;
   text-overflow: ellipsis;
 }
+
+.loginRequest {
+  width: auto;
+  background: #333;
+  padding: 15px 20px 15px 20px;
+  display: inline-block;
+  border-radius: 5px 5px 0 0;
+  position: absolute;
+  top: -50px;
+  right: 30px;
+  color: #ffba00;
+}
