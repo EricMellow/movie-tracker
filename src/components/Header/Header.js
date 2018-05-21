@@ -5,6 +5,13 @@ import { connect } from "react-redux";
 import { toggleRenderRecent, logout, setSelectedMovieId } from "../../actions/index";
 
 export class Header extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      favoritesError: false
+    }
+  }
 
   handleLoginLogoutClick = () => {
     if (this.props.userId) {
@@ -13,10 +20,26 @@ export class Header extends Component {
     }
   }
 
-  handleFavoritesClick = () => {
-    const movieId = this.props.favoriteMovies.length ? this.props.favoriteMovies[0].movie_id : null;
-    this.props.setFeaturedMovie(movieId);
-    this.props.toggleRender(false);
+  handleFavoritesClick = (event) => {
+    if (this.props.favoriteMovies.length) {
+      const movieId = this.props.favoriteMovies.length ? this.props.favoriteMovies[0].movie_id : null;
+      this.props.setFeaturedMovie(movieId);
+      this.props.toggleRender(false);
+    } else {
+      this.toggleError(event);
+    }
+  }
+
+  toggleError = (event) => {
+    event.preventDefault()
+    this.setState({
+      favoritesError: true
+    })
+    setTimeout(() => {
+      this.setState({
+        favoritesError: false
+      })
+    }, 2000);
   }
 
   handleRecentsClick = () => {
@@ -39,10 +62,16 @@ export class Header extends Component {
             onClick={this.handleLoginLogoutClick}
           >{loginLogoutText}</NavLink>
           <NavLink
-            to='/favorites'
+            to='#'
             className="navLink"
             onClick={this.handleFavoritesClick}
           >Favorites</NavLink>
+          { this.state.favoritesError ? 
+            <div className="favoritesError">
+              Add favorite movies to view favorites. 
+            </div> :
+            null
+          }
           <NavLink
             to='/'
             className="navLink"
