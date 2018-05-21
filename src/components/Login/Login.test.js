@@ -1,5 +1,5 @@
 import React from 'react';
-import { Login, mapDispatchToProps } from './Login';
+import { Login, mapDispatchToProps, mapStateToProps } from './Login';
 import { shallow } from 'enzyme';
 import { createMemoryHistory } from "history";
 
@@ -328,7 +328,7 @@ describe('Login', () => {
       const result = window.fetch;
       expect(result).toHaveBeenCalledWith(expected);
     });
-    it.only('should call addFavorites from props with the correct argument', async () => {
+    it('should call addFavorites from props with the correct argument', async () => {
       
       await wrapper.instance().getFavorites(mockUserId);
       const result = wrapper.instance().props.addFavorites;
@@ -354,62 +354,46 @@ describe('Login', () => {
 
   describe('validatePassword', () => {
     it('should return a user if her/his password exists in the store', () => {
-      const wrapper = shallow(<Login />)
-      const mockUsers = [
-        { password: 'password' },
-        { password: 'poop' }
-      ];
+      const wrapper = shallow(<Login />);
+      const mockUser = { password: 'password' };
 
       wrapper.setState({signUpPassword: 'password'});
-      const result = wrapper.instance().validatePassword(mockUsers);
-      const expected = { password: 'password' };
+      const result = wrapper.instance().validatePassword(mockUser);
+      const expected = true;
       expect(result).toEqual(expected);
-    });
-    
+    }); 
   });
 
-  describe('validateUser', () => {
-    let wrapper;
+  describe('validateLogin', () => {
+    it('should return true if the foundUser has an email and password that match an existing user', () => {
+      //setup
+      const wrapper = shallow(<Login />);
+      const mockUsers = [
+        { 
+          email: 'test@test.com',
+          password: 'password'
+        },
+        { 
+          email: 'poop@poop.com',
+          password: 'poop'
+        }
+      ];
+      // wrapper.instance().validateEmail = jest.fn().mockImplementation(() => ({
+      //   email: 'test@test.com',
+      //   password: 'password'
+      // }));
+      // wrapper.instance().validatePassword = jest.fn().mockImplementation(() => true);
 
-    beforeEach(() => {
-      wrapper = shallow(<Login />);
-    });
-
-    it('should return an object with a key of emailMatch and value of true if the email is found', () => {
-      const mockUserData = [{
-        email: 'test@testmail.com',
-        password: 'password'
-      }];
       wrapper.setState({
-        signUpEmail: 'test@testmail.com',
-        signUpPassword: '12345'
-      });
-      const expected = {
-        passwordEmailMatch: false,
-        emailMatch: true
-      };
-
-      const result = wrapper.instance().validateUser(mockUserData);
-
-      expect(result).toEqual(expected);
-    });
-
-    it('should return an object with a key of emailMatch and a value of true and a key of passwordEmail match and a value of true if the email and password match', () => {
-      const mockUserData = [{
-        email: 'test@testmail.com',
-        password: 'password'
-      }];
-      wrapper.setState({
-        signUpEmail: 'test@testmail.com',
+        signUpEmail: 'test@test.com',
         signUpPassword: 'password'
       });
-      const expected = {
-        passwordEmailMatch: true,
-        emailMatch: true
-      };
 
-      const result = wrapper.instance().validateUser(mockUserData);
-
+      //execution
+      const result = wrapper.instance().validateLogin(mockUsers);
+      //expectation
+      const expected = true;
+      
       expect(result).toEqual(expected);
     });
   });
@@ -430,4 +414,18 @@ describe('Login', () => {
     });
   });
 
+  describe('mapStateToProps', () => {
+    it('should map userId to props', () => {
+      const state = {
+        userId: 3,
+        favoriteMovies: [{title: 'Happy Days'}]
+      };
+      const expected = {
+        userId: 3
+      };
+      const mappedProps = mapStateToProps(state);
+      
+      expect(mappedProps).toEqual(expected);
+    }); 
+  });
 });
