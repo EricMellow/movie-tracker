@@ -81,13 +81,8 @@ class FeaturedMovie extends Component {
   render() {
 
     const featuredMovie = this.props.recentMovies.find(movie => {
-      console.log(movie.movie_id)
-      console.log(this.props.movieId)
       return movie.movie_id === this.props.movieId;
     });
-
-    console.log(this.props.recentMovies)
-    console.log(featuredMovie)
 
     if (featuredMovie) {
       const image = `https://image.tmdb.org/t/p/w1280${featuredMovie.backdrop}`;

@@ -15,6 +15,7 @@ export class Card extends Component {
   }
 
   render() {
+    const rating = this.props.rating * 10;
     const cardClass = this.props.selectedMovieId === this.props.id ? "movieCard selected" : "movieCard"
     const img = `https://image.tmdb.org/t/p/w500/${this.props.backdrop}`;
     return (
@@ -25,10 +26,16 @@ export class Card extends Component {
         <img src={img} />
         <div>
           <h3>{this.props.title}</h3>
-          <p>Rating: {this.props.rating}</p>
+          <div className="stars">
+            <div>
+              <img src={require('../Card/stars-gray.png')} />
+            </div>
+            <div className="goldStars" style={{"width" : `${rating}%`}}>
+              <img src={require('../Card/stars-gold.png')}  />
+            </div>
+          </div>
         </div>
-        <img src={ require('../Card/arrow-inactive.png')} className="arrow" />
-
+        <div class='triangle'></div>
       </div>
     );
   }
