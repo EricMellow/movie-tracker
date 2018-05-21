@@ -238,7 +238,7 @@ describe('Login', () => {
       window.fetch = jest.fn().mockImplementation(()=>Promise.resolve({json: ()=>Promise.resolve({data: {id: 2}})}))
     });
 
-    it.only('should call fetch with the correct arguments', async () => {
+    it('should call fetch with the correct arguments', async () => {
       await wrapper.instance().getUserId()
       const expectedOptions = {
         method: 'POST',
@@ -256,8 +256,10 @@ describe('Login', () => {
       
     });
 
-    it('should behave...', () => {
-      
+    it.only('should return the correct user id', async () => {
+      const result = await wrapper.instance().getUserId()
+
+    expect(result).toEqual(2)
     });
   });
 
