@@ -14,10 +14,15 @@ export class Header extends Component {
   }
 
   handleFavoritesClick = () => {
-    this.props.toggleRender(false);
-
     const movieId = this.props.favoriteMovies.length ? this.props.favoriteMovies[0].movie_id : null;
     this.props.setFeaturedMovie(movieId);
+    this.props.toggleRender(false);
+  }
+
+  handleRecentsClick = () => {
+    const movieId = this.props.recentMovies.length ? this.props.recentMovies[0].movie_id : null;
+    this.props.setFeaturedMovie(movieId);
+    this.props.toggleRender(true)
   }
 
   render() {
@@ -41,7 +46,7 @@ export class Header extends Component {
           <NavLink
             to='/'
             className="navLink"
-            onClick={() => this.props.toggleRender(true)}
+            onClick={this.handleRecentsClick}
           >Recent Movies</NavLink>
         </nav>
       </div>
