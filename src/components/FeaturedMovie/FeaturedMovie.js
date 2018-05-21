@@ -75,6 +75,8 @@ class FeaturedMovie extends Component {
         return movie.movie_id === this.props.movieId;
       })
       const className = foundFavorite ? "featuredMovie favorite" : "featuredMovie";
+      const buttonText = foundFavorite ? "Remove Favorite" : "Add to Favorites";
+
 
       return (
         <div
@@ -84,7 +86,7 @@ class FeaturedMovie extends Component {
             className="favoriteButton"
             onClick={this.handleFavoriteClick}
           >
-            <p>Add to Favorites</p>
+            <p>{buttonText}</p>
           </div>
           <div className="movieOverview">
             <h2>{featuredMovie.title}</h2>
