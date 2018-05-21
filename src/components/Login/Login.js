@@ -51,13 +51,15 @@ export class Login extends Component {
         }
       }
       );
-
+      
       this.storeNewUser();
     } else {
+      
       this.setState({
         emailMatch: false
       });
     }
+    
   }
 
   loginSubmitHandler = async (event) => {

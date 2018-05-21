@@ -52,24 +52,36 @@ describe('Login', () => {
 
   describe('signUpSubmitHandler', () => {
     let wrapper;
+    let mockEvent;
 
     beforeEach(() => {
+      
       const mockStoreUserId = jest.fn();
-      const history = createMemoryHistory('/')
-
+      const history = createMemoryHistory('/');
       wrapper = shallow(<Login
         storeUserId={mockStoreUserId}
         history={history}
-        />);
+      />);
+
+      mockEvent = {
+        preventDefault: jest.fn()
+      };
+
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        json: () => Promise.resolve({
+          data:
+            { id: 5 }
+        })
+      }));
+
+      wrapper.instance().getUsers = jest.fn(()=>([{}]));
+      wrapper.instance().validateEmail = jest.fn();
     });
 
     it('should call fetch with correct arguments', async () => {
       wrapper.instance().getUsers = jest.fn().mockImplementation(() => ({
         emailMatch: false
       }));
-      const mockEvent = {
-        preventDefault: jest.fn()
-      };
       const mockState = {
         name: 'Namebo',
         signUpEmail: 'test@email.com',
@@ -90,33 +102,54 @@ describe('Login', () => {
       };
 
       wrapper.setState(mockState);
-      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
-        json: () => Promise.resolve({data :
-          {id: 5}
-        })
-      }));
-
       await wrapper.instance().signUpSubmitHandler(mockEvent);
 
       expect(window.fetch).toHaveBeenCalledWith(expectedUrl, expectedOptionsObject);
+    });
+
+    it('should call storeNewUser', async ()=>{
+      wrapper.instance().storeNewUser = jest.fn();
+      const result = wrapper.instance().storeNewUser;
+      await wrapper.instance().signUpSubmitHandler(mockEvent);
+      
+      expect(result).toHaveBeenCalled();
+    });
+
+    it('sets emailMatch to false in state if no match is found', async ()=>{
+      wrapper.instance().validateEmail = jest.fn().mockImplementation(()=>true);
+      await wrapper.instance().signUpSubmitHandler(mockEvent);
+
+      expect(wrapper.state('emailMatch')).toEqual(false);
     });
 
   });
 
   describe('loginSubmitHandler', () => {
     let wrapper;
+    let mockEvent;
 
     beforeEach(() => {
       wrapper = shallow(<Login />);
-    });
-
-    it('should call fetch with correct arguments', async () => {
       wrapper.instance().getUsers = jest.fn().mockImplementation(() => ({
         passwordEmailMatch: true
       }));
-      const mockEvent = {
+      wrapper.instance().validateLogin = jest.fn().mockImplementation(() => ({})); 
+      mockEvent = {
         preventDefault: jest.fn()
       };
+      wrapper.instance().loadExistingUser = jest.fn();
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        status: 200,
+        json: () => Promise.resolve({
+          id: 1,
+          name: "Bread Butterson",
+          password: "Toast1!",
+          email: "test@gmail.com"
+        })
+      }));
+    });
+
+    it('should call fetch with correct arguments', async () => {
       const mockState = {
         loginEmail: 'test@email.com',
         loginPassword: 'YTho1!'
@@ -134,20 +167,24 @@ describe('Login', () => {
       };
 
       wrapper.setState(mockState);
-      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
-        status: 200,
-        json: () => Promise.resolve({
-          id: 1,
-          name: "Bread Butterson",
-          password: "Toast1!",
-          email: "test@gmail.com"
-        })
-      }));
 
       await wrapper.instance().loginSubmitHandler(mockEvent);
 
       expect(window.fetch).toHaveBeenCalledWith(expectedUrl, expectedOptionsObject);
     });
+
+    it('should call loadExistingUser', async ()=>{
+      await wrapper.instance().loginSubmitHandler(mockEvent)
+
+      expect(wrapper.instance().loadExistingUser).toHaveBeenCalled()
+    })
+
+    it('should set the state of emailPasswordMatch to false if ther is no match', async ()=>{
+      wrapper.instance().validateLogin = jest.fn().mockImplementation(() => (false)); 
+      await wrapper.instance().loginSubmitHandler(mockEvent)
+      
+      expect(wrapper.state('emailPasswordMatch')).toEqual(false)
+    })
   });
 
   describe('getUsers', () => {
@@ -170,8 +207,7 @@ describe('Login', () => {
       expect(window.fetch).toHaveBeenCalledWith(expectedUrl);
     });
 
-    it('should call validateUser with the correct argument', async () => {
-      wrapper.instance().validateUser = jest.fn();
+    it('returns the correct user data', async () => {
       const expected = {
         id: 2,
         name: 'Brett Bretterson',
@@ -179,13 +215,12 @@ describe('Login', () => {
         email: 'test@test.com'
       };
 
-
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         json: () => Promise.resolve({ data: expected })
       }));
-      await wrapper.instance().getUsers();
+      const result = await wrapper.instance().getUsers();
 
-      expect(wrapper.instance().validateUser).toHaveBeenCalledWith(expected);
+      expect(result).toEqual(expected);
     });
 
   });
@@ -250,6 +285,6 @@ describe('Login', () => {
   
       expect(mockDispatch).toHaveBeenCalledWith(mockAction);
     });
-  })
+  });
 
 });
