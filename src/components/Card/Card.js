@@ -18,6 +18,7 @@ export class Card extends Component {
     const rating = this.props.rating * 10;
     const cardClass = this.props.selectedMovieId === this.props.id ? "movieCard selected" : "movieCard"
     const img = `https://image.tmdb.org/t/p/w500/${this.props.backdrop}`;
+    
     return (
       <div
         className={cardClass}
@@ -35,7 +36,7 @@ export class Card extends Component {
             </div>
           </div>
         </div>
-        <div class='triangle'></div>
+        <div className='triangle'></div>
       </div>
     );
   }

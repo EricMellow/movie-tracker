@@ -16,7 +16,12 @@ export class Login extends Component {
       emailPasswordMatch: true,
       emailMatch: true
     };
+  }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.userId) {
+      this.props.history.push('/');
+    }
   }
 
   onChangeHandler = (event) => {
@@ -28,11 +33,11 @@ export class Login extends Component {
 
   signUpSubmitHandler = async (event) => {
     event.preventDefault();
+    const users = await this.getUsers();
+    const emailMatch = this.validateEmail(users);
     const url = 'http://localhost:3000/api/users/new';
 
-    const retrievedUserInfo = await this.getUsers();
-
-    if (!retrievedUserInfo.emailMatch) {
+    if (!emailMatch) {
       await fetch(url, {
         method: 'POST',
         body: JSON.stringify({
@@ -45,15 +50,58 @@ export class Login extends Component {
         }
       }
       );
-      const newUserId = await this.getUserId();
-      this.props.storeUserId(newUserId);
-      this.props.history.push('/');
+
+      this.storeNewUser();
     } else {
       this.setState({
         emailMatch: false
       });
     }
   }
+
+  loginSubmitHandler = async (event) => {
+    event.preventDefault();
+
+    const users = await this.getUsers();
+    const validUser = await this.validateLogin(users);
+
+    if (validUser) {
+      const url = 'http://localhost:3000/api/users/';
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          body: JSON.stringify({
+            email: this.state.loginEmail,
+            password: this.state.loginPassword
+          }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+        );
+        const rawData = await response.json();
+        const userData = rawData.data;
+        
+        this.loadExistingUser();
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      this.setState({
+        emailPasswordMatch: false
+      });
+    }
+  }
+
+  getUsers = async () => {
+    const url = 'http://localhost:3000/api/users/';
+    const response = await fetch(url);
+    const rawData = await response.json();
+    const userData = rawData.data;
+
+    return userData
+  }
+
 
   getUserId = async () => {
     const email = this.state.signUpEmail ? this.state.signUpEmail : this.state.loginEmail;
@@ -77,39 +125,15 @@ export class Login extends Component {
     return userId;
   }
 
-  loginSubmitHandler = async (event) => {
-    event.preventDefault();
+  storeNewUser = async () => {
+    const newUserId = await this.getUserId();
+    this.props.storeUserId(newUserId);
+  }
 
-    const retrievedUserInfo = await this.getUsers();
-
-    if (retrievedUserInfo.passwordEmailMatch) {
-      const url = 'http://localhost:3000/api/users/';
-      try {
-        const response = await fetch(url, {
-          method: 'POST',
-          body: JSON.stringify({
-            email: this.state.loginEmail,
-            password: this.state.loginPassword
-          }),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }
-        );
-        const rawData = await response.json();
-        const userData = rawData.data;
-        const userId = await this.getUserId();
-        this.props.storeUserId(userId);
-        this.getFavorites(userId);
-        this.props.history.push('/');
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      this.setState({
-        emailPasswordMatch: false
-      });
-    }
+  loadExistingUser = async () => {
+    const userId = await this.getUserId();
+    this.props.storeUserId(userId);
+    this.getFavorites(userId);
   }
 
   getFavorites = async (userId) => {
@@ -117,37 +141,30 @@ export class Login extends Component {
     const response = await fetch(url);
     const favoritesData = await response.json();
     const favoriteMovies = favoritesData.data;
+
     this.props.addFavorites(favoriteMovies);
   }
 
-  getUsers = async () => {
-    const url = 'http://localhost:3000/api/users/';
-    const response = await fetch(url);
-
-    const rawData = await response.json();
-    const userData = rawData.data;
-
-    return this.validateUser(userData);
+  validateEmail = (users) => {
+    return users.find(user => user.email === (this.state.signUpEmail || this.state.loginEmail));
   }
 
-  validateUser = (userData) => {
-    let emailMatch;
-    let passwordEmailMatch;
+  validatePassword = (user) => {
+    return user.password === (this.state.signUpPassword || this.state.loginPassword);
+  }
 
-    const validUser = userData.find(user => {
-      return user.email === (this.state.signUpEmail || this.state.loginEmail);
-    });
+  validateLogin = (users) => {
+    let validateUser;
+    const foundUser = this.validateEmail(users);
 
-    if (validUser) {
-      emailMatch = validUser.email ? true : false;
-      passwordEmailMatch = (validUser.password === (this.state.signUpPassword || this.state.loginPassword));
+    if (foundUser) {
+      validateUser = this.validatePassword(foundUser);
     }
 
-    return { passwordEmailMatch, emailMatch };
+    return validateUser;
   }
 
   render() {
-
     return (
 
       <section className='signUpForms'>
@@ -218,4 +235,8 @@ export const mapDispatchToProps = (dispatch) => ({
   addFavorites: (favoriteMovies) => dispatch(addStoredFavorites(favoriteMovies))
 });
 
-export default connect(null, mapDispatchToProps)(Login);
+export const mapStateToProps = (state) => ({
+  userId: state.userId
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
