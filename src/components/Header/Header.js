@@ -6,7 +6,7 @@ import { toggleRenderRecent, logout, setSelectedMovieId } from "../../actions/in
 
 export class Header extends Component {
 
-  handleLoginClick = () => {
+  handleLoginLogoutClick = () => {
     if (this.props.userId) {
       this.props.logout();
       this.props.history.push('/');
@@ -20,8 +20,6 @@ export class Header extends Component {
   }
 
   handleRecentsClick = () => {
-    // const movieId = this.props.recentMovies.length ? this.props.recentMovies[0].movie_id : null;
-    // this.props.setFeaturedMovie(movieId);
     this.props.toggleRender(true)
   }
 
@@ -36,7 +34,7 @@ export class Header extends Component {
           <NavLink
             to={path}
             className="navLink"
-            onClick={this.handleLoginClick}
+            onClick={this.handleLoginLogoutClick}
           >{loginLogoutText}</NavLink>
           <NavLink
             to='/favorites'
