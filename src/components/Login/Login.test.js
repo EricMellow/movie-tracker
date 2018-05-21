@@ -298,7 +298,57 @@ describe('Login', () => {
       await wrapper.instance().loadExistingUser();
       const result = wrapper.instance().getFavorites;
 
-      expect(result).toHaveBeenCalledWith(3)
+      expect(result).toHaveBeenCalledWith(3);
+    });
+  });
+
+  describe('getFavorites', () => {
+    let wrapper;
+    let mockUserId;
+    let mockAddFavorites;
+
+    beforeEach(() => {
+      mockAddFavorites = jest.fn();
+      wrapper = shallow(<Login addFavorites={mockAddFavorites}/>);
+      mockUserId = 3;
+
+      window.fetch = jest.fn().mockImplementation(()=>Promise.resolve({
+        json: ()=>Promise.resolve({
+          data: [{title: "Happy Days"}]
+        })
+      }));
+    });
+
+    it('should call fetch with the correct argument', async () => {
+      // setup
+      const expected = `http://localhost:3000/api/users/3/favorites`;
+      // execution
+      await wrapper.instance().getFavorites(mockUserId);
+      // expectation
+      const result = window.fetch;
+      expect(result).toHaveBeenCalledWith(expected);
+    });
+    it.only('should call addFavorites from props with the correct argument', async () => {
+      
+      await wrapper.instance().getFavorites(mockUserId);
+      const result = wrapper.instance().props.addFavorites;
+      expect(result).toHaveBeenCalledWith([{ title: "Happy Days" }]);
+    });
+  });
+
+  describe('validateEmail', () => {
+    it('should return a user is she/he has a signUp or login email', () => {
+      //setup
+      const wrapper = shallow(<Login />);
+      const mockUsers = [
+        {email: 'test@test.com'},
+        {email: 'poop@poop.com'}
+      ];
+
+      wrapper.setState({ signUpEmail: 'test@test.com'});
+      const result = wrapper.instance().validateEmail(mockUsers);
+      const expected = { email: 'test@test.com' };
+      expect(result).toEqual(expected);
     });
   });
 
