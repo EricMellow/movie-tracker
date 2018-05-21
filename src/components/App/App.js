@@ -44,9 +44,9 @@ export class App extends Component {
         <Header />
         <section className="mainContainer" >
           <Switch>
-            <Route exact path='/login' component={ Login } />
-            <Route exact path='/' component={ RecentMovies } />
-            <Route exact path='/favorites' component={ FavoriteMovies } />
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/' component={RecentMovies} />
+            <Route exact path='/favorites' component={FavoriteMovies} />
           </Switch>
         </section> 
       </div>

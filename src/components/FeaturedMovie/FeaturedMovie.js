@@ -10,34 +10,37 @@ class FeaturedMovie extends Component {
 
     this.state = {
       promptLogin: false
-    }
-  }
-  
-  findFavorite = (id)=>{
-    return this.props.favoriteMovies.find((fave)=>{
-      return fave.movie_id === id;
-    });
+    };
   }
 
   handleFavoriteClick = async (event) => {
     const selectedMovie = this.props.recentMovies.find(movie => {
       return movie.movie_id === this.props.movieId;
     });
+
+    await this.toggleStoreFavorite(selectedMovie);
+    this.toggleFeaturedMovie();
+    this.togglePromptLogin();
+  }
+
+  toggleStoreFavorite = async (selectedMovie) => {
     const isAFavorite = this.findFavorite(selectedMovie.movie_id);
 
     if (isAFavorite) {
-      await this.props.deleteFavoriteMovie(selectedMovie);
-      this.deleteFavoriteFromDatabase(selectedMovie);
-    } else if(this.props.userId) {
-      this.props.addFavorite(selectedMovie);
-      this.addFavoriteToDatabase(selectedMovie);
+      await this.deleteFavorite(selectedMovie)
+    } else if (this.props.userId) {
+      await this.addFavorite(selectedMovie)
     }
+  }
 
+  toggleFeaturedMovie = () => {
     if (this.props.location.pathname === '/favorites') {
       const movieId = this.props.favoriteMovies.length ? this.props.favoriteMovies[0].movie_id : null;
       this.props.setFeaturedMovie(movieId);
     }
+  }
 
+  togglePromptLogin = () => {
     if (!this.props.userId) {
       this.setState({
         promptLogin: true
@@ -48,6 +51,22 @@ class FeaturedMovie extends Component {
         })
       }, 2000);
     }
+  }
+
+  findFavorite = (id)=>{
+    return this.props.favoriteMovies.find((favorite)=>{
+      return favorite.movie_id === id;
+    });
+  }
+
+  deleteFavorite = (selectedMovie) => {
+    this.props.deleteFavoriteMovie(selectedMovie);
+    this.deleteFavoriteFromDatabase(selectedMovie);
+  }
+
+  addFavorite = (selectedMovie) => {
+    this.props.addFavoriteMovie(selectedMovie);
+    this.addFavoriteToDatabase(selectedMovie);
   }
 
   addFavoriteToDatabase = async (selectedMovie) => { 
@@ -79,7 +98,6 @@ class FeaturedMovie extends Component {
   }
 
   render() {
-
     const featuredMovie = this.props.recentMovies.find(movie => {
       return movie.movie_id === this.props.movieId;
     });
@@ -114,7 +132,6 @@ class FeaturedMovie extends Component {
           <div className="movieOverview">
             <h2>{featuredMovie.title}</h2>
             <p>{overview} ...</p>
-
           </div>
         </div>
       );
@@ -133,7 +150,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addFavorite: (selectedMovie) => dispatch(addFavoriteMovie(selectedMovie)),
+  addFavoriteMovie: (selectedMovie) => dispatch(addFavoriteMovie(selectedMovie)),
   deleteFavoriteMovie: (selectedMovie) => dispatch(deleteFavoriteMovie(selectedMovie)),
   setFeaturedMovie: (id) => dispatch(setSelectedMovieId(id))
 });

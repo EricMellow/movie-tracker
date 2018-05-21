@@ -11,7 +11,6 @@ export class Card extends Component {
   clickHandler = () => {
     const id = this.props.id;
     this.props.storeSelectedMovieId(id);
-
   }
 
   render() {
