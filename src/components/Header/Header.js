@@ -20,6 +20,8 @@ export class Header extends Component {
   }
 
   handleRecentsClick = () => {
+    const movieId = this.props.recentMovies[0].movie_id
+    this.props.setFeaturedMovie(movieId);
     this.props.toggleRender(true)
   }
 
@@ -61,7 +63,8 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
   userId: state.userId,
   favoriteMovies: state.favoriteMovies,
-  selectedMovieId: state.selectedMovieId
+  selectedMovieId: state.selectedMovieId,
+  recentMovies: state.recentMovies
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
