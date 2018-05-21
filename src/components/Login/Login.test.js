@@ -174,17 +174,17 @@ describe('Login', () => {
     });
 
     it('should call loadExistingUser', async ()=>{
-      await wrapper.instance().loginSubmitHandler(mockEvent)
+      await wrapper.instance().loginSubmitHandler(mockEvent);
 
-      expect(wrapper.instance().loadExistingUser).toHaveBeenCalled()
-    })
+      expect(wrapper.instance().loadExistingUser).toHaveBeenCalled();
+    });
 
     it('should set the state of emailPasswordMatch to false if ther is no match', async ()=>{
       wrapper.instance().validateLogin = jest.fn().mockImplementation(() => (false)); 
-      await wrapper.instance().loginSubmitHandler(mockEvent)
+      await wrapper.instance().loginSubmitHandler(mockEvent);
       
-      expect(wrapper.state('emailPasswordMatch')).toEqual(false)
-    })
+      expect(wrapper.state('emailPasswordMatch')).toEqual(false);
+    });
   });
 
   describe('getUsers', () => {
@@ -223,6 +223,42 @@ describe('Login', () => {
       expect(result).toEqual(expected);
     });
 
+  });
+
+  describe('getUserId', () => {
+    let wrapper;
+
+    
+    beforeEach(()=>{
+      wrapper = shallow(<Login />);
+      wrapper.setState({
+        signUpPassword: 'password',
+        signUpEmail: 'test@test.com'
+      });
+      window.fetch = jest.fn().mockImplementation(()=>Promise.resolve({json: ()=>Promise.resolve({data: {id: 2}})}))
+    });
+
+    it.only('should call fetch with the correct arguments', async () => {
+      await wrapper.instance().getUserId()
+      const expectedOptions = {
+        method: 'POST',
+        body: JSON.stringify({
+          email: 'test@test.com',
+          password: 'password'
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      const expectedURL = 'http://localhost:3000/api/users/';
+
+      expect(window.fetch).toHaveBeenCalledWith(expectedURL, expectedOptions)
+      
+    });
+
+    it('should behave...', () => {
+      
+    });
   });
 
   describe('validateUser', () => {
