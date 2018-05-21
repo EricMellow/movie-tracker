@@ -7,14 +7,36 @@
 }
 
 .favoriteButton {
-  width: 135px;
-  height: 30px;
+  width: 115px;
+  height: 60px;
   border-radius: 0 0 5px 5px;
   background-color: #171717;
   position: absolute;
   top: 0;
   right: 30px;
-  padding: 15px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faveIcon {
+  width: 27px;
+  height: 27px;
+  display: inline-block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('./favorite-icon-inactive.png');
+}
+
+.favorite .faveIcon {
+  background-image: url('./favorite-icon-active.png');
+}
+
+.favoriteButton p {
+    margin: 0;
+    width: 75px;
+    font-size: 0.95rem;
 }
 
 .favoriteButton:hover {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setUserId, addStoredFavorites } from "../../actions/index.js";
+import './Login.css';
 
 
 export class Login extends Component {
@@ -169,7 +170,7 @@ export class Login extends Component {
 
       <section className='signUpForms'>
 
-        <article>
+        <article className='signUp'>
           <h2>Sign Up</h2>
           <form
             className='signUpForm'
@@ -199,8 +200,8 @@ export class Login extends Component {
             <button>Sign Up</button>
           </form>
         </article>
-
-        <article>
+        <div className="formDivider"><div></div><span>OR</span><div></div></div>
+        <article className='login'>
           <h2>Login</h2>
           <form
             className='loginForm'

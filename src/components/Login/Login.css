@@ -1,42 +1,92 @@
-* {
-  background-color: black;
+h2 {
+  margin-top: 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+.signUp, .login {
+  width: 35%;
+  display: inline-block;
+  float: left;
 }
 
 .signUpForms {
   display: flex;
-  flex-wrap: wrap;
-}
-.leftOrTop {
-  flex: auto;
+  width: 100%;
+  justify-content: space-between;
 }
 
-.rightOrBottom {
-  flex: auto;
+.signUpForms h3 {
+  color: #747474;
+  text-transform: none;
+  font-weight: normal;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
 }
 
-h2 {
-  color: gray;
-  font-size: 25px;
-      margin-left: 30px;
-      height: 40px;
-      width: 100%;
-      text-align: left;
-
+.signUpForms input {
+  height: 20px;
+  padding: 10px;
+  color: #747474;
+  font-size: 1rem;
+  background: #272727;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  box-shadow: inset 1px 1px 1px #000;
 }
 
-h3 {
-  text-align: left;
-  margin-left: 30px;
-  color: grey;
-
-}
-
-.signUpForm {
+.signUpForms button {
+	-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
   display: block;
-  float: left;
+  margin: 30px 0 0 0;
+  max-width: 110px;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 13px 27px;
+  color: #747474;
+  font-size: 0.85rem;
+  font-weight: 500;
+  background: #fff;
+	/* box-shadow: #333 0 0px 0px 2px inset; */
+  }
+
+.signUp button {
+  margin-top: 30px;
 }
 
-.loginForm {
-  display: block;
-  float: left;
+.signUpForms button:focus {
+  outline: none;
+}
+
+.signUpForms button:hover {
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  box-shadow: #272727 0 0px 0px 40px inset;ound: linear-gradient(to bottom, #272727 0%,#111111 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.formDivider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.formDivider span {
+  color: #3c4b65;
+  padding: 8px;
+  font-size: 0.9rem;
+  border-radius: 50%;
+  border: 1px solid #333;
+}
+
+.formDivider div {
+  height: 40%;
+  width: 1px;
+  background: #333;
+  margin: 0;
 }
