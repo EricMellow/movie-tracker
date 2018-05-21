@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './FeaturedMovie.css';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { addFavoriteMovie, deleteFavoriteMovie, setSelectedMovieId } from '../../actions/index';
 
 class FeaturedMovie extends Component {
@@ -11,29 +12,25 @@ class FeaturedMovie extends Component {
     });
   }
 
-  handleFavoriteClick = () => {
+  handleFavoriteClick = async () => {
     const selectedMovie = this.props.recentMovies.find(movie => {
       return movie.movie_id === this.props.movieId;
     });
     const isAFavorite = this.findFavorite(selectedMovie.movie_id);
-    
+
     if (isAFavorite) {
-      this.props.deleteFavoriteMovie(selectedMovie);
+      await this.props.deleteFavoriteMovie(selectedMovie);
       this.deleteFavoriteFromDatabase(selectedMovie);
     } else {
       this.props.addFavorite(selectedMovie);
       this.addFavoriteToDatabase(selectedMovie);
     }
 
-    const movieId = this.props.favoriteMovies.length ? this.props.favoriteMovies[0].movie_id : null;
-    this.props.setFeaturedMovie(movieId);
-     
-    // this.toggleIsFavoriteClass(isAFavorite)
+    if (this.props.location.pathname === '/favorites') {
+      const movieId = this.props.favoriteMovies.length ? this.props.favoriteMovies[0].movie_id : null;
+      this.props.setFeaturedMovie(movieId);
+    }
   }
-
-  // toggleIsFavoriteClass = (isAFavorite) => {
-  //   this.props.movieId.className = 
-  // }
 
   addFavoriteToDatabase = async (selectedMovie) => { 
     const url = 'http://localhost:3000/api/users/favorites/new';
@@ -64,6 +61,7 @@ class FeaturedMovie extends Component {
   }
 
   render() {
+    
     const featuredMovie = this.props.recentMovies.find(movie => {
       return movie.movie_id === this.props.movieId;
     });
@@ -115,6 +113,6 @@ const mapDispatchToProps = (dispatch) => ({
   setFeaturedMovie: (id) => dispatch(setSelectedMovieId(id))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(FeaturedMovie);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FeaturedMovie));
 
 
