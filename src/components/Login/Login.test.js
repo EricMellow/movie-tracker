@@ -269,7 +269,34 @@ describe('Login', () => {
       const wrapper = shallow(<Login storeUserId={mockStoreUserId}/>);
       wrapper.instance().getUserId = jest.fn().mockImplementation(()=>3);
       await wrapper.instance().storeNewUser();
-      const result = wrapper.instance().props.storeUserId
+      const result = wrapper.instance().props.storeUserId;
+
+      expect(result).toHaveBeenCalledWith(3);
+    });
+  });
+
+  describe('loadExistingUser', () => {
+    let mockStoreUserId;
+    let wrapper;
+    
+    beforeEach(() => {
+      mockStoreUserId = jest.fn();
+      wrapper = shallow(<Login storeUserId={mockStoreUserId} />);
+
+      wrapper.instance().getUserId = jest.fn().mockImplementation(() => 3);
+      wrapper.instance().getFavorites = jest.fn();
+    });
+
+    it('should call storeUserId from props with the correct argument', async () => {
+      await wrapper.instance().loadExistingUser();
+      const result = wrapper.instance().props.storeUserId;
+
+      expect(result).toHaveBeenCalledWith(3);
+    });
+
+    it('should call getFavorites with the correct argument', async () => {
+      await wrapper.instance().loadExistingUser();
+      const result = wrapper.instance().getFavorites;
 
       expect(result).toHaveBeenCalledWith(3)
     });
