@@ -113,21 +113,16 @@ class FeaturedMovie extends Component {
       const buttonText = foundFavorite ? "Remove Favorite" : "Add to Favorites";
 
       return (
-        <div
-          className={className}
-          style={background}
-        >
+        <div className={className} style={background}>
           { this.state.promptLogin ? 
             <div className="loginRequest">
               Please Sign Up / Login to add favorites.
             </div> :
             null
           }
-          <div 
-            className="favoriteButton"
-            onClick={this.handleFavoriteClick}
-          >
+          <div className="favoriteButton" onClick={this.handleFavoriteClick}>
             <p>{buttonText}</p>
+            <div className="faveIcon"></div>
           </div>
           <div className="movieOverview">
             <h2>{featuredMovie.title}</h2>
