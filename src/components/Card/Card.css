@@ -1,15 +1,14 @@
 .movieCard {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 94%;
   height: 90px;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
   padding: 10px;
   position: relative;
 }
 
 .selected, .movieCard.selected:hover {
-  /* border: solid 4px black; */
   padding: 10px;
   background: black;
 }
@@ -38,9 +37,68 @@ h3 {
   width: 75%;
 }
 
-img.arrow {
-  height: 21px;
-  right: 0;
+.stars {
+  border: 0;
+  float: left;
+  position: relative;
+  width: 76px;
+} 
+
+.goldStars{
+  border: 0;
   position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+ } 
+
+ .stars img {
+   max-width: 76px;
+   height: auto;
+ }
+
+ .cardContainer {
+   width: 100%;
+ }
+
+ hr {
+  margin-top: 0px;
+  background: #333;
+  height: 1px;
+  border: none;
 }
 
+.selected .triangle {
+  background-color: #3c4b65;
+}
+
+.triangle {
+	background-color: #333;
+  text-align: left;
+  height: 21px;
+  right: 15px;
+  position: absolute;
+}
+.triangle:before,
+.triangle:after {
+	content: '';
+	position: absolute;
+	background-color: inherit;
+}
+.triangle,
+.triangle:before,
+.triangle:after {
+	width:  0.7em;
+	height: 0.7em;
+	border-top-right-radius: 30%;
+}
+
+.triangle {
+	transform: rotate(30deg) skewX(-30deg) scale(1,.866);
+}
+.triangle:before {
+	transform: rotate(-135deg) skewX(-45deg) scale(1.414,.707) translate(0,-50%);
+}
+.triangle:after {
+	transform: rotate(135deg) skewY(-45deg) scale(.707,1.414) translate(50%);
+}
