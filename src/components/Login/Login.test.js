@@ -352,6 +352,22 @@ describe('Login', () => {
     });
   });
 
+  describe('validatePassword', () => {
+    it('should return a user if her/his password exists in the store', () => {
+      const wrapper = shallow(<Login />)
+      const mockUsers = [
+        { password: 'password' },
+        { password: 'poop' }
+      ];
+
+      wrapper.setState({signUpPassword: 'password'});
+      const result = wrapper.instance().validatePassword(mockUsers);
+      const expected = { password: 'password' };
+      expect(result).toEqual(expected);
+    });
+    
+  });
+
   describe('validateUser', () => {
     let wrapper;
 
