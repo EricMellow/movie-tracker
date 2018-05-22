@@ -23,10 +23,15 @@ describe('Header', () => {
   })
 
   describe('handleLoginLogoutClick', () => {
+    let wrapper;
+    let mockLogout;
+    let history;
+    let mockUserId;
+
     beforeEach(() => {
-      const mockLogout = jest.fn();
-      const history = createMemoryHistory('/')
-      const mockUserId = 3;
+      mockLogout = jest.fn();
+      history = createMemoryHistory('/')
+      mockUserId = 3;
 
       wrapper = shallow(<Header userId={mockUserId} logout={mockLogout} history={history} />);
     });
@@ -45,6 +50,44 @@ describe('Header', () => {
       wrapper.instance().handleLoginLogoutClick();
 
       expect(wrapper.instance().setRecentFeaturedMovie).toHaveBeenCalled();
+    });
+
+    it('should call setRecentFeaturedMovie if user is signed in', () => {
+      wrapper.instance().setRecentFeaturedMovie = jest.fn();
+      wrapper.instance().handleLoginLogoutClick();
+
+      expect(wrapper.instance().setRecentFeaturedMovie).toHaveBeenCalled();
+    });
+  })
+
+  describe('handleFavoritesClick', () => {
+    let wrapper;
+    let mockFavoriteMovies;
+    let mockToggleRender;
+
+    beforeEach(() => {
+      mockFavoriteMovies = [{title: 'Princess Bride'}]
+      mockToggleRender = jest.fn();
+
+      wrapper = shallow(<Header favoriteMovies={mockFavoriteMovies} toggleRender={mockToggleRender} />);
+
+      wrapper.instance().setFavoriteFeaturedMovie = jest.fn();
+    });
+
+    it('should call setFavoriteFeaturedMovie when there are favorite movies', () => {
+      wrapper.instance().handleFavoritesClick();
+
+      const result = wrapper.instance().setFavoriteFeaturedMovie
+
+      expect(result).toHaveBeenCalled();
+    });
+
+    it('should call toggleRender when there are favorite movies', () => {
+      wrapper.instance().handleFavoritesClick();
+
+      const result = mockToggleRender
+
+      expect(result).toHaveBeenCalledWith(false);
     });
   });
 
