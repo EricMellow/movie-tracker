@@ -24,6 +24,10 @@ nav {
   margin-top: 60px;
 }
 
+.logo:hover {
+  cursor: pointer;
+}
+
 .favoritesError {
   width: auto;
   background: #333;
