@@ -190,9 +190,8 @@ export class Login extends Component {
               value={this.state.signUpEmail}
               onChange={this.onChangeHandler}
             />
-            <p>
-              {this.state.emailMatch ? '' : 'Email has already been used'}
-            </p>
+            
+              {this.state.emailMatch ? '' : <p className="loginError">Email has already been used</p>}
             <h3>Password</h3>
             <input
               name='signUpPassword'
@@ -221,9 +220,7 @@ export class Login extends Component {
               value={this.state.loginPassword}
               onChange={this.onChangeHandler}
             />
-            <p>
-              {this.state.emailPasswordMatch ? '' : 'Email and Password do not match'}
-            </p>
+              {this.state.emailPasswordMatch ? '' : <p className="loginError">Email and Password do not match</p>}
             <button>Login</button>
           </form>
         </article>

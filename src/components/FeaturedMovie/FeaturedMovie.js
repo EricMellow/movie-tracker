@@ -105,7 +105,7 @@ class FeaturedMovie extends Component {
     if (featuredMovie) {
       const image = `https://image.tmdb.org/t/p/w1280${featuredMovie.backdrop}`;
       const background = { backgroundImage: `url( ${image} )` };
-      const overview = featuredMovie.overview.substr(0, 300);
+      const overview = featuredMovie.overview.substr(0, 125);
       const foundFavorite = this.props.favoriteMovies.find(movie => {
         return movie.movie_id === this.props.movieId;
       })

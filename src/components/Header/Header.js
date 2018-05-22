@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Header.css';
-import { NavLink, withRouter } from 'react-router-dom';
+import { NavLink, withRouter, Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import { toggleRenderRecent, logout, setSelectedMovieId } from "../../actions/index";
 
@@ -31,7 +31,7 @@ export class Header extends Component {
   }
 
   toggleError = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     this.setState({
       favoritesError: true
     })
@@ -54,7 +54,7 @@ export class Header extends Component {
 
     return (
       <div className="header">
-        <img src={require('../Header/movie-tracker-logo.png')} className="logo" />
+        <Link to='/'><img src={require('../Header/movie-tracker-logo.png')} className="logo" /></Link>
         <nav>
           <NavLink
             to={path}
@@ -62,7 +62,7 @@ export class Header extends Component {
             onClick={this.handleLoginLogoutClick}
           >{loginLogoutText}</NavLink>
           <NavLink
-            to='#'
+            to='/favorites'
             className="navLink"
             onClick={this.handleFavoritesClick}
           >Favorites</NavLink>
