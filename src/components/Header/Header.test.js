@@ -105,5 +105,30 @@ describe('Header', () => {
     });
   });
 
+  describe('toggleError', () => {
+    let wrapper;
+    let mockEvent;
+
+    beforeEach(() => {
+      mockEvent = { preventDefault: jest.fn()};
+
+      wrapper = shallow(<Header />);
+    });
+
+    it('should call preventDefault', () => {
+      const result = mockEvent.preventDefault
+
+      wrapper.instance().toggleError(mockEvent);
+
+      expect(result).toHaveBeenCalled();
+    });
+
+    it('should set state of favoritesError to true', () => {
+      wrapper.instance().toggleError(mockEvent);
+
+      expect(wrapper.state().favoritesError).toEqual(true)
+    });
+  });
+
 });
   
