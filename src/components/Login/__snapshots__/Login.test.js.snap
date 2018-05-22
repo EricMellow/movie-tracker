@@ -34,6 +34,7 @@ ShallowWrapper {
                     <input
                               name="name"
                               onChange={[Function]}
+                              placeholder="Name"
                               value=""
                     />
                     <h3>
@@ -42,15 +43,22 @@ ShallowWrapper {
                     <input
                               name="signUpEmail"
                               onChange={[Function]}
+                              placeholder="Ex: testman@aol.com"
                               value=""
                     />
                     
                     <h3>
                               Password
                     </h3>
-                    <input
+                    <t
+                              buttonClassName=""
+                              inputClassName=""
                               name="signUpPassword"
+                              onBlur={[Function]}
                               onChange={[Function]}
+                              onKeyDown={[Function]}
+                              placeholder="Password"
+                              useVendorStyles={true}
                               value=""
                     />
                     <button>
@@ -83,14 +91,21 @@ ShallowWrapper {
                     <input
                               name="loginEmail"
                               onChange={[Function]}
+                              placeholder="Ex: testman@aol.com"
                               value=""
                     />
                     <h3>
                               Password
                     </h3>
-                    <input
+                    <t
+                              buttonClassName=""
+                              inputClassName=""
                               name="loginPassword"
+                              onBlur={[Function]}
                               onChange={[Function]}
+                              onKeyDown={[Function]}
+                              placeholder="Password"
+                              useVendorStyles={true}
                               value=""
                     />
                     
@@ -123,6 +138,7 @@ ShallowWrapper {
               <input
                             name="name"
                             onChange={[Function]}
+                            placeholder="Name"
                             value=""
               />
               <h3>
@@ -131,15 +147,22 @@ ShallowWrapper {
               <input
                             name="signUpEmail"
                             onChange={[Function]}
+                            placeholder="Ex: testman@aol.com"
                             value=""
               />
               
               <h3>
                             Password
               </h3>
-              <input
+              <t
+                            buttonClassName=""
+                            inputClassName=""
                             name="signUpPassword"
+                            onBlur={[Function]}
                             onChange={[Function]}
+                            onKeyDown={[Function]}
+                            placeholder="Password"
+                            useVendorStyles={true}
                             value=""
               />
               <button>
@@ -174,6 +197,7 @@ ShallowWrapper {
                 <input
                   name="name"
                   onChange={[Function]}
+                  placeholder="Name"
                   value=""
 />,
                 <h3>
@@ -182,15 +206,22 @@ ShallowWrapper {
                 <input
                   name="signUpEmail"
                   onChange={[Function]}
+                  placeholder="Ex: testman@aol.com"
                   value=""
 />,
                 "",
                 <h3>
                   Password
 </h3>,
-                <input
+                <t
+                  buttonClassName=""
+                  inputClassName=""
                   name="signUpPassword"
+                  onBlur={[Function]}
                   onChange={[Function]}
+                  onKeyDown={[Function]}
+                  placeholder="Password"
+                  useVendorStyles={true}
                   value=""
 />,
                 <button>
@@ -220,6 +251,7 @@ ShallowWrapper {
                 "props": Object {
                   "name": "name",
                   "onChange": [Function],
+                  "placeholder": "Name",
                   "value": "",
                 },
                 "ref": null,
@@ -244,6 +276,7 @@ ShallowWrapper {
                 "props": Object {
                   "name": "signUpEmail",
                   "onChange": [Function],
+                  "placeholder": "Ex: testman@aol.com",
                   "value": "",
                 },
                 "ref": null,
@@ -265,15 +298,21 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "host",
+                "nodeType": "class",
                 "props": Object {
+                  "buttonClassName": "",
+                  "inputClassName": "",
                   "name": "signUpPassword",
+                  "onBlur": [Function],
                   "onChange": [Function],
+                  "onKeyDown": [Function],
+                  "placeholder": "Password",
+                  "useVendorStyles": true,
                   "value": "",
                 },
                 "ref": null,
                 "rendered": null,
-                "type": "input",
+                "type": [Function],
               },
               Object {
                 "instance": null,
@@ -359,14 +398,21 @@ ShallowWrapper {
               <input
                             name="loginEmail"
                             onChange={[Function]}
+                            placeholder="Ex: testman@aol.com"
                             value=""
               />
               <h3>
                             Password
               </h3>
-              <input
+              <t
+                            buttonClassName=""
+                            inputClassName=""
                             name="loginPassword"
+                            onBlur={[Function]}
                             onChange={[Function]}
+                            onKeyDown={[Function]}
+                            placeholder="Password"
+                            useVendorStyles={true}
                             value=""
               />
               
@@ -402,14 +448,21 @@ ShallowWrapper {
                 <input
                   name="loginEmail"
                   onChange={[Function]}
+                  placeholder="Ex: testman@aol.com"
                   value=""
 />,
                 <h3>
                   Password
 </h3>,
-                <input
+                <t
+                  buttonClassName=""
+                  inputClassName=""
                   name="loginPassword"
+                  onBlur={[Function]}
                   onChange={[Function]}
+                  onKeyDown={[Function]}
+                  placeholder="Password"
+                  useVendorStyles={true}
                   value=""
 />,
                 "",
@@ -440,6 +493,7 @@ ShallowWrapper {
                 "props": Object {
                   "name": "loginEmail",
                   "onChange": [Function],
+                  "placeholder": "Ex: testman@aol.com",
                   "value": "",
                 },
                 "ref": null,
@@ -460,15 +514,21 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "host",
+                "nodeType": "class",
                 "props": Object {
+                  "buttonClassName": "",
+                  "inputClassName": "",
                   "name": "loginPassword",
+                  "onBlur": [Function],
                   "onChange": [Function],
+                  "onKeyDown": [Function],
+                  "placeholder": "Password",
+                  "useVendorStyles": true,
                   "value": "",
                 },
                 "ref": null,
                 "rendered": null,
-                "type": "input",
+                "type": [Function],
               },
               "",
               Object {
@@ -514,6 +574,7 @@ ShallowWrapper {
                         <input
                                     name="name"
                                     onChange={[Function]}
+                                    placeholder="Name"
                                     value=""
                         />
                         <h3>
@@ -522,15 +583,22 @@ ShallowWrapper {
                         <input
                                     name="signUpEmail"
                                     onChange={[Function]}
+                                    placeholder="Ex: testman@aol.com"
                                     value=""
                         />
                         
                         <h3>
                                     Password
                         </h3>
-                        <input
+                        <t
+                                    buttonClassName=""
+                                    inputClassName=""
                                     name="signUpPassword"
+                                    onBlur={[Function]}
                                     onChange={[Function]}
+                                    onKeyDown={[Function]}
+                                    placeholder="Password"
+                                    useVendorStyles={true}
                                     value=""
                         />
                         <button>
@@ -563,14 +631,21 @@ ShallowWrapper {
                         <input
                                     name="loginEmail"
                                     onChange={[Function]}
+                                    placeholder="Ex: testman@aol.com"
                                     value=""
                         />
                         <h3>
                                     Password
                         </h3>
-                        <input
+                        <t
+                                    buttonClassName=""
+                                    inputClassName=""
                                     name="loginPassword"
+                                    onBlur={[Function]}
                                     onChange={[Function]}
+                                    onKeyDown={[Function]}
+                                    placeholder="Password"
+                                    useVendorStyles={true}
                                     value=""
                         />
                         
@@ -603,6 +678,7 @@ ShallowWrapper {
                 <input
                                 name="name"
                                 onChange={[Function]}
+                                placeholder="Name"
                                 value=""
                 />
                 <h3>
@@ -611,15 +687,22 @@ ShallowWrapper {
                 <input
                                 name="signUpEmail"
                                 onChange={[Function]}
+                                placeholder="Ex: testman@aol.com"
                                 value=""
                 />
                 
                 <h3>
                                 Password
                 </h3>
-                <input
+                <t
+                                buttonClassName=""
+                                inputClassName=""
                                 name="signUpPassword"
+                                onBlur={[Function]}
                                 onChange={[Function]}
+                                onKeyDown={[Function]}
+                                placeholder="Password"
+                                useVendorStyles={true}
                                 value=""
                 />
                 <button>
@@ -654,6 +737,7 @@ ShallowWrapper {
                   <input
                     name="name"
                     onChange={[Function]}
+                    placeholder="Name"
                     value=""
 />,
                   <h3>
@@ -662,15 +746,22 @@ ShallowWrapper {
                   <input
                     name="signUpEmail"
                     onChange={[Function]}
+                    placeholder="Ex: testman@aol.com"
                     value=""
 />,
                   "",
                   <h3>
                     Password
 </h3>,
-                  <input
+                  <t
+                    buttonClassName=""
+                    inputClassName=""
                     name="signUpPassword"
+                    onBlur={[Function]}
                     onChange={[Function]}
+                    onKeyDown={[Function]}
+                    placeholder="Password"
+                    useVendorStyles={true}
                     value=""
 />,
                   <button>
@@ -700,6 +791,7 @@ ShallowWrapper {
                   "props": Object {
                     "name": "name",
                     "onChange": [Function],
+                    "placeholder": "Name",
                     "value": "",
                   },
                   "ref": null,
@@ -724,6 +816,7 @@ ShallowWrapper {
                   "props": Object {
                     "name": "signUpEmail",
                     "onChange": [Function],
+                    "placeholder": "Ex: testman@aol.com",
                     "value": "",
                   },
                   "ref": null,
@@ -745,15 +838,21 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "host",
+                  "nodeType": "class",
                   "props": Object {
+                    "buttonClassName": "",
+                    "inputClassName": "",
                     "name": "signUpPassword",
+                    "onBlur": [Function],
                     "onChange": [Function],
+                    "onKeyDown": [Function],
+                    "placeholder": "Password",
+                    "useVendorStyles": true,
                     "value": "",
                   },
                   "ref": null,
                   "rendered": null,
-                  "type": "input",
+                  "type": [Function],
                 },
                 Object {
                   "instance": null,
@@ -839,14 +938,21 @@ ShallowWrapper {
                 <input
                                 name="loginEmail"
                                 onChange={[Function]}
+                                placeholder="Ex: testman@aol.com"
                                 value=""
                 />
                 <h3>
                                 Password
                 </h3>
-                <input
+                <t
+                                buttonClassName=""
+                                inputClassName=""
                                 name="loginPassword"
+                                onBlur={[Function]}
                                 onChange={[Function]}
+                                onKeyDown={[Function]}
+                                placeholder="Password"
+                                useVendorStyles={true}
                                 value=""
                 />
                 
@@ -882,14 +988,21 @@ ShallowWrapper {
                   <input
                     name="loginEmail"
                     onChange={[Function]}
+                    placeholder="Ex: testman@aol.com"
                     value=""
 />,
                   <h3>
                     Password
 </h3>,
-                  <input
+                  <t
+                    buttonClassName=""
+                    inputClassName=""
                     name="loginPassword"
+                    onBlur={[Function]}
                     onChange={[Function]}
+                    onKeyDown={[Function]}
+                    placeholder="Password"
+                    useVendorStyles={true}
                     value=""
 />,
                   "",
@@ -920,6 +1033,7 @@ ShallowWrapper {
                   "props": Object {
                     "name": "loginEmail",
                     "onChange": [Function],
+                    "placeholder": "Ex: testman@aol.com",
                     "value": "",
                   },
                   "ref": null,
@@ -940,15 +1054,21 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "host",
+                  "nodeType": "class",
                   "props": Object {
+                    "buttonClassName": "",
+                    "inputClassName": "",
                     "name": "loginPassword",
+                    "onBlur": [Function],
                     "onChange": [Function],
+                    "onKeyDown": [Function],
+                    "placeholder": "Password",
+                    "useVendorStyles": true,
                     "value": "",
                   },
                   "ref": null,
                   "rendered": null,
-                  "type": "input",
+                  "type": [Function],
                 },
                 "",
                 Object {
