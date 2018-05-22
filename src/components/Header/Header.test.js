@@ -130,5 +130,34 @@ describe('Header', () => {
     });
   });
 
+  describe('handleRecentsClick', () => {
+    let wrapper;
+    let mockToggleRender;
+
+    beforeEach(() => {
+      mockToggleRender = jest.fn();
+
+      wrapper = shallow(<Header toggleRender={mockToggleRender} />);
+    });
+
+    it('should call setRecentFeaturedMovie', () => {
+      wrapper.instance().setRecentFeaturedMovie = jest.fn();
+      const result = wrapper.instance().setRecentFeaturedMovie
+
+      wrapper.instance().handleRecentsClick();
+
+      expect(result).toHaveBeenCalled();
+    });
+
+    it('should call toggleRender with the correct argument', () => {
+      wrapper.instance().setRecentFeaturedMovie = jest.fn();
+      const result = wrapper.instance().props.toggleRender
+
+      wrapper.instance().handleRecentsClick();
+
+      expect(result).toHaveBeenCalledWith(true);
+    });
+  });
+
 });
   
