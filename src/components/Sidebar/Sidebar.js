@@ -11,7 +11,7 @@ export class Sidebar extends Component {
     const currentPage = this.props.renderRecent ? this.props.recentMovies : this.props.favoriteMovies;
 
     const movieCards = currentPage.map(movie => {
-      const movieMatch = this.props.recentMovies.find( recentMovie => {
+      const movieMatch = this.props.recentMovies.find(recentMovie => {
         return recentMovie.movie_id === movie.movie_id
       })
       const backdrop = movieMatch.backdrop;
