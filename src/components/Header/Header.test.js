@@ -30,7 +30,7 @@ describe('Header', () => {
 
     beforeEach(() => {
       mockLogout = jest.fn();
-      history = createMemoryHistory('/')
+      history = createMemoryHistory('/');
       mockUserId = 3;
 
       wrapper = shallow(<Header userId={mockUserId} logout={mockLogout} history={history} />);
@@ -156,6 +156,26 @@ describe('Header', () => {
       wrapper.instance().handleRecentsClick();
 
       expect(result).toHaveBeenCalledWith(true);
+    });
+  });
+
+  describe('handleLogoClick', () => {
+    let wrapper;
+    let history;
+
+    beforeEach(() => {
+      history = createMemoryHistory('/');
+
+      wrapper = shallow(<Header history={history} />);
+    });
+
+    it('should call handleRecentsClick', () => {
+      wrapper.instance().handleRecentsClick = jest.fn();
+      const result = wrapper.instance().handleRecentsClick
+
+      wrapper.instance().handleLogoClick();
+
+      expect(result).toHaveBeenCalled();
     });
   });
 
