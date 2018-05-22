@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './FeaturedMovie.css';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { addFavoriteMovie, deleteFavoriteMovie, setSelectedMovieId } from '../../actions/index';
 
 export class FeaturedMovie extends Component {
@@ -132,7 +132,7 @@ export class FeaturedMovie extends Component {
       );
     } else {
       return (
-        <p>LOADING</p>);
+        <div className="noFavorites">Visit the recent movies page to add some favorites.</div>)
     }
   }
 }

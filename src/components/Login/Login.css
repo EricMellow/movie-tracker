@@ -37,6 +37,10 @@
   box-shadow: inset 1px 1px 1px #000;
 }
 
+.signUpForms input::placeholder {
+  color: #444;
+}
+
 .signUpForms button {
 	-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
 	-moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
@@ -54,7 +58,7 @@
   font-weight: 500;
   background: #fff;
 	/* box-shadow: #333 0 0px 0px 2px inset; */
-  }
+}
 
 .signUp button {
   margin-top: 35px;
@@ -68,6 +72,15 @@
   color: rgba(255, 255, 255, 0.85);
   cursor: pointer;
   box-shadow: #272727 0 0px 0px 40px inset;ound: linear-gradient(to bottom, #272727 0%,#111111 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.signUpForms a {
+  background: #171717 !important;
+  color: #496087 !important;
+  font-size: 0.8rem;
+  margin-right: -18px !important;
+  padding: 5px 16px !important;
+  border-radius: 4px !important;
 }
 
 .formDivider {

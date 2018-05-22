@@ -1,0 +1,675 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card should match the snapshot if renderRecent is false 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Sidebar
+    favoriteMovies={
+        Array [
+            Object {
+              "movie_id": 324982,
+              "title": "Step Brothers",
+            },
+          ]
+    }
+    location={
+        Object {
+            "pathname": "/Favorite Movies",
+          }
+    }
+    recentMovies={
+        Array [
+            Object {
+              "movie_id": 344911,
+              "title": "It Takes Two",
+            },
+            Object {
+              "movie_id": 324982,
+              "title": "Step Brothers",
+            },
+          ]
+    }
+    renderRecent={false}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <h1>
+          Favorite Movies
+</h1>,
+        <div
+          className="sidebarCards"
+>
+          <div
+                    className="cardContainer"
+          >
+                    <Connect(Card)
+                              backdrop={undefined}
+                              id={324982}
+                              rating={undefined}
+                              title="Step Brothers"
+                    />
+                    <hr />
+          </div>
+</div>,
+      ],
+      "className": "sidebar",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Favorite Movies",
+        },
+        "ref": null,
+        "rendered": "Favorite Movies",
+        "type": "h1",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="cardContainer"
+>
+              <Connect(Card)
+                            backdrop={undefined}
+                            id={324982}
+                            rating={undefined}
+                            title="Step Brothers"
+              />
+              <hr />
+</div>,
+          ],
+          "className": "sidebarCards",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "324982",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <Connect(Card)
+                  backdrop={undefined}
+                  id={324982}
+                  rating={undefined}
+                  title="Step Brothers"
+/>,
+                <hr />,
+              ],
+              "className": "cardContainer",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "backdrop": undefined,
+                  "id": 324982,
+                  "rating": undefined,
+                  "title": "Step Brothers",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": "hr",
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h1>
+            Favorite Movies
+</h1>,
+          <div
+            className="sidebarCards"
+>
+            <div
+                        className="cardContainer"
+            >
+                        <Connect(Card)
+                                    backdrop={undefined}
+                                    id={324982}
+                                    rating={undefined}
+                                    title="Step Brothers"
+                        />
+                        <hr />
+            </div>
+</div>,
+        ],
+        "className": "sidebar",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Favorite Movies",
+          },
+          "ref": null,
+          "rendered": "Favorite Movies",
+          "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="cardContainer"
+>
+                <Connect(Card)
+                                backdrop={undefined}
+                                id={324982}
+                                rating={undefined}
+                                title="Step Brothers"
+                />
+                <hr />
+</div>,
+            ],
+            "className": "sidebarCards",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "324982",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <Connect(Card)
+                    backdrop={undefined}
+                    id={324982}
+                    rating={undefined}
+                    title="Step Brothers"
+/>,
+                  <hr />,
+                ],
+                "className": "cardContainer",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "backdrop": undefined,
+                    "id": 324982,
+                    "rating": undefined,
+                    "title": "Step Brothers",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": "hr",
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`Card should match the snapshot if renderRecent is true 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Sidebar
+    location={
+        Object {
+            "pathname": "/",
+          }
+    }
+    recentMovies={
+        Array [
+            Object {
+              "movie_id": 344911,
+              "title": "It Takes Two",
+            },
+            Object {
+              "movie_id": 324982,
+              "title": "Step Brothers",
+            },
+          ]
+    }
+    renderRecent={true}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <h1>
+          Recent Movies
+</h1>,
+        <div
+          className="sidebarCards"
+>
+          <div
+                    className="cardContainer"
+          >
+                    <Connect(Card)
+                              backdrop={undefined}
+                              id={344911}
+                              rating={undefined}
+                              title="It Takes Two"
+                    />
+                    <hr />
+          </div>
+          <div
+                    className="cardContainer"
+          >
+                    <Connect(Card)
+                              backdrop={undefined}
+                              id={324982}
+                              rating={undefined}
+                              title="Step Brothers"
+                    />
+                    <hr />
+          </div>
+</div>,
+      ],
+      "className": "sidebar",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Recent Movies",
+        },
+        "ref": null,
+        "rendered": "Recent Movies",
+        "type": "h1",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="cardContainer"
+>
+              <Connect(Card)
+                            backdrop={undefined}
+                            id={344911}
+                            rating={undefined}
+                            title="It Takes Two"
+              />
+              <hr />
+</div>,
+            <div
+              className="cardContainer"
+>
+              <Connect(Card)
+                            backdrop={undefined}
+                            id={324982}
+                            rating={undefined}
+                            title="Step Brothers"
+              />
+              <hr />
+</div>,
+          ],
+          "className": "sidebarCards",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "344911",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <Connect(Card)
+                  backdrop={undefined}
+                  id={344911}
+                  rating={undefined}
+                  title="It Takes Two"
+/>,
+                <hr />,
+              ],
+              "className": "cardContainer",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "backdrop": undefined,
+                  "id": 344911,
+                  "rating": undefined,
+                  "title": "It Takes Two",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": "hr",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "324982",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <Connect(Card)
+                  backdrop={undefined}
+                  id={324982}
+                  rating={undefined}
+                  title="Step Brothers"
+/>,
+                <hr />,
+              ],
+              "className": "cardContainer",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "backdrop": undefined,
+                  "id": 324982,
+                  "rating": undefined,
+                  "title": "Step Brothers",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {},
+                "ref": null,
+                "rendered": null,
+                "type": "hr",
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h1>
+            Recent Movies
+</h1>,
+          <div
+            className="sidebarCards"
+>
+            <div
+                        className="cardContainer"
+            >
+                        <Connect(Card)
+                                    backdrop={undefined}
+                                    id={344911}
+                                    rating={undefined}
+                                    title="It Takes Two"
+                        />
+                        <hr />
+            </div>
+            <div
+                        className="cardContainer"
+            >
+                        <Connect(Card)
+                                    backdrop={undefined}
+                                    id={324982}
+                                    rating={undefined}
+                                    title="Step Brothers"
+                        />
+                        <hr />
+            </div>
+</div>,
+        ],
+        "className": "sidebar",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Recent Movies",
+          },
+          "ref": null,
+          "rendered": "Recent Movies",
+          "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="cardContainer"
+>
+                <Connect(Card)
+                                backdrop={undefined}
+                                id={344911}
+                                rating={undefined}
+                                title="It Takes Two"
+                />
+                <hr />
+</div>,
+              <div
+                className="cardContainer"
+>
+                <Connect(Card)
+                                backdrop={undefined}
+                                id={324982}
+                                rating={undefined}
+                                title="Step Brothers"
+                />
+                <hr />
+</div>,
+            ],
+            "className": "sidebarCards",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "344911",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <Connect(Card)
+                    backdrop={undefined}
+                    id={344911}
+                    rating={undefined}
+                    title="It Takes Two"
+/>,
+                  <hr />,
+                ],
+                "className": "cardContainer",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "backdrop": undefined,
+                    "id": 344911,
+                    "rating": undefined,
+                    "title": "It Takes Two",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": "hr",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": "324982",
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <Connect(Card)
+                    backdrop={undefined}
+                    id={324982}
+                    rating={undefined}
+                    title="Step Brothers"
+/>,
+                  <hr />,
+                ],
+                "className": "cardContainer",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "backdrop": undefined,
+                    "id": 324982,
+                    "rating": undefined,
+                    "title": "Step Brothers",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": null,
+                  "rendered": null,
+                  "type": "hr",
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

@@ -16,14 +16,14 @@ export class Header extends Component {
   handleLoginLogoutClick = () => {
     if (this.props.userId) {
       this.props.logout();
+      this.setRecentFeaturedMovie();
       this.props.history.push('/');
     }
   }
 
   handleFavoritesClick = (event) => {
     if (this.props.favoriteMovies.length) {
-      const movieId = this.props.favoriteMovies.length ? this.props.favoriteMovies[0].movie_id : null;
-      this.props.setFeaturedMovie(movieId);
+      this.setFavoriteFeaturedMovie();
       this.props.toggleRender(false);
     } else {
       this.toggleError(event);
@@ -43,9 +43,23 @@ export class Header extends Component {
   }
 
   handleRecentsClick = () => {
+    this.setRecentFeaturedMovie();
+    this.props.toggleRender(true)
+  }
+
+  handleLogoClick = () => {
+    this.handleRecentsClick();
+    this.props.history.push('/');
+  }
+
+  setFavoriteFeaturedMovie = () => {
+    const movieId = this.props.favoriteMovies[0].movie_id;
+    this.props.setFeaturedMovie(movieId);
+  }
+
+  setRecentFeaturedMovie = () => {
     const movieId = this.props.recentMovies[0].movie_id
     this.props.setFeaturedMovie(movieId);
-    this.props.toggleRender(true)
   }
 
   render() {
@@ -54,7 +68,7 @@ export class Header extends Component {
 
     return (
       <div className="header">
-        <Link to='/'><img src={require('../Header/movie-tracker-logo.png')} className="logo" /></Link>
+        <img src={require('../Header/movie-tracker-logo.png')} className="logo" onClick={this.handleLogoClick} />
         <nav>
           <NavLink
             to={path}

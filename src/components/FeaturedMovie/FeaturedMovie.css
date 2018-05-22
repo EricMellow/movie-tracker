@@ -4,6 +4,7 @@
   background-size: cover;
   position: relative;
   text-align: left;
+  border-radius: 5px;
 }
 
 .favoriteButton {
@@ -86,4 +87,25 @@
 
 .movieOverview h2 {
   margin-bottom: 20px;
+}
+
+.noFavorites {
+  width: auto;
+  background: #111;
+  padding: 15px 20px 15px 20px;
+  display: inline-block;
+  border-radius: 5px 5px 0 0;
+  position: absolute;
+  top: -50px;
+  right: 0;
+  color: #ffba00;
+  box-shadow: inset 1px 1px 1px #000;
+  position: relative;
+  margin-top: 95px;
+  height: 30px;
+  padding-top: 25px;
+  border-radius: 5px;
+  display: -ms-flexbox;
+  display: flex;
+  align-content: center;
 }
