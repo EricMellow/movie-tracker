@@ -15,3 +15,19 @@ describe('setSelectedMovieId', () => {
     expect(result).toEqual(expected);
   });
 });
+
+describe('addRecentMovies', () => {
+  it('should add all recent movies', () => {
+    // setup
+    const mockRecentMovies = [{title: "Happy Days"}, {title: "Bad Days"}];
+    // exectuion
+    const result = action.addRecentMovies(mockRecentMovies);
+    // expectation
+    const expected = {
+      type: 'ADD_RECENT_MOVIES',
+      recentMovieData: mockRecentMovies
+    };
+
+    expect(result).toEqual(expected);
+  });
+});
