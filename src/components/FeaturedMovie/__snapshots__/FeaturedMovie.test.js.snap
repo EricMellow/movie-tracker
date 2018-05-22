@@ -1,3 +1,316 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card should match the snapshot 1`] = `undefined`;
+exports[`Card should match the snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <FeaturedMovie
+    favoriteMovies={
+        Array [
+            Object {
+              "movie_id": 12345,
+              "overview": "string string string",
+              "title": "Happy Days",
+            },
+          ]
+    }
+    movieId={12345}
+    recentMovies={
+        Array [
+            Object {
+              "movie_id": 12345,
+              "overview": "string string string",
+              "title": "Happy Days",
+            },
+            Object {
+              "movie_id": 23456,
+              "overview": "string string string",
+              "title": "Sad Days",
+            },
+          ]
+    }
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        null,
+        <div
+          className="favoriteButton"
+          onClick={[Function]}
+>
+          <p>
+                    Remove Favorite
+          </p>
+          <div
+                    className="faveIcon"
+          />
+</div>,
+        <div
+          className="movieOverview"
+>
+          <h2>
+                    Happy Days
+          </h2>
+          <p>
+                    string string string
+                     ...
+          </p>
+</div>,
+      ],
+      "className": "featuredMovie favorite",
+      "style": Object {
+        "backgroundImage": "url( https://image.tmdb.org/t/p/w1280undefined )",
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      null,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <p>
+              Remove Favorite
+</p>,
+            <div
+              className="faveIcon"
+/>,
+          ],
+          "className": "favoriteButton",
+          "onClick": [Function],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Remove Favorite",
+            },
+            "ref": null,
+            "rendered": "Remove Favorite",
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "faveIcon",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <h2>
+              Happy Days
+</h2>,
+            <p>
+              string string string
+               ...
+</p>,
+          ],
+          "className": "movieOverview",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Happy Days",
+            },
+            "ref": null,
+            "rendered": "Happy Days",
+            "type": "h2",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "string string string",
+                " ...",
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              "string string string",
+              " ...",
+            ],
+            "type": "p",
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          null,
+          <div
+            className="favoriteButton"
+            onClick={[Function]}
+>
+            <p>
+                        Remove Favorite
+            </p>
+            <div
+                        className="faveIcon"
+            />
+</div>,
+          <div
+            className="movieOverview"
+>
+            <h2>
+                        Happy Days
+            </h2>
+            <p>
+                        string string string
+                         ...
+            </p>
+</div>,
+        ],
+        "className": "featuredMovie favorite",
+        "style": Object {
+          "backgroundImage": "url( https://image.tmdb.org/t/p/w1280undefined )",
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        null,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <p>
+                Remove Favorite
+</p>,
+              <div
+                className="faveIcon"
+/>,
+            ],
+            "className": "favoriteButton",
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Remove Favorite",
+              },
+              "ref": null,
+              "rendered": "Remove Favorite",
+              "type": "p",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "faveIcon",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <h2>
+                Happy Days
+</h2>,
+              <p>
+                string string string
+                 ...
+</p>,
+            ],
+            "className": "movieOverview",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Happy Days",
+              },
+              "ref": null,
+              "rendered": "Happy Days",
+              "type": "h2",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "string string string",
+                  " ...",
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "string string string",
+                " ...",
+              ],
+              "type": "p",
+            },
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
