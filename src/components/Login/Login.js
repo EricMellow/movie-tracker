@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setUserId, addStoredFavorites } from "../../actions/index.js";
+import PasswordMask from 'react-password-mask';
 import './Login.css';
 
 
@@ -183,20 +184,23 @@ export class Login extends Component {
               name='name'
               value={this.state.name}
               onChange={this.onChangeHandler}
+              placeholder='Name'
             />
             <h3>Email</h3>
             <input
               name='signUpEmail'
               value={this.state.signUpEmail}
               onChange={this.onChangeHandler}
+              placeholder='Ex: testman@aol.com'
             />
             
               {this.state.emailMatch ? '' : <p className="loginError">Email has already been used</p>}
             <h3>Password</h3>
-            <input
+            <PasswordMask
               name='signUpPassword'
               value={this.state.signUpPassword}
               onChange={this.onChangeHandler}
+              placeholder='Password'
             />
             <button>Sign Up</button>
           </form>
@@ -213,12 +217,14 @@ export class Login extends Component {
               name='loginEmail'
               value={this.state.loginEmail}
               onChange={this.onChangeHandler}
+              placeholder='Ex: testman@aol.com'
             />
             <h3>Password</h3>
-            <input
+            <PasswordMask
               name='loginPassword'
               value={this.state.loginPassword}
               onChange={this.onChangeHandler}
+              placeholder='Password'
             />
               {this.state.emailPasswordMatch ? '' : <p className="loginError">Email and Password do not match</p>}
             <button>Login</button>

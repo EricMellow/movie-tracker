@@ -4,6 +4,7 @@
   background-size: cover;
   position: relative;
   text-align: left;
+  border-radius: 5px;
 }
 
 .favoriteButton {
