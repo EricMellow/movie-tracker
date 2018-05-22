@@ -179,5 +179,27 @@ describe('Header', () => {
     });
   });
 
+  describe('setFavoriteFeaturedMovie', () => {
+    let wrapper;
+    let mockSetFeaturedMovie;
+    let mockFavoriteMovies;
+
+    beforeEach(() => {
+      mockSetFeaturedMovie = jest.fn();
+      mockFavoriteMovies = [{title: 'Sandlot', movie_id: 29386}];
+
+      wrapper = shallow(<Header favoriteMovies={mockFavoriteMovies} setFeaturedMovie={mockSetFeaturedMovie} />);
+    });
+
+    it('should call setFeaturedMovie with correct argument', () => {
+      const result = wrapper.instance().props.setFeaturedMovie;
+      const expected = 29386;
+
+      wrapper.instance().setFavoriteFeaturedMovie();
+
+      expect(result).toHaveBeenCalledWith(expected);
+    });
+  });
+
 });
   
