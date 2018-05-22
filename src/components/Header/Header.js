@@ -54,7 +54,7 @@ export class Header extends Component {
 
     return (
       <div className="header">
-        <Link to='/'><img src={require('../Header/movie-tracker-logo.png')} className="logo" /></Link>
+        <img src={require('../Header/movie-tracker-logo.png')} className="logo" />
         <nav>
           <NavLink
             to={path}
