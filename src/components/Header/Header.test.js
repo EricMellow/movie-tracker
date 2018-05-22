@@ -117,7 +117,7 @@ describe('Header', () => {
 
     it('should call preventDefault', () => {
       const result = mockEvent.preventDefault
-
+      jest.useFakeTimers()
       wrapper.instance().toggleError(mockEvent);
 
       expect(result).toHaveBeenCalled();
@@ -128,6 +128,15 @@ describe('Header', () => {
 
       expect(wrapper.state().favoritesError).toEqual(true)
     });
+
+    it('should set state of favoritesError to false after 2 seconds', () => {
+      wrapper.instance().toggleError(mockEvent);
+      wrapper.update();  
+      jest.runAllTimers();
+       
+      expect(wrapper.state().favoritesError).toEqual(false);
+    }) 
+
   });
 
   describe('handleRecentsClick', () => {
