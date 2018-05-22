@@ -1,12 +1,12 @@
 import React from 'react';
-import { FavoriteMovies, mapStateToProps, mapDispatchToProps } from "./FavoriteMovies";
+import { Card, mapStateToProps, mapDispatchToProps } from "./Card";
 import { shallow } from 'enzyme';
 
 describe('Card', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<FavoriteMovies />);
+    wrapper = shallow(<Card /> );
   });
 
   it('should match the snapshot', () => {

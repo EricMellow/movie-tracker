@@ -41,7 +41,7 @@ describe('App', () => {
       window.fetch = jest.fn().mockImplementation(() => Promise.reject(new Error('test rejection'))
       )
       const expected = [{
-        id: 0,
+        movie_id: 0,
         title: "Oh No!",
         poster: "Error",
         backdrop: "Error",
@@ -64,7 +64,7 @@ describe('App', () => {
       );
 
       const expected = [{
-        id: 0,
+        movie_id: 0,
         title: "Oh No!",
         poster: "Error",
         backdrop: "Error",

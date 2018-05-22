@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { addFavoriteMovie, deleteFavoriteMovie, setSelectedMovieId } from '../../actions/index';
 
-class FeaturedMovie extends Component {
+export class FeaturedMovie extends Component {
   constructor() {
     super();
 
@@ -137,14 +137,14 @@ class FeaturedMovie extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   recentMovies: state.recentMovies,
   movieId: state.selectedMovieId,
   userId: state.userId,
   favoriteMovies: state.favoriteMovies
 });
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   addFavoriteMovie: (selectedMovie) => dispatch(addFavoriteMovie(selectedMovie)),
   deleteFavoriteMovie: (selectedMovie) => dispatch(deleteFavoriteMovie(selectedMovie)),
   setFeaturedMovie: (id) => dispatch(setSelectedMovieId(id))

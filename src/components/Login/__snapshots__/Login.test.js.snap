@@ -18,7 +18,9 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <article>
+        <article
+          className="signUp"
+>
           <h2>
                     Sign Up
           </h2>
@@ -42,7 +44,7 @@ ShallowWrapper {
                               onChange={[Function]}
                               value=""
                     />
-                    <p />
+                    
                     <h3>
                               Password
                     </h3>
@@ -56,7 +58,18 @@ ShallowWrapper {
                     </button>
           </form>
 </article>,
-        <article>
+        <div
+          className="formDivider"
+>
+          <div />
+          <span>
+                    OR
+          </span>
+          <div />
+</div>,
+        <article
+          className="login"
+>
           <h2>
                     Login
           </h2>
@@ -80,7 +93,7 @@ ShallowWrapper {
                               onChange={[Function]}
                               value=""
                     />
-                    <p />
+                    
                     <button>
                               Login
                     </button>
@@ -120,7 +133,7 @@ ShallowWrapper {
                             onChange={[Function]}
                             value=""
               />
-              <p />
+              
               <h3>
                             Password
               </h3>
@@ -134,6 +147,7 @@ ShallowWrapper {
               </button>
 </form>,
           ],
+          "className": "signUp",
         },
         "ref": null,
         "rendered": Array [
@@ -170,7 +184,7 @@ ShallowWrapper {
                   onChange={[Function]}
                   value=""
 />,
-                <p />,
+                "",
                 <h3>
                   Password
 </h3>,
@@ -236,17 +250,7 @@ ShallowWrapper {
                 "rendered": null,
                 "type": "input",
               },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "",
-                },
-                "ref": null,
-                "rendered": "",
-                "type": "p",
-              },
+              "",
               Object {
                 "instance": null,
                 "key": undefined,
@@ -294,6 +298,54 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
+            <div />,
+            <span>
+              OR
+</span>,
+            <div />,
+          ],
+          "className": "formDivider",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "OR",
+            },
+            "ref": null,
+            "rendered": "OR",
+            "type": "span",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
             <h2>
               Login
 </h2>,
@@ -317,12 +369,13 @@ ShallowWrapper {
                             onChange={[Function]}
                             value=""
               />
-              <p />
+              
               <button>
                             Login
               </button>
 </form>,
           ],
+          "className": "login",
         },
         "ref": null,
         "rendered": Array [
@@ -359,7 +412,7 @@ ShallowWrapper {
                   onChange={[Function]}
                   value=""
 />,
-                <p />,
+                "",
                 <button>
                   Login
 </button>,
@@ -417,17 +470,7 @@ ShallowWrapper {
                 "rendered": null,
                 "type": "input",
               },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "",
-                },
-                "ref": null,
-                "rendered": "",
-                "type": "p",
-              },
+              "",
               Object {
                 "instance": null,
                 "key": undefined,
@@ -455,7 +498,9 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <article>
+          <article
+            className="signUp"
+>
             <h2>
                         Sign Up
             </h2>
@@ -479,7 +524,7 @@ ShallowWrapper {
                                     onChange={[Function]}
                                     value=""
                         />
-                        <p />
+                        
                         <h3>
                                     Password
                         </h3>
@@ -493,7 +538,18 @@ ShallowWrapper {
                         </button>
             </form>
 </article>,
-          <article>
+          <div
+            className="formDivider"
+>
+            <div />
+            <span>
+                        OR
+            </span>
+            <div />
+</div>,
+          <article
+            className="login"
+>
             <h2>
                         Login
             </h2>
@@ -517,7 +573,7 @@ ShallowWrapper {
                                     onChange={[Function]}
                                     value=""
                         />
-                        <p />
+                        
                         <button>
                                     Login
                         </button>
@@ -557,7 +613,7 @@ ShallowWrapper {
                                 onChange={[Function]}
                                 value=""
                 />
-                <p />
+                
                 <h3>
                                 Password
                 </h3>
@@ -571,6 +627,7 @@ ShallowWrapper {
                 </button>
 </form>,
             ],
+            "className": "signUp",
           },
           "ref": null,
           "rendered": Array [
@@ -607,7 +664,7 @@ ShallowWrapper {
                     onChange={[Function]}
                     value=""
 />,
-                  <p />,
+                  "",
                   <h3>
                     Password
 </h3>,
@@ -673,17 +730,7 @@ ShallowWrapper {
                   "rendered": null,
                   "type": "input",
                 },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "",
-                  },
-                  "ref": null,
-                  "rendered": "",
-                  "type": "p",
-                },
+                "",
                 Object {
                   "instance": null,
                   "key": undefined,
@@ -731,6 +778,54 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": Array [
+              <div />,
+              <span>
+                OR
+</span>,
+              <div />,
+            ],
+            "className": "formDivider",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "OR",
+              },
+              "ref": null,
+              "rendered": "OR",
+              "type": "span",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {},
+              "ref": null,
+              "rendered": null,
+              "type": "div",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
               <h2>
                 Login
 </h2>,
@@ -754,12 +849,13 @@ ShallowWrapper {
                                 onChange={[Function]}
                                 value=""
                 />
-                <p />
+                
                 <button>
                                 Login
                 </button>
 </form>,
             ],
+            "className": "login",
           },
           "ref": null,
           "rendered": Array [
@@ -796,7 +892,7 @@ ShallowWrapper {
                     onChange={[Function]}
                     value=""
 />,
-                  <p />,
+                  "",
                   <button>
                     Login
 </button>,
@@ -854,17 +950,7 @@ ShallowWrapper {
                   "rendered": null,
                   "type": "input",
                 },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "",
-                  },
-                  "ref": null,
-                  "rendered": "",
-                  "type": "p",
-                },
+                "",
                 Object {
                   "instance": null,
                   "key": undefined,
