@@ -1,9 +1,10 @@
-h2 {
+.signUpForms h2 {
   margin-top: 0;
   font-size: 1rem;
   text-transform: uppercase;
   margin-bottom: 25px;
 }
+
 .signUp, .login {
   width: 35%;
   display: inline-block;
@@ -56,7 +57,7 @@ h2 {
   }
 
 .signUp button {
-  margin-top: 30px;
+  margin-top: 35px;
 }
 
 .signUpForms button:focus {
@@ -89,4 +90,15 @@ h2 {
   width: 1px;
   background: #333;
   margin: 0;
+}
+
+.loginError {
+  width: auto;
+  background: #111;
+  padding: 15px 20px 15px 20px;
+  display: inline-block;
+  border-radius: 5px;
+  margin-bottom: 0;
+  color: #ffba00;
+  box-shadow: inset 1px 1px 1px #000;
 }
