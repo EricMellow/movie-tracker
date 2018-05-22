@@ -1,33 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RecentMovies should match the snapshot 1`] = `
+exports[`Card should match the snapshot 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <RecentMovies
-    recentMovies={
-        Array [
-            Object {
-              "backdrop": "/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg",
-              "movie_id": 299536,
-              "overview": "Test Overview",
-              "poster": "/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
-              "release": "2018-04-25",
-              "title": "Avengers: Infinity War",
-              "vote_average": 8.6,
-            },
-            Object {
-              "backdrop": "/wrqUiMXttHE4UBFMhLHlN601MZh.jpg",
-              "movie_id": 427641,
-              "overview": "Test Overview",
-              "poster": "/30oXQKwibh0uANGMs0Sytw3uN22.jpg",
-              "release": "2018-04-12",
-              "title": "Rampage",
-              "vote_average": 5.9,
-            },
-          ]
-    }
-/>,
+  Symbol(enzyme.__unrendered__): <FavoriteMovies />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -111,7 +88,6 @@ ShallowWrapper {
         "enableComponentDidUpdateOnSetState": true,
       },
     },
-    "disableLifecycleMethods": true,
   },
 }
 `;
