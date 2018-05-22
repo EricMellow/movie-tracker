@@ -64,10 +64,12 @@ describe('Header', () => {
     let wrapper;
     let mockFavoriteMovies;
     let mockToggleRender;
+    let mockEvent;
 
     beforeEach(() => {
       mockFavoriteMovies = [{title: 'Princess Bride'}]
       mockToggleRender = jest.fn();
+      mockEvent = { preventDefault: () => {} };
 
       wrapper = shallow(<Header favoriteMovies={mockFavoriteMovies} toggleRender={mockToggleRender} />);
 
@@ -75,19 +77,31 @@ describe('Header', () => {
     });
 
     it('should call setFavoriteFeaturedMovie when there are favorite movies', () => {
-      wrapper.instance().handleFavoritesClick();
+      wrapper.instance().handleFavoritesClick(mockEvent);
 
       const result = wrapper.instance().setFavoriteFeaturedMovie
 
       expect(result).toHaveBeenCalled();
     });
 
-    it('should call toggleRender when there are favorite movies', () => {
+    it('should call toggleRender when there are favorite movies with the correct argument', () => {
       wrapper.instance().handleFavoritesClick();
 
       const result = mockToggleRender
 
       expect(result).toHaveBeenCalledWith(false);
+    });
+
+    it('should call togglError when there are no favorite movies with the correct argument', () => {
+      mockFavoriteMovies = [];
+      wrapper = shallow(<Header favoriteMovies={mockFavoriteMovies} toggleRender={mockToggleRender} />);
+      wrapper.instance().toggleError = jest.fn();
+
+      wrapper.instance().handleFavoritesClick(mockEvent);
+
+      const result = wrapper.instance().toggleError
+
+      expect(result).toHaveBeenCalledWith(mockEvent);
     });
   });
 
