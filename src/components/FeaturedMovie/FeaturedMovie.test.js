@@ -71,11 +71,10 @@ describe('FeaturedMovie', () => {
         deleteFavoriteMovie: jest.fn()
       };
 
-        
       wrapper = shallow(<FeaturedMovie {...props} />);
-      wrapper.instance().toggleFeaturedMovie = jest.fn()
-      wrapper.instance().togglePromptLogin = jest.fn()
-      wrapper.instance().toggleStoreFavorite = jest.fn()
+      wrapper.instance().toggleFeaturedMovie = jest.fn();
+      wrapper.instance().togglePromptLogin = jest.fn();
+      wrapper.instance().toggleStoreFavorite = jest.fn();
     });
 
     it('should call toggleStoreFavorite with the correct argument', async () => {
@@ -94,28 +93,106 @@ describe('FeaturedMovie', () => {
 
     it('should call toggleFeatureMove', async () => {
       await wrapper.instance().handleFavoriteClick();
-      const result = wrapper.instance().toggleFeaturedMovie
-      expect(result).toHaveBeenCalled()
+      const result = wrapper.instance().toggleFeaturedMovie;
+      expect(result).toHaveBeenCalled();
     });
 
-    it.only('should call togglePromptLogin', async () => {
-      await wrapper.instance().handleFavoriteClick()
-      const result = wrapper.instance().togglePromptLogin
-      expect(result).toHaveBeenCalled()
+    it('should call togglePromptLogin', async () => {
+      await wrapper.instance().handleFavoriteClick();
+      const result = wrapper.instance().togglePromptLogin;
+      expect(result).toHaveBeenCalled();
     });
   });
 
   describe('toggleStoreFavorite', () => {
-    it('should call deleteFavorite with the correct argument if isAFavorite is true', () => {
+    let wrapper;
+    let props;
 
+    beforeAll(() => {
+      props = {
+        favoriteMovies: [{
+          title: "Happy Days",
+          movie_id: 12345,
+          overview: 'string string string'
+        }],
+        movieId: 12345,
+        userId: 2,
+        recentMovies: [
+          {
+            title: "Happy Days",
+            movie_id: 12345,
+            overview: 'string string string'
+          },
+          {
+            title: "Sad Days",
+            movie_id: 23456,
+            overview: 'string string string'
+          }
+        ],
+        deleteFavoriteMovie: jest.fn()
+      };
+
+      wrapper = shallow(<FeaturedMovie {...props} />);
+    });
+    it('should call deleteFavorite with the correct argument if isAFavorite is true', async () => {
+      const mockSelectedMovie = {
+        title: "Happy Days",
+        movie_id: 12345,
+        overview: 'string string string'
+      };
+      wrapper.instance().deleteFavorite = jest.fn();
+      wrapper.instance().findFavorite = jest.fn().mockImplementation(()=>true);
+      await wrapper.instance().toggleStoreFavorite(mockSelectedMovie);
+      const result = wrapper.instance().deleteFavorite;
+      expect(result).toHaveBeenCalledWith(mockSelectedMovie);
     });
 
-    it('should call addFavorite with the correct argument if isAFavorite is false', () => {
-
+    it.only('should call addFavorite with the correct argument if isAFavorite is false', async () => {
+      const mockSelectedMovie = {
+        title: "Happy Days",
+        movie_id: 12345,
+        overview: 'string string string'
+      };
+      wrapper.instance().deleteFavorite = jest.fn();
+      wrapper.instance().findFavorite = jest.fn().mockImplementation(() => false);
+      wrapper.instance().addFavorite = jest.fn();
+      await wrapper.instance().toggleStoreFavorite(mockSelectedMovie);
+      const result = wrapper.instance().addFavorite;
+      expect(result).toHaveBeenCalledWith(mockSelectedMovie);
     });
   });
 
   describe('toggleFeaturedMovie', () => {
+    let wrapper;
+    let props;
+
+    beforeAll(() => {
+      props = {
+        favoriteMovies: [{
+          title: "Happy Days",
+          movie_id: 12345,
+          overview: 'string string string'
+        }],
+        movieId: 12345,
+        userId: 2,
+        recentMovies: [
+          {
+            title: "Happy Days",
+            movie_id: 12345,
+            overview: 'string string string'
+          },
+          {
+            title: "Sad Days",
+            movie_id: 23456,
+            overview: 'string string string'
+          }
+        ],
+        deleteFavoriteMovie: jest.fn()
+      };
+
+      wrapper = shallow(<FeaturedMovie {...props} />);
+    });
+    
     it('should call setFeaturedMovie with the correct argument if on the favorites page', () => {
 
     });
