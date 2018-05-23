@@ -13,4 +13,19 @@ describe('Card', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  describe('mapStateToProps', () => {
+    it('should map recentMovies to props', () => {
+      const mockState = {
+        recentMovies: [{ title: 'Fight Club' }],
+        renderRecent: true,
+        selectedMovie: 12345,
+        userID: 13
+      };
+      const expected = { recentMovies: [{ title: 'Fight Club' }] };
+
+      const mappedProps = mapStateToProps(mockState);
+
+      expect(mappedProps).toEqual(expected);
+    });
+  });
 });
