@@ -23,8 +23,8 @@ export class Card extends Component {
         className={cardClass}
         onClick={this.clickHandler}
       >
-        <img src={img} />
-        <div>
+        <img src={img} className="thumbImg"/>
+        <div className="titleStars">
           <h3>{this.props.title}</h3>
           <div className="stars">
             <div>
