@@ -3,11 +3,11 @@ import { FeaturedMovie, mapStateToProps, mapDispatchToProps } from "./FeaturedMo
 import { shallow } from 'enzyme';
 
 
-describe('Card', () => {
+describe('FeaturedMovie', () => {
   let wrapper;
   let props;
 
-  beforeEach(() => {
+  beforeAll(() => {
     props = {
       favoriteMovies: [{
         title: "Happy Days",
@@ -33,24 +33,75 @@ describe('Card', () => {
   });
 
   it('should match the snapshot', () => {
-
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should instatiate with default state', () => {
+  it('should instantiate with default state', () => {
+    const result = wrapper.state();
+    const expected = {
+      promptLogin: false
+    };
+    expect(result).toEqual(expected);
+  });
 
-  })
-  describe('handleFavoriteClick', () => {
-    it('should call toggleStoreFavorites with the correct argument', () => {
+  describe('handleFavoriteClick', async () => {
+    let wrapper;
+    let props;
 
+    beforeAll(() => {
+      props = {
+        favoriteMovies: [{
+          title: "Happy Days",
+          movie_id: 12345,
+          overview: 'string string string'
+        }],
+        movieId: 12345,
+        recentMovies: [
+          {
+            title: "Happy Days",
+            movie_id: 12345,
+            overview: 'string string string'
+          },
+          {
+            title: "Sad Days",
+            movie_id: 23456,
+            overview: 'string string string'
+          }
+        ],
+        deleteFavoriteMovie: jest.fn()
+      };
+
+        
+      wrapper = shallow(<FeaturedMovie {...props} />);
+      wrapper.instance().toggleFeaturedMovie = jest.fn()
+      wrapper.instance().togglePromptLogin = jest.fn()
+      wrapper.instance().toggleStoreFavorite = jest.fn()
     });
 
-    it('should call toggleFeatureMove', () => {
-
+    it('should call toggleStoreFavorite with the correct argument', async () => {
+      //setup
+      const mockSelectedMovie = {
+        title: "Happy Days",
+        movie_id: 12345,
+        overview: 'string string string'
+      };
+      //execution
+      await wrapper.instance().handleFavoriteClick();
+      //assertion
+      const result = wrapper.instance().toggleStoreFavorite;
+      expect(result).toHaveBeenCalledWith(mockSelectedMovie);
     });
 
-    it('should call togglePromptLogin', () => {
+    it('should call toggleFeatureMove', async () => {
+      await wrapper.instance().handleFavoriteClick();
+      const result = wrapper.instance().toggleFeaturedMovie
+      expect(result).toHaveBeenCalled()
+    });
 
+    it.only('should call togglePromptLogin', async () => {
+      await wrapper.instance().handleFavoriteClick()
+      const result = wrapper.instance().togglePromptLogin
+      expect(result).toHaveBeenCalled()
     });
   });
 
@@ -129,10 +180,20 @@ describe('Card', () => {
   });
 
   describe('mapDispatchToProps', () => {
-    it('should map addFavoriteMovie, deleteFavoriteMovie, setFeaturedMove to props',
+    it('should call dispatch with the correct parameters on addFavoriteMovie',
       () => {
 
       });
+
+    it('should call dispatch with the correct parameters on deleteFavoriteMovie', () => {
+
+    });
+
+    it('should call dispatch with the correct parameters on setFeaturedMovie', () => {
+
+    });
+
+
   });
 
 
