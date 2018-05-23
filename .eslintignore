@@ -4,3 +4,4 @@ src/components/Login/Login.test.js
 **/*.css
 src/components/Header/Header.test.js
 src/components/FeaturedMovie/FeaturedMovie.test.js
+**/*.test.js
