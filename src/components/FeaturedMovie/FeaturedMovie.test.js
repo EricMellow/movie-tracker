@@ -204,7 +204,7 @@ describe('FeaturedMovie', () => {
       expect(result).toHaveBeenCalledWith(expected)
     });
 
-    it.only('should not call setFeaturedMovie if not on the favorites page', () => {
+    it('should not call setFeaturedMovie if not on the favorites page', () => {
       //setup
       props = {
         favoriteMovies: [{
@@ -242,12 +242,60 @@ describe('FeaturedMovie', () => {
   });
 
   describe('togglePromptLogin', () => {
-    it('should set the state promptLogin:true if the userId does not exist', () => {
+    let wrapper;
+    let props;
 
+    beforeAll(() => {
+      props = {
+        favoriteMovies: [{
+          title: "Happy Days",
+          movie_id: 12345,
+          overview: 'string string string'
+        }],
+        location: { pathname: '/favorites' },
+        movieId: 12345,
+        userId: null,
+        recentMovies: [
+          {
+            title: "Happy Days",
+            movie_id: 12345,
+            overview: 'string string string'
+          },
+          {
+            title: "Sad Days",
+            movie_id: 23456,
+            overview: 'string string string'
+          }
+        ],
+        deleteFavoriteMovie: jest.fn(),
+        setFeaturedMovie: jest.fn()
+      };
+      jest.useFakeTimers()
+      wrapper = shallow(<FeaturedMovie {...props} />);
+    });
+
+    it('should set the state promptLogin:true if the userId does not exist', () => {
+      //setup
+      wrapper.setState({ promptLogin: false })
+      //execution
+      wrapper.instance().togglePromptLogin()
+      //expectation
+      const result = wrapper.state()
+      const expected = {
+        promptLogin: true
+      }
+      expect(result).toEqual(expected)
     });
 
     it('should set the state with promptLogin: false within a setTimeout call ', () => {
+      wrapper.instance().togglePromptLogin()
 
+      expect(wrapper.state().promptLogin).toEqual(true)
+      
+      wrapper.update()
+      jest.runAllTimers()
+      
+      expect(wrapper.state().promptLogin).toEqual(false)
     });
   });
 
