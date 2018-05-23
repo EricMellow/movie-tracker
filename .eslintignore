@@ -1,1 +1,4 @@
 src/mockData.js
+src/registerServiceWorker.js
+src/components/Login/Login.test.js
+**/*.css

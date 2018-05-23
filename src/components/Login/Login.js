@@ -52,15 +52,15 @@ export class Login extends Component {
         }
       }
       );
-      
+
       this.storeNewUser();
     } else {
-      
+
       this.setState({
         emailMatch: false
       });
     }
-    
+
   }
 
   loginSubmitHandler = async (event) => {
@@ -85,7 +85,7 @@ export class Login extends Component {
         );
         const rawData = await response.json();
         const userData = rawData.data;
-        
+
         this.loadExistingUser();
       } catch (error) {
         this.setState({
@@ -195,8 +195,8 @@ export class Login extends Component {
               onChange={this.onChangeHandler}
               placeholder='Ex: testman@aol.com'
             />
-            
-              {this.state.emailMatch ? '' : <p className="loginError">Email has already been used</p>}
+
+            {this.state.emailMatch ? '' : <p className="loginError">Email has already been used</p>}
             <h3>Password</h3>
             <PasswordMask
               name='signUpPassword'
@@ -228,7 +228,7 @@ export class Login extends Component {
               onChange={this.onChangeHandler}
               placeholder='Password'
             />
-              {this.state.emailPasswordMatch ? '' : <p className="loginError">Email and Password do not match</p>}
+            {this.state.emailPasswordMatch ? '' : <p className="loginError">Email and Password do not match</p>}
             <button>Login</button>
           </form>
         </article>

@@ -1,15 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { RecentMovies, mapStateToProps } from '../RecentMovies/RecentMovies';
 import { shallow } from 'enzyme';
-import { mockRawData, mockCleanData } from '../../cleaners/mockData';
+import { mockCleanData } from '../../cleaners/mockData';
 
 
 describe('RecentMovies', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<RecentMovies recentMovies={mockCleanData}/>, { disableLifecycleMethods: true });
+    wrapper = shallow(<RecentMovies recentMovies={mockCleanData} />, { disableLifecycleMethods: true });
   });
 
   it('should match the snapshot', () => {

@@ -55,7 +55,7 @@ describe('Login', () => {
     let mockEvent;
 
     beforeEach(() => {
-      
+
       const mockStoreUserId = jest.fn();
       const history = createMemoryHistory('/');
       wrapper = shallow(<Login
@@ -74,7 +74,7 @@ describe('Login', () => {
         })
       }));
 
-      wrapper.instance().getUsers = jest.fn(()=>([{}]));
+      wrapper.instance().getUsers = jest.fn(() => ([{}]));
       wrapper.instance().validateEmail = jest.fn();
     });
 
@@ -87,7 +87,7 @@ describe('Login', () => {
         signUpEmail: 'test@email.com',
         signUpPassword: 'YTho1!'
       };
-      
+
       const expectedUrl = 'http://localhost:3000/api/users/new';
       const expectedOptionsObject = {
         method: 'POST',
@@ -107,16 +107,16 @@ describe('Login', () => {
       expect(window.fetch).toHaveBeenCalledWith(expectedUrl, expectedOptionsObject);
     });
 
-    it('should call storeNewUser', async ()=>{
+    it('should call storeNewUser', async () => {
       wrapper.instance().storeNewUser = jest.fn();
       const result = wrapper.instance().storeNewUser;
       await wrapper.instance().signUpSubmitHandler(mockEvent);
-      
+
       expect(result).toHaveBeenCalled();
     });
 
-    it('sets emailMatch to false in state if no match is found', async ()=>{
-      wrapper.instance().validateEmail = jest.fn().mockImplementation(()=>true);
+    it('sets emailMatch to false in state if no match is found', async () => {
+      wrapper.instance().validateEmail = jest.fn().mockImplementation(() => true);
       await wrapper.instance().signUpSubmitHandler(mockEvent);
 
       expect(wrapper.state('emailMatch')).toEqual(false);
@@ -133,7 +133,7 @@ describe('Login', () => {
       wrapper.instance().getUsers = jest.fn().mockImplementation(() => ({
         passwordEmailMatch: true
       }));
-      wrapper.instance().validateLogin = jest.fn().mockImplementation(() => ({})); 
+      wrapper.instance().validateLogin = jest.fn().mockImplementation(() => ({}));
       mockEvent = {
         preventDefault: jest.fn()
       };
@@ -173,27 +173,27 @@ describe('Login', () => {
       expect(window.fetch).toHaveBeenCalledWith(expectedUrl, expectedOptionsObject);
     });
 
-    it('should call loadExistingUser', async ()=>{
+    it('should call loadExistingUser', async () => {
       await wrapper.instance().loginSubmitHandler(mockEvent);
 
       expect(wrapper.instance().loadExistingUser).toHaveBeenCalled();
     });
 
-    it('should set state of emailPasswordMatch to false when fetch status is not ok', async ()=>{
+    it('should set state of emailPasswordMatch to false when fetch status is not ok', async () => {
       window.fetch = jest.fn().mockImplementation(() => Promise.reject(new Error('test error')));
 
       await wrapper.instance().loginSubmitHandler(mockEvent);
 
-      expect(wrapper.state().emailPasswordMatch).toEqual(false);    
+      expect(wrapper.state().emailPasswordMatch).toEqual(false);
     });
 
     it('should set state of emailPasswordMatch to true when the user is not valid', async () => {
-      wrapper.instance().validateLogin = jest.fn().mockImplementation(() => (null)); 
+      wrapper.instance().validateLogin = jest.fn().mockImplementation(() => (null));
 
       await wrapper.instance().loginSubmitHandler(mockEvent);
 
-      expect(wrapper.state().emailPasswordMatch).toEqual(false);    
-    })
+      expect(wrapper.state().emailPasswordMatch).toEqual(false);
+    });
   });
 
   describe('getUsers', () => {
@@ -237,14 +237,14 @@ describe('Login', () => {
   describe('getUserId', () => {
     let wrapper;
 
-    
-    beforeEach(()=>{
+
+    beforeEach(() => {
       wrapper = shallow(<Login />);
       wrapper.setState({
         signUpPassword: 'password',
         signUpEmail: 'test@test.com'
       });
-      window.fetch = jest.fn().mockImplementation(()=>Promise.resolve({json: ()=>Promise.resolve({data: {id: 2}})}));
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({ json: () => Promise.resolve({ data: { id: 2 } }) }));
     });
 
     it('should call fetch with the correct arguments', async () => {
@@ -262,7 +262,7 @@ describe('Login', () => {
       const expectedURL = 'http://localhost:3000/api/users/';
 
       expect(window.fetch).toHaveBeenCalledWith(expectedURL, expectedOptions);
-      
+
     });
 
     it('should return the correct user id', async () => {
@@ -275,8 +275,8 @@ describe('Login', () => {
   describe('storeNewUser', () => {
     it('should call storeUserId from props with the correct argument', async () => {
       const mockStoreUserId = jest.fn();
-      const wrapper = shallow(<Login storeUserId={mockStoreUserId}/>);
-      wrapper.instance().getUserId = jest.fn().mockImplementation(()=>3);
+      const wrapper = shallow(<Login storeUserId={mockStoreUserId} />);
+      wrapper.instance().getUserId = jest.fn().mockImplementation(() => 3);
       await wrapper.instance().storeNewUser();
       const result = wrapper.instance().props.storeUserId;
 
@@ -287,7 +287,7 @@ describe('Login', () => {
   describe('loadExistingUser', () => {
     let mockStoreUserId;
     let wrapper;
-    
+
     beforeEach(() => {
       mockStoreUserId = jest.fn();
       wrapper = shallow(<Login storeUserId={mockStoreUserId} />);
@@ -318,12 +318,12 @@ describe('Login', () => {
 
     beforeEach(() => {
       mockAddFavorites = jest.fn();
-      wrapper = shallow(<Login addFavorites={mockAddFavorites}/>);
+      wrapper = shallow(<Login addFavorites={mockAddFavorites} />);
       mockUserId = 3;
 
-      window.fetch = jest.fn().mockImplementation(()=>Promise.resolve({
-        json: ()=>Promise.resolve({
-          data: [{title: "Happy Days"}]
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        json: () => Promise.resolve({
+          data: [{ title: "Happy Days" }]
         })
       }));
     });
@@ -338,7 +338,7 @@ describe('Login', () => {
       expect(result).toHaveBeenCalledWith(expected);
     });
     it('should call addFavorites from props with the correct argument', async () => {
-      
+
       await wrapper.instance().getFavorites(mockUserId);
       const result = wrapper.instance().props.addFavorites;
       expect(result).toHaveBeenCalledWith([{ title: "Happy Days" }]);
@@ -350,11 +350,11 @@ describe('Login', () => {
       //setup
       const wrapper = shallow(<Login />);
       const mockUsers = [
-        {email: 'test@test.com'},
-        {email: 'poop@poop.com'}
+        { email: 'test@test.com' },
+        { email: 'poop@poop.com' }
       ];
 
-      wrapper.setState({ signUpEmail: 'test@test.com'});
+      wrapper.setState({ signUpEmail: 'test@test.com' });
       const result = wrapper.instance().validateEmail(mockUsers);
       const expected = { email: 'test@test.com' };
       expect(result).toEqual(expected);
@@ -366,11 +366,11 @@ describe('Login', () => {
       const wrapper = shallow(<Login />);
       const mockUser = { password: 'password' };
 
-      wrapper.setState({signUpPassword: 'password'});
+      wrapper.setState({ signUpPassword: 'password' });
       const result = wrapper.instance().validatePassword(mockUser);
       const expected = true;
       expect(result).toEqual(expected);
-    }); 
+    });
   });
 
   describe('validateLogin', () => {
@@ -378,11 +378,11 @@ describe('Login', () => {
       //setup
       const wrapper = shallow(<Login />);
       const mockUsers = [
-        { 
+        {
           email: 'test@test.com',
           password: 'password'
         },
-        { 
+        {
           email: 'poop@poop.com',
           password: 'poop'
         }
@@ -397,12 +397,12 @@ describe('Login', () => {
       const result = wrapper.instance().validateLogin(mockUsers);
       //expectation
       const expected = true;
-      
+
       expect(result).toEqual(expected);
     });
   });
 
-  describe('mapDispatchToProps', ()=> {
+  describe('mapDispatchToProps', () => {
 
     it('should call dispatch with the correct params on storeUserId', () => {
       const mockDispatch = jest.fn();
@@ -411,9 +411,9 @@ describe('Login', () => {
         type: 'SET_USER_ID',
         userId: 6
       };
-      
+
       mappedProps.storeUserId(6);
-  
+
       expect(mockDispatch).toHaveBeenCalledWith(mockAction);
     });
 
@@ -422,11 +422,11 @@ describe('Login', () => {
       const mappedProps = mapDispatchToProps(mockDispatch);
       const mockAction = {
         type: 'ADD_STORED_FAVORITES',
-        favoriteMovies: [{title: 'Boondock Saints'}]
+        favoriteMovies: [{ title: 'Boondock Saints' }]
       };
-      
-      mappedProps.addFavorites([{title: 'Boondock Saints'}]);
-  
+
+      mappedProps.addFavorites([{ title: 'Boondock Saints' }]);
+
       expect(mockDispatch).toHaveBeenCalledWith(mockAction);
     });
   });
@@ -435,14 +435,14 @@ describe('Login', () => {
     it('should map userId to props', () => {
       const state = {
         userId: 3,
-        favoriteMovies: [{title: 'Happy Days'}]
+        favoriteMovies: [{ title: 'Happy Days' }]
       };
       const expected = {
         userId: 3
       };
       const mappedProps = mapStateToProps(state);
-      
+
       expect(mappedProps).toEqual(expected);
-    }); 
+    });
   });
 });

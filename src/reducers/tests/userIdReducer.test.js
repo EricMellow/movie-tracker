@@ -10,7 +10,7 @@ describe('userIdReducer', () => {
     };
 
     const result = userIdReducer(initialState, mockAction);
-    
+
     const expected = 12345;
 
     expect(result).toEqual(expected);
@@ -31,7 +31,7 @@ describe('userIdReducer', () => {
     const initialState = null;
     const mockAction = {
       type: 'YTHOU',
-      recentMovieData: [{title: 'Space Jam'}]
+      recentMovieData: [{ title: 'Space Jam' }]
     };
 
     const result = userIdReducer(initialState, mockAction);

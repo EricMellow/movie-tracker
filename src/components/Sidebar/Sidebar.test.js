@@ -9,9 +9,9 @@ describe('Card', () => {
   let mockFavoriteMovies;
 
   beforeEach(() => {
-    mockLocation = {pathname: '/'}
-    mockRecentMovies = [{title: 'It Takes Two', movie_id: 344911}, {title: 'Step Brothers', movie_id: 324982}];
-    mockFavoriteMovies = [{title: 'Step Brothers', movie_id: 324982}];
+    mockLocation = { pathname: '/' };
+    mockRecentMovies = [{ title: 'It Takes Two', movie_id: 344911 }, { title: 'Step Brothers', movie_id: 324982 }];
+    mockFavoriteMovies = [{ title: 'Step Brothers', movie_id: 324982 }];
 
     wrapper = shallow(<Sidebar location={mockLocation} renderRecent={true} recentMovies={mockRecentMovies} />);
   });
@@ -21,8 +21,8 @@ describe('Card', () => {
   });
 
   it('should match the snapshot if renderRecent is false', () => {
-    mockLocation = {pathname: '/Favorite Movies'}
-    
+    mockLocation = { pathname: '/Favorite Movies' };
+
     wrapper = shallow(<Sidebar location={mockLocation} renderRecent={false} favoriteMovies={mockFavoriteMovies} recentMovies={mockRecentMovies} />);
 
     expect(wrapper).toMatchSnapshot();
