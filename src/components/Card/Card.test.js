@@ -9,7 +9,7 @@ describe('Card', () => {
   beforeEach(() => {
     mockStoreSelectedMovieId = jest.fn();
 
-    wrapper = shallow(<Card storeSelectedMovieId={mockStoreSelectedMovieId} /> );
+    wrapper = shallow(<Card storeSelectedMovieId={mockStoreSelectedMovieId} />);
   });
 
   it('should match the snapshot', () => {
@@ -21,8 +21,8 @@ describe('Card', () => {
       wrapper.instance().clickHandler();
 
       expect(wrapper.instance().props.storeSelectedMovieId).toHaveBeenCalled();
-    })
-  })
+    });
+  });
 
   describe('mapDispatchToProps', () => {
     it('should call dispatch with the correct params on storeSelectedMovieId', () => {
@@ -32,9 +32,9 @@ describe('Card', () => {
         type: 'SET_SELECTED_MOVIE_ID',
         movieId: 182935
       };
-      
+
       mappedProps.storeSelectedMovieId(182935);
-  
+
       expect(mockDispatch).toHaveBeenCalledWith(mockAction);
     });
   });
@@ -48,7 +48,7 @@ describe('Card', () => {
         selectedMovieId: 12345
       };
       const mappedProps = mapStateToProps(state);
-      
+
       expect(mappedProps).toEqual(expected);
     });
   });
