@@ -16,11 +16,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 clone down this repo https://github.com/turingschool-examples/movie-tracker
 
-cd into the file and
-
-```
-npm install
-```
 Installation:
 Head over to Postres.app to download and install PostgreSQL
 When you click initialize, you should now be able to see that postgreSQL is running
@@ -29,22 +24,30 @@ You will need to close your terminal window and re-open it for the changes to ta
 Creating our database
 Make sure you are in you movie-tracker project folder
 From the command line, run the following command to create a users database psql -f ./database/users.sql
-When you start up the server (npm install and npm start), you should now be able to visit localhost:3000/api/users and see the database with a single user (Taylor)
+In order to start up the server: 
+
+```
+npm install
+npm start
+```
+
+You should now be able to visit localhost:3000/api/users and see the database with a single user (Taylor)
 Press CMD-T to create a new tab in your terminal
 Type psql. This will get you into the interactive postgres terminal. From here you can run postgres and sql commands. You might get an error psql: FATAL: database "username" does not exist To resolve this error type createdb 'somthing does not exist'
 
-In Google Chrom install the [Moesif Origin & CORS Changer](https://chrome.google.com/webstore/detail/moesif-origin-cors-change/digfbfaphojjndkpccljibejjbppifbc?hl=en
+In Google Chrome install the [Moesif Origin & CORS Changer](https://chrome.google.com/webstore/detail/moesif-origin-cors-change/digfbfaphojjndkpccljibejjbppifbc?hl=en
 ) from the Chrome Web Store.
 
 ### Installing
 
-Clone this repo.  https://github.com/mcnamara14/movie-tracker/edit/master/
+Clone this repo.  https://github.com/mcnamara14/movie-tracker
 
 cd into the folder.
 
 ```
 npm install
-```
+npm start
+``` 
 
 ## Built With
 
