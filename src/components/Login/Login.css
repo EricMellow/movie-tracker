@@ -115,3 +115,39 @@
   color: #ffba00;
   box-shadow: inset 1px 1px 1px #000;
 }
+
+@media only screen and (max-width: 800px) {
+  .signUp, .login {
+    width: 100%;
+    display: inline-block;
+    float: none;
+  }
+
+  .signUpForms {
+    display: block;
+    text-align: center;
+  }
+
+  h3 {
+    width: 100%;
+  }
+
+  .signUpForms input::placeholder {
+    text-align: center;
+  }
+
+  .signUp button, .login button {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .formDivider {
+    margin: 40px 0;
+    flex-direction: row;
+  }
+
+  .formDivider div {
+    width: 40%;
+    height: 1px;
+  }
+}

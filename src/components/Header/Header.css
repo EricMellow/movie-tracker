@@ -40,3 +40,28 @@ nav {
   color: #ffba00;
   box-shadow: inset 1px 1px 1px #000;
 }
+
+@media only screen and (max-width: 800px) {
+.header {
+  flex-direction: column;
+  height: 100px;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+nav {
+  width: 100%;
+  margin-top: 45px;
+  justify-content: center;
+  display: flex;
+  position: relative;
+}
+
+.logo {
+  height: 50px;
+  width: 270px;
+  margin-top: 60px;
+  margin: 0 auto;
+}
+
+}
