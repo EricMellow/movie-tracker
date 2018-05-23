@@ -179,12 +179,21 @@ describe('Login', () => {
       expect(wrapper.instance().loadExistingUser).toHaveBeenCalled();
     });
 
-    it('should set the state of emailPasswordMatch to false if ther is no match', async ()=>{
-      wrapper.instance().validateLogin = jest.fn().mockImplementation(() => (false)); 
+    it('should set state of emailPasswordMatch to false when fetch status is not ok', async ()=>{
+      window.fetch = jest.fn().mockImplementation(() => Promise.reject(new Error('test error')));
+
       await wrapper.instance().loginSubmitHandler(mockEvent);
-      
-      expect(wrapper.state('emailPasswordMatch')).toEqual(false);
+
+      expect(wrapper.state().emailPasswordMatch).toEqual(false);    
     });
+
+    it('should set state of emailPasswordMatch to true when the user is not valid', async () => {
+      wrapper.instance().validateLogin = jest.fn().mockImplementation(() => (null)); 
+
+      await wrapper.instance().loginSubmitHandler(mockEvent);
+
+      expect(wrapper.state().emailPasswordMatch).toEqual(false);    
+    })
   });
 
   describe('getUsers', () => {
@@ -378,11 +387,6 @@ describe('Login', () => {
           password: 'poop'
         }
       ];
-      // wrapper.instance().validateEmail = jest.fn().mockImplementation(() => ({
-      //   email: 'test@test.com',
-      //   password: 'password'
-      // }));
-      // wrapper.instance().validatePassword = jest.fn().mockImplementation(() => true);
 
       wrapper.setState({
         signUpEmail: 'test@test.com',
@@ -409,6 +413,19 @@ describe('Login', () => {
       };
       
       mappedProps.storeUserId(6);
+  
+      expect(mockDispatch).toHaveBeenCalledWith(mockAction);
+    });
+
+    it('should call dispatch with the correct params on addFavorites', () => {
+      const mockDispatch = jest.fn();
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      const mockAction = {
+        type: 'ADD_STORED_FAVORITES',
+        favoriteMovies: [{title: 'Boondock Saints'}]
+      };
+      
+      mappedProps.addFavorites([{title: 'Boondock Saints'}]);
   
       expect(mockDispatch).toHaveBeenCalledWith(mockAction);
     });
