@@ -147,7 +147,7 @@ describe('FeaturedMovie', () => {
       expect(result).toHaveBeenCalledWith(mockSelectedMovie);
     });
 
-    it.only('should call addFavorite with the correct argument if isAFavorite is false', async () => {
+    it('should call addFavorite with the correct argument if isAFavorite is false', async () => {
       const mockSelectedMovie = {
         title: "Happy Days",
         movie_id: 12345,
@@ -173,6 +173,7 @@ describe('FeaturedMovie', () => {
           movie_id: 12345,
           overview: 'string string string'
         }],
+        location:{pathname: '/favorites'},
         movieId: 12345,
         userId: 2,
         recentMovies: [
@@ -187,18 +188,56 @@ describe('FeaturedMovie', () => {
             overview: 'string string string'
           }
         ],
-        deleteFavoriteMovie: jest.fn()
+        deleteFavoriteMovie: jest.fn(),
+        setFeaturedMovie: jest.fn()
       };
 
       wrapper = shallow(<FeaturedMovie {...props} />);
     });
-    
-    it('should call setFeaturedMovie with the correct argument if on the favorites page', () => {
 
+    it('should call setFeaturedMovie with the correct argument if on the favorites page', () => {
+      //execttion
+      wrapper.instance().toggleFeaturedMovie()
+      //expectation
+      const result = wrapper.instance().props.setFeaturedMovie
+      const expected = wrapper.instance().props.favoriteMovies[0].movie_id
+      expect(result).toHaveBeenCalledWith(expected)
     });
 
-    it('should not call setFeaturedMovie if not on the favorites page', () => {
+    it.only('should not call setFeaturedMovie if not on the favorites page', () => {
+      //setup
+      props = {
+        favoriteMovies: [{
+          title: "Happy Days",
+          movie_id: 12345,
+          overview: 'string string string'
+        }],
+        location: { pathname: '/' },
+        movieId: 12345,
+        userId: 2,
+        recentMovies: [
+          {
+            title: "Happy Days",
+            movie_id: 12345,
+            overview: 'string string string'
+          },
+          {
+            title: "Sad Days",
+            movie_id: 23456,
+            overview: 'string string string'
+          }
+        ],
+        deleteFavoriteMovie: jest.fn(),
+        setFeaturedMovie: jest.fn()
+      };
 
+      wrapper = shallow(<FeaturedMovie {...props} />);
+      //execttion
+      wrapper.instance().toggleFeaturedMovie()
+      //expectation
+      const result = wrapper.instance().props.setFeaturedMovie
+      const expected = wrapper.instance().props.favoriteMovies[0].movie_id
+      expect(result).not.toHaveBeenCalled()
     });
   });
 
