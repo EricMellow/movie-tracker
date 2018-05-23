@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Header } from '../Header/Header';
+import { Header, mapDispatchToProps } from '../Header/Header';
 import { shallow } from 'enzyme';
 import { createMemoryHistory } from 'history'
 
@@ -45,7 +45,6 @@ describe('Header', () => {
     });
 
     it('should call setRecentFeaturedMovie if user is signed in', () => {
-      // const result = wrapper.instance().setRecentFeaturedMovie;
       wrapper.instance().setRecentFeaturedMovie = jest.fn();
       wrapper.instance().handleLoginLogoutClick();
 
@@ -229,6 +228,45 @@ describe('Header', () => {
       wrapper.instance().setRecentFeaturedMovie();
 
       expect(result).toHaveBeenCalledWith(expected);
+    });
+  });
+
+  describe('mapDispatchToProps', () => {
+    it('should call dispatch with the correct params on toggleRender', () => {
+      const mockDispatch = jest.fn();
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      const mockAction = {
+        type: 'TOGGLE_RENDER_RECENT',
+        toggle: false
+      };
+      
+      mappedProps.toggleRender(false);
+  
+      expect(mockDispatch).toHaveBeenCalledWith(mockAction);
+    });
+
+    it('should call dispatch on Logout', () => {
+      const mockDispatch = jest.fn();
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      const mockAction = {
+        type: 'LOGOUT'
+      };
+      
+      mappedProps.logout();
+  
+      expect(mockDispatch).toHaveBeenCalled();
+    });
+
+    it('should call dispatch on setFeaturedMovie', () => {
+      const mockDispatch = jest.fn();
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      const mockAction = {
+        type: 'SET_FEATURED_MOVIE'
+      };
+      
+      mappedProps.setFeaturedMovie();
+  
+      expect(mockDispatch).toHaveBeenCalled();
     });
   });
 });

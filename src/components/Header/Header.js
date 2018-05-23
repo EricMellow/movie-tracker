@@ -97,13 +97,13 @@ export class Header extends Component {
   }
 };
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   toggleRender: (bool) => dispatch(toggleRenderRecent(bool)),
   logout: () => dispatch(logout()),
   setFeaturedMovie: (id) => dispatch(setSelectedMovieId(id))
 });
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   userId: state.userId,
   favoriteMovies: state.favoriteMovies,
   selectedMovieId: state.selectedMovieId,
