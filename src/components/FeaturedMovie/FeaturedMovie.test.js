@@ -446,27 +446,27 @@ describe('FeaturedMovie', () => {
     });
 
     it('should call addFavoriteMovie with the correct argument', () => {
-      wrapper.instance().addFavoriteToDatabase = jest.fn()
+      wrapper.instance().addFavoriteToDatabase = jest.fn();
       const mockSelectedMovie = {
         title: "Happy Days",
         movie_id: 12345,
         overview: 'string string string'
       };
-      wrapper.instance().addFavorite(mockSelectedMovie)
+      wrapper.instance().addFavorite(mockSelectedMovie);
       const result = wrapper.instance().props.addFavoriteMovie;
-      expect(result).toHaveBeenCalledWith(mockSelectedMovie)
+      expect(result).toHaveBeenCalledWith(mockSelectedMovie);
     });
 
     it('should call addFavoriteToDatabase with the correct argument', () => {
-      wrapper.instance().addFavoriteToDatabase = jest.fn()
+      wrapper.instance().addFavoriteToDatabase = jest.fn();
       const mockSelectedMovie = {
         title: "Happy Days",
         movie_id: 12345,
         overview: 'string string string'
       };
-      wrapper.instance().addFavorite(mockSelectedMovie)
+      wrapper.instance().addFavorite(mockSelectedMovie);
       const result = wrapper.instance().addFavoriteToDatabase;
-      expect(result).toHaveBeenCalledWith(mockSelectedMovie)
+      expect(result).toHaveBeenCalledWith(mockSelectedMovie);
     });
   });
 
@@ -514,10 +514,10 @@ describe('FeaturedMovie', () => {
         release_date: 'releasedate',
         vote_average: 2.4,
         overview: 'string string string'
-      }
-      window.fetch = jest.fn().mockImplementation(()=>Promise.resolve({}))
+      };
+      window.fetch = jest.fn().mockImplementation(()=>Promise.resolve({}));
       // execution
-      await wrapper.instance().addFavoriteToDatabase(mockSelectedMovie)
+      await wrapper.instance().addFavoriteToDatabase(mockSelectedMovie);
       // expectation
       const expectedUrl = 'http://localhost:3000/api/users/favorites/new';
       const expectedOptionsObj = {
@@ -534,20 +534,71 @@ describe('FeaturedMovie', () => {
           vote_average: mockSelectedMovie.vote_average,
           overview: mockSelectedMovie.overview
         })
-      }
-      expect(window.fetch).toHaveBeenCalledWith(expectedUrl, expectedOptionsObj )
+      };
+      expect(window.fetch).toHaveBeenCalledWith(expectedUrl, expectedOptionsObj );
     });
   });
 
   describe('deleteFavoriteFromDatabase', () => {
-    it('should call fetch with the correct arguments', () => {
+    let wrapper;
+    let props;
 
+    beforeAll(() => {
+      props = {
+        favoriteMovies: [{
+          title: "Happy Days",
+          movie_id: 12345,
+          overview: 'string string string'
+        }],
+        location: { pathname: '/favorites' },
+        movieId: 12345,
+        userId: 2,
+        recentMovies: [
+          {
+            title: "Happy Days",
+            movie_id: 12345,
+            overview: 'string string string'
+          },
+          {
+            title: "Sad Days",
+            movie_id: 23456,
+            overview: 'string string string'
+          }
+        ],
+        deleteFavoriteMovie: jest.fn(),
+        setFeaturedMovie: jest.fn(),
+        addFavoriteMovie: jest.fn()
+      };
+      jest.useFakeTimers();
+      wrapper = shallow(<FeaturedMovie {...props} />);
+    });
+
+    it('should call fetch with the correct arguments', async () => {
+      // setup
+      const mockSelectedMovie = {
+        movie_id: 12345,
+        // user_id: this.props.userId,
+        title: 'Happy Days',
+        poster_path: 'posterpath',
+        release_date: 'releasedate',
+        vote_average: 2.4,
+        overview: 'string string string'
+      };
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({}));
+      // execution
+      await wrapper.instance().deleteFavoriteFromDatabase(mockSelectedMovie);
+      // expectation
+      const expectedUrl = `http://localhost:3000/api/users/${wrapper.instance().props.userId}/favorites/${mockSelectedMovie.movie_id}`;
+      const expectedOptionsObj = {
+        method: 'DELETE'
+      };
+      expect(window.fetch).toHaveBeenCalledWith(expectedUrl, expectedOptionsObj);
     });
   });
 
   describe('mapStateToProps', () => {
     it('should map recentMovies, movieId, userId, favoriteMovies to props', () => {
-
+      expect
     });
   });
 
