@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import './Card.css';
 import { connect } from 'react-redux';
 import { setSelectedMovieId } from '../../actions/index';
+import PropTypes from 'prop-types';
 
 export class Card extends Component {
   constructor(props) {
@@ -39,6 +40,14 @@ export class Card extends Component {
       </div>
     );
   }
+};
+
+Card.propTypes = {
+  storeSelectedMovieId: PropTypes.func,
+  title: PropTypes.string,
+  id: PropTypes.number,
+  rating: PropTypes.number,
+  selectedMovieId: PropTypes.number
 };
 
 export const mapStateToProps = (state)=>({

@@ -3,6 +3,7 @@ import './Header.css';
 import { NavLink, withRouter, Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import { toggleRenderRecent, logout, setSelectedMovieId } from "../../actions/index";
+import PropTypes from 'prop-types';
 
 export class Header extends Component {
   constructor() {
@@ -95,6 +96,17 @@ export class Header extends Component {
       </div>
     );
   }
+};
+
+Header.propTypes = {
+  toggleRender: PropTypes.func, 
+  logout: PropTypes.func,
+  setFeaturedMovie: PropTypes.func,
+  userId: PropTypes.number,
+  favoriteMovies: PropTypes.array,
+  selectedMovieId: PropTypes.number,
+  recentMovies: PropTypes.array,
+  history: PropTypes.object
 };
 
 export const mapDispatchToProps = (dispatch) => ({

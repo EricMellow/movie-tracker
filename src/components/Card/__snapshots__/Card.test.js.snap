@@ -21,9 +21,12 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <img
+          className="thumbImg"
           src="https://image.tmdb.org/t/p/w500/undefined"
 />,
-        <div>
+        <div
+          className="titleStars"
+>
           <h3 />
           <div
                     className="stars"
@@ -61,6 +64,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
+          "className": "thumbImg",
           "src": "https://image.tmdb.org/t/p/w500/undefined",
         },
         "ref": null,
@@ -96,6 +100,7 @@ ShallowWrapper {
               </div>
 </div>,
           ],
+          "className": "titleStars",
         },
         "ref": null,
         "rendered": Array [
@@ -216,9 +221,12 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <img
+            className="thumbImg"
             src="https://image.tmdb.org/t/p/w500/undefined"
 />,
-          <div>
+          <div
+            className="titleStars"
+>
             <h3 />
             <div
                         className="stars"
@@ -256,6 +264,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
+            "className": "thumbImg",
             "src": "https://image.tmdb.org/t/p/w500/undefined",
           },
           "ref": null,
@@ -291,6 +300,7 @@ ShallowWrapper {
                 </div>
 </div>,
             ],
+            "className": "titleStars",
           },
           "ref": null,
           "rendered": Array [
