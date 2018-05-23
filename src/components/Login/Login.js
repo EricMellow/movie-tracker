@@ -28,6 +28,7 @@ export class Login extends Component {
 
   onChangeHandler = (event) => {
     const { name, value } = event.target;
+
     this.setState({
       [name]: value
     });
@@ -68,14 +69,16 @@ export class Login extends Component {
 
     const users = await this.getUsers();
     const validUser = await this.validateLogin(users);
+    const lowerCaseEmail = this.state.loginEmail.toLowerCase();
 
     if (validUser) {
+      console.log('workingg')
       const url = 'http://localhost:3000/api/users/';
       try {
         const response = await fetch(url, {
           method: 'POST',
           body: JSON.stringify({
-            email: this.state.loginEmail,
+            email: lowerCaseEmail,
             password: this.state.loginPassword
           }),
           headers: {
@@ -113,11 +116,12 @@ export class Login extends Component {
     const email = this.state.signUpEmail ? this.state.signUpEmail : this.state.loginEmail;
     const password = this.state.signUpPassword ? this.state.signUpPassword : this.state.loginPassword;
     const url = 'http://localhost:3000/api/users/';
+    const lowerCaseEmail = email.toLowerCase();
 
     const response = await fetch(url, {
       method: 'POST',
       body: JSON.stringify({
-        email,
+        email: lowerCaseEmail,
         password
       }),
       headers: {
@@ -152,7 +156,10 @@ export class Login extends Component {
   }
 
   validateEmail = (users) => {
-    return users.find(user => user.email === (this.state.signUpEmail || this.state.loginEmail));
+    const lowerCaseSignUpEmail = this.state.signUpEmail.toLowerCase();
+    const lowerCaseLoginEmail = this.state.loginEmail.toLowerCase();
+
+    return users.find(user => user.email === ( lowerCaseSignUpEmail || lowerCaseLoginEmail ));
   }
 
   validatePassword = (user) => {
