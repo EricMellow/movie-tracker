@@ -47,7 +47,8 @@ Card.propTypes = {
   title: PropTypes.string,
   id: PropTypes.number,
   rating: PropTypes.number,
-  selectedMovieId: PropTypes.number
+  selectedMovieId: PropTypes.number,
+  backdrop: PropTypes.string
 };
 
 export const mapStateToProps = (state)=>({

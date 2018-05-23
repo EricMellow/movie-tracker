@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { setUserId, addStoredFavorites } from "../../actions/index.js";
 import PasswordMask from 'react-password-mask';
 import './Login.css';
-
+import PropTypes from 'prop-types';
 
 export class Login extends Component {
   constructor(props) {
@@ -237,6 +237,13 @@ export class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  storeUserId: PropTypes.func, 
+  addFavorites: PropTypes.func,
+  userId: PropTypes.number,
+  history: PropTypes.object
+};
 
 export const mapDispatchToProps = (dispatch) => ({
   storeUserId: (userId) => dispatch(setUserId(userId)),

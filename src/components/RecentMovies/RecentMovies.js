@@ -3,6 +3,7 @@ import './RecentMovies.css';
 import { connect } from 'react-redux';
 import Sidebar from '../Sidebar/Sidebar';
 import FeaturedMovie from '../FeaturedMovie/FeaturedMovie';
+import PropTypes from 'prop-types';
 
 export class RecentMovies extends Component {
   render() {
@@ -14,6 +15,11 @@ export class RecentMovies extends Component {
     );
   }
 }
+
+RecentMovies.propTypes = {
+  recentMovies: PropTypes.array
+};
+
 
 export const mapStateToProps = (state) => ({
   recentMovies: state.recentMovies
