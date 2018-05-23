@@ -41,13 +41,12 @@ export class Card extends Component {
   }
 };
 
-const mapStateToProps = (state)=>({
+export const mapStateToProps = (state)=>({
   selectedMovieId: state.selectedMovieId
 });
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   storeSelectedMovieId: (id) => dispatch(setSelectedMovieId(id))
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Card);
