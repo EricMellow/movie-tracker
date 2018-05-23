@@ -1,33 +1,33 @@
 .featuredMovie {
-  width: 67%;
-  height: 385px;
   background-size: cover;
+  border-radius: 5px;
+  height: 385px;
   position: relative;
   text-align: left;
-  border-radius: 5px;
+  width: 67%;
 }
 
 .favoriteButton {
-  width: 115px;
-  height: 60px;
-  border-radius: 0 0 5px 5px;
-  background-color: #171717;
-  position: absolute;
-  top: 0;
-  right: 30px;
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  background-color: #171717;
+  border-radius: 0 0 5px 5px;
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+  padding: 0 20px;
+  position: absolute;
+  right: 30px;
+  top: 0;
+  width: 115px;
 }
 
 .faveIcon {
-  width: 27px;
-  height: 27px;
-  display: inline-block;
-  background-size: cover;
-  background-repeat: no-repeat;
   background-image: url('./favorite-icon-inactive.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  height: 27px;
+  width: 27px;
 }
 
 .favorite .faveIcon {
@@ -35,9 +35,9 @@
 }
 
 .favoriteButton p {
+    font-size: 0.95rem;
     margin: 0;
     width: 75px;
-    font-size: 0.95rem;
 }
 
 .favoriteButton:hover {
@@ -45,44 +45,44 @@
 }
 
 .movieOverview h2 {
-  text-transform: uppercase;
   margin-top: 0;
+  text-transform: uppercase;
 }
 
 .movieOverview {
-  font-size: .8rem;
-  width: 270px;
-  height: 95px;
-  border-radius: 5px 5px 0 0;
   background-color: #171717;
-  position: absolute;
+  border-radius: 5px 5px 0 0;
   bottom: 0;
+  font-size: .8rem;
+  height: 95px;
   left: 45px;
   padding: 15px;
+  position: absolute;
+  width: 270px;
 }
 
 .movieOverview p {
-  font-size: .75rem;
-  line-height: 1rem;
-  height: 58px;
   color: #ccc;
+  display: block;
+  font-size: .75rem;
+  height: 58px;
+  line-height: 1rem;
   margin-top: 0px;
   overflow: hidden;
-  display: block;
   text-overflow: ellipsis;
 }
 
 .loginRequest {
-  width: auto;
   background: #333;
-  padding: 15px 20px 15px 20px;
-  display: inline-block;
   border-radius: 5px 5px 0 0;
-  position: absolute;
-  top: -50px;
-  right: 30px;
-  color: #ffba00;
   box-shadow: inset 1px 1px 1px #000;
+  color: #ffba00;
+  display: inline-block;
+  padding: 15px 20px 15px 20px;
+  position: absolute;
+  right: 30px;
+  top: -50px;
+  width: auto;
 }
 
 .movieOverview h2 {
@@ -90,32 +90,32 @@
 }
 
 .noFavorites {
-  width: auto;
+  align-content: center;
   background: #111;
-  padding: 15px 20px 15px 20px;
-  display: inline-block;
   border-radius: 5px 5px 0 0;
-  position: absolute;
-  top: -50px;
-  right: 0;
-  color: #ffba00;
-  box-shadow: inset 1px 1px 1px #000;
-  position: relative;
-  margin-top: 95px;
-  height: 30px;
-  padding-top: 25px;
   border-radius: 5px;
+  box-shadow: inset 1px 1px 1px #000;
+  color: #ffba00;
   display: -ms-flexbox;
   display: flex;
-  align-content: center;
+  display: inline-block;
+  height: 30px;
+  margin-top: 95px;
+  padding-top: 25px;
+  padding: 15px 20px 15px 20px;
+  position: absolute;
+  position: relative;
+  right: 0;
+  top: -50px;
+  width: auto;
 }
 
 @media only screen and (max-width: 650px) {
   .loginRequest {
-    top: -44px;
     font-size: 0.7rem;
-    right: 0;
     padding-left: 27px;
+    right: 0;
+    top: -44px;
   }
 
   .header a {
@@ -127,19 +127,19 @@
   }
 
   .noFavorites {
-    width: 51%;
     font-size: 0.85rem;
     line-height: 1.6rem;
     padding: 15px 20px 37px 20px;
     top: -51px;
+    width: 51%;
   }
 }
 
 @media only screen and (max-width: 600px) {
   .movieOverview {
     font-size: .6rem;
-    width: 76%;
     left: 7%;
+    width: 76%;
   }
 
   .movieOverview p {
@@ -147,8 +147,8 @@
   }
 
   .favoriteButton {
-    width: 46%;
     right: 18%;
+    width: 46%;
   }
 
   .movieOverview p {

@@ -91,7 +91,7 @@ export class Header extends Component {
             null
           }
           <NavLink
-            to='/'
+            exact to='/'
             className="navLink"
             onClick={this.handleRecentsClick}
           >Recent Movies</NavLink>

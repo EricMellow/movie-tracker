@@ -1,5 +1,5 @@
 .recentMovies {
-  height: 500px;
   display: flex;
+  height: 500px;
   justify-content: space-between;
 }
