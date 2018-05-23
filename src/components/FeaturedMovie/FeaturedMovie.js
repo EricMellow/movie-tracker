@@ -3,6 +3,7 @@ import './FeaturedMovie.css';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import { addFavoriteMovie, deleteFavoriteMovie, setSelectedMovieId } from '../../actions/index';
+import PropTypes from 'prop-types';
 
 export class FeaturedMovie extends Component {
   constructor() {
@@ -137,11 +138,26 @@ export class FeaturedMovie extends Component {
   }
 }
 
+FeaturedMovie.propTypes = {
+  recentMovies: PropTypes.array,
+  movieId: PropTypes.number,
+  userId: PropTypes.number,
+  rating: PropTypes.number,
+  favoriteMovies: PropTypes.array,
+  addFavoriteMovie: PropTypes.func,
+  deleteFavoriteMovie: PropTypes.func,
+  setFeaturedMovie: PropTypes.func,
+  location: PropTypes.object
+};
+
 export const mapStateToProps = (state) => ({
   recentMovies: state.recentMovies,
   movieId: state.selectedMovieId,
   userId: state.userId,
-  favoriteMovies: state.favoriteMovies
+  favoriteMovies: state.favoriteMovies,
+  addFavoriteMovie: PropTypes.func,
+  deleteFavoriteMovie: PropTypes.func,
+  setFeaturedMovie: PropTypes.func
 });
 
 export const mapDispatchToProps = (dispatch) => ({

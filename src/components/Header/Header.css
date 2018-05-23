@@ -62,6 +62,14 @@ nav {
   width: 270px;
   margin-top: 60px;
   margin: 0 auto;
+  }
 }
 
+@media only screen and (max-width: 650px) {
+  .favoritesError {
+    top: 41px;
+    font-size: 0.7rem;
+    right: 0;
+    padding-left: 27px;
+  }
 }

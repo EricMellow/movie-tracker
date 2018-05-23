@@ -9,6 +9,7 @@ import FavoriteMovies from '../FavoriteMovies/FavoriteMovies';
 import RecentMovies from '../RecentMovies/RecentMovies';
 import { addRecentMovies } from '../../actions/index';
 import Login from '../Login/Login';
+import PropTypes from 'prop-types';
 
 export class App extends Component {
 
@@ -53,6 +54,10 @@ export class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  setRecentMovies: PropTypes.func
+};
 
 export const mapDispatchToProps = (dispatch) => ({
   setRecentMovies: (recentMovieData) => dispatch(addRecentMovies(recentMovieData))
