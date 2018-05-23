@@ -109,3 +109,49 @@
   display: flex;
   align-content: center;
 }
+
+@media only screen and (max-width: 650px) {
+  .loginRequest {
+    top: -44px;
+    font-size: 0.7rem;
+    right: 0;
+    padding-left: 27px;
+  }
+
+  .header a {
+    margin: 0;
+  }
+
+  nav {
+    justify-content: space-around;
+  }
+
+  .noFavorites {
+    width: 51%;
+    font-size: 0.85rem;
+    line-height: 1.6rem;
+    padding: 15px 20px 37px 20px;
+    top: -51px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .movieOverview {
+    font-size: .6rem;
+    width: 76%;
+    left: 7%;
+  }
+
+  .movieOverview p {
+    font-size: .65rem;
+  }
+
+  .favoriteButton {
+    width: 46%;
+    right: 18%;
+  }
+
+  .movieOverview p {
+    height: 62px;
+  }
+}

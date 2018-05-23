@@ -107,9 +107,16 @@ h3 {
 }
 
 @media only screen and (max-width: 1200px) {
+  img.thumbImg {
+    height: 80%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
   .movieCard {
     flex-direction: column;
-    height: 155px;
+    height: 195px;
+    width: 94%;
   }
 
   img.thumbImg {
@@ -127,5 +134,37 @@ h3 {
 
   .movieCard div {
     text-align: center;
+  }
+
+  .stars {
+    margin: 0 auto;
+    float: none;
+    width: 80px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+img.thumbImg {
+  height: 40%;
+}
+
+.movieCard {
+  width: 88%;
+}
+}
+
+@media only screen and (max-width: 600px) {
+  .movieCard {
+    width: 85%;
+    height: 158px;
+  }
+  
+  img.thumbImg {
+    height: 37%;
+    margin: 5px 0 0 0;
+  }
+
+  .movieCard h3 {
+    width: 90%;
   }
 }
