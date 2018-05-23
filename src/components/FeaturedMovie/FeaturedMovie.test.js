@@ -372,7 +372,7 @@ describe('FeaturedMovie', () => {
           }
         ],
         deleteFavoriteMovie: jest.fn(),
-        setFeaturedMovie: jest.fn(),
+        setFeaturedMovie: jest.fn()
 
       };
       jest.useFakeTimers();
@@ -598,22 +598,70 @@ describe('FeaturedMovie', () => {
 
   describe('mapStateToProps', () => {
     it('should map recentMovies, movieId, userId, favoriteMovies to props', () => {
-      expect
+      const mockState = {
+        deleteFavoriteMovie: jest.fn(),
+        recentMovies: [{
+          title: "Happy Days",
+          movie_id: 12345,
+          overview: 'string string string'
+        }],
+        selectedMovieId: 12345,
+        userId: 2,
+        favoriteMovies: []
+      };
+      const mappedProps = mapStateToProps(mockState);
+      const expected = {
+        recentMovies: [{
+          title: "Happy Days",
+          movie_id: 12345,
+          overview: 'string string string'
+        }],
+        movieId: 12345,
+        userId: 2,
+        favoriteMovies: []
+      };
+      expect(mappedProps).toEqual(expected)
     });
   });
 
   describe('mapDispatchToProps', () => {
-    it('should call dispatch with the correct parameters on addFavoriteMovie',
-      () => {
+    it('should call dispatch with the correct params on addFavoriteMovie', () => {
+      const mockDispatch = jest.fn();
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      const mockAction = {
+        type: 'ADD_FAVORITE',
+        selectedMovie: 6
+      };
 
-      });
+      mappedProps.addFavoriteMovie(6);
+
+      expect(mockDispatch).toHaveBeenCalledWith(mockAction);
+    });
 
     it('should call dispatch with the correct parameters on deleteFavoriteMovie', () => {
+      const mockDispatch = jest.fn();
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      const mockAction = {
+        type: 'DELETE_FAVORITE',
+        selectedMovie: 6
+      };
 
+      mappedProps.deleteFavoriteMovie(6);
+
+      expect(mockDispatch).toHaveBeenCalledWith(mockAction);
     });
 
     it('should call dispatch with the correct parameters on setFeaturedMovie', () => {
+      const mockDispatch = jest.fn();
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      const mockAction = {
+        type: 'SET_SELECTED_MOVIE_ID',
+        movieId: 6
+      };
 
+      mappedProps.setFeaturedMovie(6);
+
+      expect(mockDispatch).toHaveBeenCalledWith(mockAction);
     });
 
 
