@@ -18,21 +18,21 @@ export class Card extends Component {
     const rating = this.props.rating * 10;
     const cardClass = this.props.selectedMovieId === this.props.id ? "movieCard selected" : "movieCard";
     const img = `https://image.tmdb.org/t/p/w500/${this.props.backdrop}`;
-    
+
     return (
       <div
         className={cardClass}
         onClick={this.clickHandler}
       >
-        <img src={img} className="thumbImg"/>
+        <img src={img} className="thumbImg" />
         <div className="titleStars">
           <h3>{this.props.title}</h3>
           <div className="stars">
             <div>
               <img src={require('../Card/stars-gray.png')} />
             </div>
-            <div className="goldStars" style={{"width" : `${rating}%`}}>
-              <img src={require('../Card/stars-gold.png')}  />
+            <div className="goldStars" style={{ "width": `${rating}%` }}>
+              <img src={require('../Card/stars-gold.png')} />
             </div>
           </div>
         </div>
@@ -40,7 +40,7 @@ export class Card extends Component {
       </div>
     );
   }
-};
+}
 
 Card.propTypes = {
   storeSelectedMovieId: PropTypes.func,
@@ -51,7 +51,7 @@ Card.propTypes = {
   backdrop: PropTypes.string
 };
 
-export const mapStateToProps = (state)=>({
+export const mapStateToProps = (state) => ({
   selectedMovieId: state.selectedMovieId
 });
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FavoriteMovies, mapStateToProps, mapDispatchToProps } from "./FavoriteMovies";
+import { FavoriteMovies, mapStateToProps } from "./FavoriteMovies";
 import { shallow } from 'enzyme';
 
 describe('Card', () => {

@@ -8,6 +8,6 @@ describe('movieCleaner', () => {
     //execution
     const result = movieCleaner(mockRawData);
     //expectation
-    expect(expected).toEqual(result)
+    expect(expected).toEqual(result);
   });
 });

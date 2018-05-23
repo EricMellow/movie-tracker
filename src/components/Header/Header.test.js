@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Header, mapDispatchToProps } from '../Header/Header';
 import { shallow } from 'enzyme';
-import { createMemoryHistory } from 'history'
+import { createMemoryHistory } from 'history';
 
 describe('Header', () => {
   let wrapper;
@@ -14,13 +14,13 @@ describe('Header', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should have default state', ()=> {
+  it('should have default state', () => {
     const expected = {
       favoritesError: false
-    }
+    };
 
     expect(wrapper.state()).toEqual(expected);
-  })
+  });
 
   describe('handleLoginLogoutClick', () => {
     let wrapper;
@@ -57,7 +57,7 @@ describe('Header', () => {
 
       expect(wrapper.instance().setRecentFeaturedMovie).toHaveBeenCalled();
     });
-  })
+  });
 
   describe('handleFavoritesClick', () => {
     let wrapper;
@@ -66,9 +66,9 @@ describe('Header', () => {
     let mockEvent;
 
     beforeEach(() => {
-      mockFavoriteMovies = [{title: 'Princess Bride'}]
+      mockFavoriteMovies = [{ title: 'Princess Bride' }];
       mockToggleRender = jest.fn();
-      mockEvent = { preventDefault: () => {} };
+      mockEvent = { preventDefault: () => { } };
 
       wrapper = shallow(<Header favoriteMovies={mockFavoriteMovies} toggleRender={mockToggleRender} />);
 
@@ -78,7 +78,7 @@ describe('Header', () => {
     it('should call setFavoriteFeaturedMovie when there are favorite movies', () => {
       wrapper.instance().handleFavoritesClick(mockEvent);
 
-      const result = wrapper.instance().setFavoriteFeaturedMovie
+      const result = wrapper.instance().setFavoriteFeaturedMovie;
 
       expect(result).toHaveBeenCalled();
     });
@@ -86,7 +86,7 @@ describe('Header', () => {
     it('should call toggleRender when there are favorite movies with the correct argument', () => {
       wrapper.instance().handleFavoritesClick();
 
-      const result = mockToggleRender
+      const result = mockToggleRender;
 
       expect(result).toHaveBeenCalledWith(false);
     });
@@ -98,7 +98,7 @@ describe('Header', () => {
 
       wrapper.instance().handleFavoritesClick(mockEvent);
 
-      const result = wrapper.instance().toggleError
+      const result = wrapper.instance().toggleError;
 
       expect(result).toHaveBeenCalledWith(mockEvent);
     });
@@ -109,14 +109,14 @@ describe('Header', () => {
     let mockEvent;
 
     beforeEach(() => {
-      mockEvent = { preventDefault: jest.fn()};
+      mockEvent = { preventDefault: jest.fn() };
 
       wrapper = shallow(<Header />);
     });
 
     it('should call preventDefault', () => {
-      const result = mockEvent.preventDefault
-      jest.useFakeTimers()
+      const result = mockEvent.preventDefault;
+      jest.useFakeTimers();
       wrapper.instance().toggleError(mockEvent);
 
       expect(result).toHaveBeenCalled();
@@ -125,16 +125,16 @@ describe('Header', () => {
     it('should set state of favoritesError to true', () => {
       wrapper.instance().toggleError(mockEvent);
 
-      expect(wrapper.state().favoritesError).toEqual(true)
+      expect(wrapper.state().favoritesError).toEqual(true);
     });
 
     it('should set state of favoritesError to false after 2 seconds', () => {
       wrapper.instance().toggleError(mockEvent);
-      wrapper.update();  
+      wrapper.update();
       jest.runAllTimers();
-       
+
       expect(wrapper.state().favoritesError).toEqual(false);
-    }) 
+    });
 
   });
 
@@ -150,7 +150,7 @@ describe('Header', () => {
 
     it('should call setRecentFeaturedMovie', () => {
       wrapper.instance().setRecentFeaturedMovie = jest.fn();
-      const result = wrapper.instance().setRecentFeaturedMovie
+      const result = wrapper.instance().setRecentFeaturedMovie;
 
       wrapper.instance().handleRecentsClick();
 
@@ -159,7 +159,7 @@ describe('Header', () => {
 
     it('should call toggleRender with the correct argument', () => {
       wrapper.instance().setRecentFeaturedMovie = jest.fn();
-      const result = wrapper.instance().props.toggleRender
+      const result = wrapper.instance().props.toggleRender;
 
       wrapper.instance().handleRecentsClick();
 
@@ -179,7 +179,7 @@ describe('Header', () => {
 
     it('should call handleRecentsClick', () => {
       wrapper.instance().handleRecentsClick = jest.fn();
-      const result = wrapper.instance().handleRecentsClick
+      const result = wrapper.instance().handleRecentsClick;
 
       wrapper.instance().handleLogoClick();
 
@@ -194,7 +194,7 @@ describe('Header', () => {
 
     beforeEach(() => {
       mockSetFeaturedMovie = jest.fn();
-      mockFavoriteMovies = [{title: 'Sandlot', movie_id: 29386}];
+      mockFavoriteMovies = [{ title: 'Sandlot', movie_id: 29386 }];
 
       wrapper = shallow(<Header favoriteMovies={mockFavoriteMovies} setFeaturedMovie={mockSetFeaturedMovie} />);
     });
@@ -208,7 +208,7 @@ describe('Header', () => {
       expect(result).toHaveBeenCalledWith(expected);
     });
   });
-  
+
   describe('setRecentFeaturedMovie', () => {
     let wrapper;
     let mockSetFeaturedMovie;
@@ -216,7 +216,7 @@ describe('Header', () => {
 
     beforeEach(() => {
       mockSetFeaturedMovie = jest.fn();
-      mockFavoriteMovies = [{title: 'Sandlot', movie_id: 29165}];
+      mockFavoriteMovies = [{ title: 'Sandlot', movie_id: 29165 }];
 
       wrapper = shallow(<Header recentMovies={mockFavoriteMovies} setFeaturedMovie={mockSetFeaturedMovie} />);
     });
@@ -239,9 +239,9 @@ describe('Header', () => {
         type: 'TOGGLE_RENDER_RECENT',
         toggle: false
       };
-      
+
       mappedProps.toggleRender(false);
-  
+
       expect(mockDispatch).toHaveBeenCalledWith(mockAction);
     });
 
@@ -251,9 +251,9 @@ describe('Header', () => {
       const mockAction = {
         type: 'LOGOUT'
       };
-      
+
       mappedProps.logout();
-  
+
       expect(mockDispatch).toHaveBeenCalled();
     });
 
@@ -263,11 +263,10 @@ describe('Header', () => {
       const mockAction = {
         type: 'SET_FEATURED_MOVIE'
       };
-      
+
       mappedProps.setFeaturedMovie();
-  
+
       expect(mockDispatch).toHaveBeenCalled();
     });
   });
 });
-  

@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import './FeaturedMovie.css';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
-import { addFavoriteMovie, deleteFavoriteMovie, setSelectedMovieId } from '../../actions/index';
+import { withRouter } from 'react-router-dom';
+import {
+  addFavoriteMovie,
+  deleteFavoriteMovie,
+  setSelectedMovieId
+} from '../../actions/index';
 import PropTypes from 'prop-types';
 
 export class FeaturedMovie extends Component {
@@ -28,9 +32,9 @@ export class FeaturedMovie extends Component {
     const isAFavorite = this.findFavorite(selectedMovie.movie_id);
 
     if (isAFavorite) {
-      await this.deleteFavorite(selectedMovie)
+      await this.deleteFavorite(selectedMovie);
     } else if (this.props.userId) {
-      await this.addFavorite(selectedMovie)
+      await this.addFavorite(selectedMovie);
     }
   }
 
@@ -45,17 +49,17 @@ export class FeaturedMovie extends Component {
     if (!this.props.userId) {
       this.setState({
         promptLogin: true
-      })
+      });
       setTimeout(() => {
         this.setState({
           promptLogin: false
-        })
+        });
       }, 2000);
     }
   }
 
-  findFavorite = (id)=>{
-    return this.props.favoriteMovies.find((favorite)=>{
+  findFavorite = (id) => {
+    return this.props.favoriteMovies.find((favorite) => {
       return favorite.movie_id === id;
     });
   }
@@ -70,7 +74,7 @@ export class FeaturedMovie extends Component {
     this.addFavoriteToDatabase(selectedMovie);
   }
 
-  addFavoriteToDatabase = async (selectedMovie) => { 
+  addFavoriteToDatabase = async (selectedMovie) => {
     const url = 'http://localhost:3000/api/users/favorites/new';
 
     await fetch(url, {
@@ -109,13 +113,13 @@ export class FeaturedMovie extends Component {
       const overview = featuredMovie.overview.substr(0, 125);
       const foundFavorite = this.props.favoriteMovies.find(movie => {
         return movie.movie_id === this.props.movieId;
-      })
+      });
       const className = foundFavorite ? "featuredMovie favorite" : "featuredMovie";
       const buttonText = foundFavorite ? "Remove Favorite" : "Add to Favorites";
 
       return (
         <div className={className} style={background}>
-          { this.state.promptLogin ? 
+          {this.state.promptLogin ?
             <div className="loginRequest">
               Please Sign Up / Login to add favorites.
             </div> :
@@ -133,7 +137,7 @@ export class FeaturedMovie extends Component {
       );
     } else {
       return (
-        <div className="noFavorites">Visit the recent movies page to add some favorites.</div>)
+        <div className="noFavorites">Visit the recent movies page to add some favorites.</div>);
     }
   }
 }

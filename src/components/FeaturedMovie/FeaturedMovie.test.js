@@ -141,7 +141,7 @@ describe('FeaturedMovie', () => {
         overview: 'string string string'
       };
       wrapper.instance().deleteFavorite = jest.fn();
-      wrapper.instance().findFavorite = jest.fn().mockImplementation(()=>true);
+      wrapper.instance().findFavorite = jest.fn().mockImplementation(() => true);
       await wrapper.instance().toggleStoreFavorite(mockSelectedMovie);
       const result = wrapper.instance().deleteFavorite;
       expect(result).toHaveBeenCalledWith(mockSelectedMovie);
@@ -173,7 +173,7 @@ describe('FeaturedMovie', () => {
           movie_id: 12345,
           overview: 'string string string'
         }],
-        location:{pathname: '/favorites'},
+        location: { pathname: '/favorites' },
         movieId: 12345,
         userId: 2,
         recentMovies: [
@@ -291,7 +291,7 @@ describe('FeaturedMovie', () => {
       wrapper.instance().togglePromptLogin();
 
       expect(wrapper.state().promptLogin).toEqual(true);
-      
+
       wrapper.update();
       jest.runAllTimers();
 
@@ -332,7 +332,7 @@ describe('FeaturedMovie', () => {
       wrapper = shallow(<FeaturedMovie {...props} />);
     });
     it('should return a favorite movie if it is found in the favoriteMovies in props', () => {
-    
+
       const result = wrapper.instance().findFavorite(12345);
 
       const expected = {
@@ -340,7 +340,7 @@ describe('FeaturedMovie', () => {
         movie_id: 12345,
         overview: 'string string string'
       };
-      
+
       expect(result).toEqual(expected);
     });
   });
@@ -390,7 +390,7 @@ describe('FeaturedMovie', () => {
       wrapper.instance().deleteFavorite(mockSelectedMovie);
       //expectation
       const result = wrapper.instance().props.deleteFavoriteMovie;
-      
+
       expect(result).toHaveBeenCalledWith(mockSelectedMovie);
     });
 
@@ -503,7 +503,7 @@ describe('FeaturedMovie', () => {
       jest.useFakeTimers();
       wrapper = shallow(<FeaturedMovie {...props} />);
     });
-    
+
     it('should call fetch with the correct arguments', async () => {
       // setup
       const mockSelectedMovie = {
@@ -515,7 +515,7 @@ describe('FeaturedMovie', () => {
         vote_average: 2.4,
         overview: 'string string string'
       };
-      window.fetch = jest.fn().mockImplementation(()=>Promise.resolve({}));
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({}));
       // execution
       await wrapper.instance().addFavoriteToDatabase(mockSelectedMovie);
       // expectation
@@ -535,7 +535,7 @@ describe('FeaturedMovie', () => {
           overview: mockSelectedMovie.overview
         })
       };
-      expect(window.fetch).toHaveBeenCalledWith(expectedUrl, expectedOptionsObj );
+      expect(window.fetch).toHaveBeenCalledWith(expectedUrl, expectedOptionsObj);
     });
   });
 

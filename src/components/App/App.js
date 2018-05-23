@@ -49,7 +49,7 @@ export class App extends Component {
             <Route exact path='/' component={RecentMovies} />
             <Route exact path='/favorites' component={FavoriteMovies} />
           </Switch>
-        </section> 
+        </section>
       </div>
     );
   }

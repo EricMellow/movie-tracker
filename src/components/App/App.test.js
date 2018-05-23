@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { App, mapDispatchToProps } from './App';
 import { shallow } from 'enzyme';
 import { mockRawData, mockCleanData } from '../../cleaners/mockData';
@@ -8,7 +7,7 @@ describe('App', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<App/>, { disableLifecycleMethods: true });
+    wrapper = shallow(<App />, { disableLifecycleMethods: true });
   });
 
   it('should match the snapshot', () => {
@@ -18,16 +17,16 @@ describe('App', () => {
   describe('getMovies', () => {
     let wrapper;
     let mockSetRecentMovies;
-    
+
     beforeEach(() => {
-      mockSetRecentMovies = jest.fn()
-      wrapper = shallow(<App setRecentMovies={mockSetRecentMovies}/>, { disableLifecycleMethods: true });
+      mockSetRecentMovies = jest.fn();
+      wrapper = shallow(<App setRecentMovies={mockSetRecentMovies} />, { disableLifecycleMethods: true });
     });
 
     it('should call fetch on the movie api', () => {
-      window.fetch = jest.fn().mockImplementation(()=>Promise.resolve({
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         status: 200,
-        json: ()=>Promise.resolve(mockRawData)
+        json: () => Promise.resolve(mockRawData)
       })
       );
 
@@ -37,9 +36,9 @@ describe('App', () => {
     });
 
     it('should return an error object if the response is a rejection', async () => {
-      
+
       window.fetch = jest.fn().mockImplementation(() => Promise.reject(new Error('test rejection'))
-      )
+      );
       const expected = [{
         movie_id: 0,
         title: "Oh No!",
@@ -47,7 +46,7 @@ describe('App', () => {
         backdrop: "Error",
         overview: "We encountered an error and couldn't retreive your data"
       }];
-     
+
       // const spy = jest.spyOn(wrapper.instance(), 'props.setRecentMovies')
       const result = wrapper.instance().props.setRecentMovies;
       await wrapper.instance().getMovies();
@@ -89,5 +88,5 @@ describe('App', () => {
 
     expect(mockDispatch).toHaveBeenCalledWith(mockAction);
   });
- 
+
 });

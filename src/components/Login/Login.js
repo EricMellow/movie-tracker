@@ -105,7 +105,7 @@ export class Login extends Component {
     const rawData = await response.json();
     const userData = rawData.data;
 
-    return userData
+    return userData;
   }
 
 
@@ -239,7 +239,7 @@ export class Login extends Component {
 }
 
 Login.propTypes = {
-  storeUserId: PropTypes.func, 
+  storeUserId: PropTypes.func,
   addFavorites: PropTypes.func,
   userId: PropTypes.number,
   history: PropTypes.object
@@ -252,6 +252,6 @@ export const mapDispatchToProps = (dispatch) => ({
 
 export const mapStateToProps = (state) => ({
   userId: state.userId
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

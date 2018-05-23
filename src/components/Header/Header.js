@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Header.css';
-import { NavLink, withRouter, Link } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import { toggleRenderRecent, logout, setSelectedMovieId } from "../../actions/index";
 import PropTypes from 'prop-types';
@@ -11,7 +11,7 @@ export class Header extends Component {
 
     this.state = {
       favoritesError: false
-    }
+    };
   }
 
   handleLoginLogoutClick = () => {
@@ -35,17 +35,17 @@ export class Header extends Component {
     event.preventDefault();
     this.setState({
       favoritesError: true
-    })
+    });
     setTimeout(() => {
       this.setState({
         favoritesError: false
-      })
+      });
     }, 2000);
   }
 
   handleRecentsClick = () => {
     this.setRecentFeaturedMovie();
-    this.props.toggleRender(true)
+    this.props.toggleRender(true);
   }
 
   handleLogoClick = () => {
@@ -59,7 +59,7 @@ export class Header extends Component {
   }
 
   setRecentFeaturedMovie = () => {
-    const movieId = this.props.recentMovies[0].movie_id
+    const movieId = this.props.recentMovies[0].movie_id;
     this.props.setFeaturedMovie(movieId);
   }
 
@@ -69,7 +69,10 @@ export class Header extends Component {
 
     return (
       <div className="header">
-        <img src={require('../Header/movie-tracker-logo.png')} className="logo" onClick={this.handleLogoClick} />
+        <img
+          src={require('../Header/movie-tracker-logo.png')}
+          className="logo" onClick={this.handleLogoClick}
+        />
         <nav>
           <NavLink
             to={path}
@@ -81,9 +84,9 @@ export class Header extends Component {
             className="navLink"
             onClick={this.handleFavoritesClick}
           >Favorites</NavLink>
-          { this.state.favoritesError ? 
+          {this.state.favoritesError ?
             <div className="favoritesError">
-              Add favorite movies to view favorites. 
+              Add favorite movies to view favorites.
             </div> :
             null
           }
@@ -96,10 +99,10 @@ export class Header extends Component {
       </div>
     );
   }
-};
+}
 
 Header.propTypes = {
-  toggleRender: PropTypes.func, 
+  toggleRender: PropTypes.func,
   logout: PropTypes.func,
   setFeaturedMovie: PropTypes.func,
   userId: PropTypes.number,

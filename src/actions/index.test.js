@@ -19,7 +19,7 @@ describe('setSelectedMovieId', () => {
 describe('addRecentMovies', () => {
   it('should return a recent movies action', () => {
     // setup
-    const mockRecentMovies = [{title: "Happy Days"}, {title: "Bad Days"}];
+    const mockRecentMovies = [{ title: "Happy Days" }, { title: "Bad Days" }];
     // exectuion
     const result = action.addRecentMovies(mockRecentMovies);
     // expectation
@@ -51,7 +51,7 @@ describe('setUserId', () => {
 describe('addFavoriteMovie', () => {
   it('should return a favorite movie action', () => {
     // setup
-    const mockSelectedMovie = { title: "Happy Days" }
+    const mockSelectedMovie = { title: "Happy Days" };
     // exectuion
     const result = action.addFavoriteMovie(mockSelectedMovie);
     // expectation
@@ -112,7 +112,7 @@ describe('logout', () => {
 describe('deleteFavoriteMovie', () => {
   it('should return a delete favorite action', () => {
     // setup
-    const mockSelectedMovie = { title: "Happy Days" }
+    const mockSelectedMovie = { title: "Happy Days" };
     // exectuion
     const result = action.deleteFavoriteMovie(mockSelectedMovie);
     // expectation

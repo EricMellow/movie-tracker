@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sidebar, mapStateToProps, mapDispatchToProps } from "./Sidebar";
+import { Sidebar, mapStateToProps } from "./Sidebar";
 import { shallow } from 'enzyme';
 
 describe('Card', () => {
@@ -26,6 +26,28 @@ describe('Card', () => {
     wrapper = shallow(<Sidebar location={mockLocation} renderRecent={false} favoriteMovies={mockFavoriteMovies} recentMovies={mockRecentMovies} />);
 
     expect(wrapper).toMatchSnapshot();
+  });
+
+  describe('mapStateToProps', () => {
+
+    it('should map recentMovies, favoriteMovies, and renderRecent to props', () => {
+      const mockState = {
+        recentMovies: [{ title: 'Fight Club' }],
+        favoriteMovies: [],
+        renderRecent: true,
+        selectedMovie: 12345,
+        userID: 13
+      };
+      const expected = {
+        recentMovies: [{ title: 'Fight Club' }],
+        favoriteMovies: [],
+        renderRecent: true
+      };
+
+      const mappedProps = mapStateToProps(mockState);
+
+      expect(mappedProps).toEqual(expected);
+    });
   });
 
 });
