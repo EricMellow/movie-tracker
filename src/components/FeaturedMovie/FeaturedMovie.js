@@ -13,7 +13,7 @@ export class FeaturedMovie extends Component {
     };
   }
 
-  handleFavoriteClick = async (event) => {
+  handleFavoriteClick = async () => {
     const selectedMovie = this.props.recentMovies.find(movie => {
       return movie.movie_id === this.props.movieId;
     });
