@@ -88,7 +88,9 @@ export class Login extends Component {
         
         this.loadExistingUser();
       } catch (error) {
-        console.log(error);
+        this.setState({
+          emailPasswordMatch: false
+        });
       }
     } else {
       this.setState({
