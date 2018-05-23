@@ -3,15 +3,15 @@
 }
 
 h1 {
-  margin-top: 0;
   font-size: 1rem;
-  text-transform: uppercase;
   margin-bottom: 25px;
+  margin-top: 0;
+  text-transform: uppercase;
 }
 
 .sidebarCards {
+  border-radius: 5px;
+  box-shadow: inset 0px 9px 8px -5px #101010, inset 0px -9px 8px -5px #101010;
   height: 340px;
   overflow-y: scroll;
-  box-shadow: inset 0px 9px 8px -5px #101010, inset 0px -9px 8px -5px #101010;
-  border-radius: 5px;
 }

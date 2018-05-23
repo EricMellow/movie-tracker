@@ -6,10 +6,14 @@
   justify-content: space-between;
 }
 .header a {
-  color: #ffffff;
+  color: #bbb;
   margin-left: 45px;
   font-size: rem;
   text-decoration: none;
+}
+
+.header a.active {
+  color: #fff;
 }
 
 nav {

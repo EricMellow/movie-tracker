@@ -1,40 +1,40 @@
 .signUpForms h2 {
-  margin-top: 0;
   font-size: 1rem;
-  text-transform: uppercase;
   margin-bottom: 25px;
+  margin-top: 0;
+  text-transform: uppercase;
 }
 
 .signUp, .login {
-  width: 35%;
   display: inline-block;
   float: left;
+  width: 35%;
 }
 
 .signUpForms {
   display: flex;
-  width: 100%;
   justify-content: space-between;
+  width: 100%;
 }
 
 .signUpForms h3 {
   color: #747474;
-  text-transform: none;
-  font-weight: normal;
   font-size: 0.9rem;
+  font-weight: normal;
   letter-spacing: 0.5px;
+  text-transform: none;
 }
 
 .signUpForms input {
-  height: 20px;
-  padding: 10px;
+  background: #272727;
+  border-radius: 5px;
+  border: none;
+  box-shadow: inset 1px 1px 1px #000;
   color: #747474;
   font-size: 1rem;
-  background: #272727;
+  height: 20px;
+  padding: 10px;
   width: 100%;
-  border: none;
-  border-radius: 5px;
-  box-shadow: inset 1px 1px 1px #000;
 }
 
 .signUpForms input::placeholder {
@@ -42,22 +42,21 @@
 }
 
 .signUpForms button {
-	-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
 	-moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
 	-ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
 	-o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
 	transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-  display: block;
-  margin: 30px 0 0 0;
-  max-width: 110px;
-  text-decoration: none;
+  background: #fff;
   border-radius: 4px;
-  padding: 13px 27px;
   color: #747474;
+  display: block;
   font-size: 0.85rem;
   font-weight: 500;
-  background: #fff;
-	/* box-shadow: #333 0 0px 0px 2px inset; */
+  margin: 30px 0 0 0;
+  max-width: 110px;
+  padding: 13px 27px;
+  text-decoration: none;
 }
 
 .signUp button {
@@ -69,58 +68,58 @@
 }
 
 .signUpForms button:hover {
+  box-shadow: #272727 0 0px 0px 40px inset;ound: linear-gradient(to bottom, #272727 0%,#111111 100%);
   color: rgba(255, 255, 255, 0.85);
   cursor: pointer;
-  box-shadow: #272727 0 0px 0px 40px inset;ound: linear-gradient(to bottom, #272727 0%,#111111 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
 .signUpForms a {
   background: #171717 !important;
+  border-radius: 4px !important;
   color: #496087 !important;
   font-size: 0.8rem;
   margin-right: -18px !important;
   padding: 5px 16px !important;
-  border-radius: 4px !important;
 }
 
 .formDivider {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
 }
 
 .formDivider span {
-  color: #3c4b65;
-  padding: 8px;
-  font-size: 0.9rem;
   border-radius: 50%;
   border: 1px solid #333;
+  color: #3c4b65;
+  font-size: 0.9rem;
+  padding: 8px;
 }
 
 .formDivider div {
-  height: 40%;
-  width: 1px;
   background: #333;
+  height: 40%;
   margin: 0;
+  width: 1px;
 }
 
 .loginError {
-  width: auto;
   background: #111;
-  padding: 15px 20px 15px 20px;
-  display: inline-block;
   border-radius: 5px;
-  margin-bottom: 0;
-  color: #ffba00;
   box-shadow: inset 1px 1px 1px #000;
+  color: #ffba00;
+  display: inline-block;
+  margin-bottom: 0;
+  padding: 15px 20px 15px 20px;
+  width: auto;
 }
 
 @media only screen and (max-width: 800px) {
   .signUp, .login {
-    width: 100%;
     display: inline-block;
     float: none;
+    width: 100%;
   }
 
   .signUpForms {
@@ -142,12 +141,12 @@
   }
 
   .formDivider {
-    margin: 40px 0;
     flex-direction: row;
+    margin: 40px 0;
   }
 
   .formDivider div {
-    width: 40%;
     height: 1px;
+    width: 40%;
   }
 }

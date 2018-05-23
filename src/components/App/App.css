@@ -1,11 +1,9 @@
 html, body {
-  color: #ffffff;
   background-color: #171717;
+  color: #ffffff;
 }
 
 .mainContainer {
-  width: 80%;
   margin: 0 auto;
-  
- 
+  width: 80%;
 }

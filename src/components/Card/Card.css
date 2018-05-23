@@ -1,37 +1,36 @@
 .movieCard {
-  display: flex;
   align-items: center;
-  width: 94%;
+  display: flex;
   height: 90px;
   margin-bottom: 10px;
   padding: 10px;
   position: relative;
+  width: 94%;
 }
 
 .selected, .movieCard.selected:hover {
-  padding: 10px;
   background: #111;
   border-radius: 5px;
   box-shadow: inset 1px 1px 1px #000;
+  padding: 10px;
 }
 
-
 .movieCard:hover {
-  cursor: pointer;
   background: #1d1d1d;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .movieCard img {
-  height: 100%;
-  width: auto;
-  margin-right: 20px;
   border-radius: 5px;
+  height: 100%;
+  margin-right: 20px;
+  width: auto;
 }
 
 .movieCard p {
+  color: #9f9f9f;
   font-size: 0.8rem;
-  color: #9f9f9f
 }
 
 h3 {
@@ -49,15 +48,15 @@ h3 {
 
 .goldStars{
   border: 0;
-  position: absolute;
-  top: 0;
   left: 0;
   overflow: hidden;
+  position: absolute;
+  top: 0;
  } 
 
  .stars img {
-   max-width: 76px;
    height: auto;
+   max-width: 76px;
  }
 
  .cardContainer {
@@ -65,10 +64,10 @@ h3 {
  }
 
  hr {
-  margin-top: 0px;
   background: #333;
-  height: 1px;
   border: none;
+  height: 1px;
+  margin-top: 0px;
 }
 
 .selected .triangle {
@@ -77,23 +76,23 @@ h3 {
 
 .triangle {
 	background-color: #333;
-  text-align: left;
   height: 21px;
-  right: 15px;
   position: absolute;
+  right: 15px;
+  text-align: left;
 }
 .triangle:before,
 .triangle:after {
+	background-color: inherit;
 	content: '';
 	position: absolute;
-	background-color: inherit;
 }
 .triangle,
 .triangle:before,
 .triangle:after {
-	width:  0.7em;
-	height: 0.7em;
 	border-top-right-radius: 30%;
+	height: 0.7em;
+	width:  0.7em;
 }
 
 .triangle {
@@ -137,8 +136,8 @@ h3 {
   }
 
   .stars {
-    margin: 0 auto;
     float: none;
+    margin: 0 auto;
     width: 80px;
   }
 }
@@ -155,13 +154,13 @@ img.thumbImg {
 
 @media only screen and (max-width: 600px) {
   .movieCard {
-    width: 85%;
     height: 158px;
+    width: 85%;
   }
   
   img.thumbImg {
-    height: 37%;
-    margin: 5px 0 0 0;
+      height: 37%;
+      margin: 5px 0 0 0;
   }
 
   .movieCard h3 {
