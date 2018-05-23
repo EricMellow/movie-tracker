@@ -394,7 +394,7 @@ describe('FeaturedMovie', () => {
       expect(result).toHaveBeenCalledWith(mockSelectedMovie);
     });
 
-    it.only('should call deleteFavoriteFromDatabase with the correct argument', () => {
+    it('should call deleteFavoriteFromDatabase with the correct argument', () => {
       //setup
       const mockSelectedMovie = {
         title: "Happy Days",
@@ -412,12 +412,61 @@ describe('FeaturedMovie', () => {
   });
 
   describe('addFavorite', () => {
-    it('should call addFavoriteMovie with the correct argument', () => {
+    let wrapper;
+    let props;
 
+    beforeAll(() => {
+      props = {
+        favoriteMovies: [{
+          title: "Happy Days",
+          movie_id: 12345,
+          overview: 'string string string'
+        }],
+        location: { pathname: '/favorites' },
+        movieId: 12345,
+        userId: null,
+        recentMovies: [
+          {
+            title: "Happy Days",
+            movie_id: 12345,
+            overview: 'string string string'
+          },
+          {
+            title: "Sad Days",
+            movie_id: 23456,
+            overview: 'string string string'
+          }
+        ],
+        deleteFavoriteMovie: jest.fn(),
+        setFeaturedMovie: jest.fn(),
+        addFavoriteMovie: jest.fn()
+      };
+      jest.useFakeTimers();
+      wrapper = shallow(<FeaturedMovie {...props} />);
     });
 
-    it('should call addFavoriteToDatabase with the correct argument', () => {
+    it('should call addFavoriteMovie with the correct argument', () => {
+      wrapper.instance().addFavoriteToDatabase = jest.fn()
+      const mockSelectedMovie = {
+        title: "Happy Days",
+        movie_id: 12345,
+        overview: 'string string string'
+      };
+      wrapper.instance().addFavorite(mockSelectedMovie)
+      const result = wrapper.instance().props.addFavoriteMovie;
+      expect(result).toHaveBeenCalledWith(mockSelectedMovie)
+    });
 
+    it.only('should call addFavoriteToDatabase with the correct argument', () => {
+      wrapper.instance().addFavoriteToDatabase = jest.fn()
+      const mockSelectedMovie = {
+        title: "Happy Days",
+        movie_id: 12345,
+        overview: 'string string string'
+      };
+      wrapper.instance().addFavorite(mockSelectedMovie)
+      const result = wrapper.instance().addFavoriteToDatabase;
+      expect(result).toHaveBeenCalledWith(mockSelectedMovie)
     });
   });
 
