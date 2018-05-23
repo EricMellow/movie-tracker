@@ -294,14 +294,54 @@ describe('FeaturedMovie', () => {
       
       wrapper.update()
       jest.runAllTimers()
-      
+
       expect(wrapper.state().promptLogin).toEqual(false)
     });
   });
 
   describe('findFavorite', () => {
-    it('should return a favorite movie if it is found in the favoriteMovies in props', () => {
+    let wrapper;
+    let props;
 
+    beforeAll(() => {
+      props = {
+        favoriteMovies: [{
+          title: "Happy Days",
+          movie_id: 12345,
+          overview: 'string string string'
+        }],
+        location: { pathname: '/favorites' },
+        movieId: 12345,
+        userId: null,
+        recentMovies: [
+          {
+            title: "Happy Days",
+            movie_id: 12345,
+            overview: 'string string string'
+          },
+          {
+            title: "Sad Days",
+            movie_id: 23456,
+            overview: 'string string string'
+          }
+        ],
+        deleteFavoriteMovie: jest.fn(),
+        setFeaturedMovie: jest.fn()
+      };
+      jest.useFakeTimers()
+      wrapper = shallow(<FeaturedMovie {...props} />);
+    });
+    it.only('should return a favorite movie if it is found in the favoriteMovies in props', () => {
+    
+      const result = wrapper.instance().findFavorite(12345)
+
+      const expected = {
+        title: "Happy Days",
+        movie_id: 12345,
+        overview: 'string string string'
+      }
+      
+      expect(result).toEqual(expected)
     });
   });
 
